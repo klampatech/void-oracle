@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cpcd8tqrc0ki4"]
+
+[ext_resource type="Script" path="res://scripts/game/pegs/EmberPeg.gd" id="1_emberpeg"]
+[ext_resource type="PackedScene" uid="uid://basepeg12345678" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+
+[node name="EmberPeg" instance=ExtResource("2_base")]
+script = ExtResource("1_emberpeg")
+
+[node name="Visual" parent="." index="1"]
+color = Color(0.910, 0.353, 0.125, 1)

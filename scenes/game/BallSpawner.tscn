@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://0msm6bfbkxd4"]
+
+[ext_resource type="Script" path="res://scripts/game/BallSpawner.gd" id="1_ballspawner"]
+
+[node name="BallSpawner" type="Node2D"]
+script = ExtResource("1_ballspawner")
+launch_velocity = 500

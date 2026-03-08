@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://l4xyprtmo7ef"]
+
+[ext_resource type="Script" path="res://scripts/game/pegs/StonePeg.gd" id="1_stonepeg"]
+[ext_resource type="PackedScene" uid="uid://basepeg12345678" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+
+[node name="StonePeg" instance=ExtResource("2_base")]
+script = ExtResource("1_stonepeg")
+
+[node name="Visual" parent="." index="1"]
+color = Color(0.533333, 0.533333, 0.533333, 1)

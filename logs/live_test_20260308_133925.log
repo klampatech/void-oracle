@@ -1,0 +1,1251 @@
+Godot Engine v4.6.1.stable.official.14d19694e - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+WARNING: The signal "peg_hit" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:6)
+WARNING: The signal "ball_entered_pocket" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:7)
+WARNING: The signal "ball_lost" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:8)
+WARNING: The signal "peg_state_changed" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:11)
+WARNING: The signal "peg_destroyed" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:12)
+WARNING: The signal "peg_spawned" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:13)
+WARNING: The signal "synergy_activated" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:16)
+WARNING: The signal "synergy_broken" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:17)
+WARNING: The signal "synergy_scaled" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:18)
+WARNING: The signal "drop_started" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:21)
+WARNING: The signal "drop_ended" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:22)
+WARNING: The signal "chaos_drop_triggered" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:23)
+WARNING: The signal "enemy_turn_start" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:26)
+WARNING: The signal "enemy_action" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:27)
+WARNING: The signal "enemy_defeated" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:28)
+WARNING: The signal "player_stability_changed" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:29)
+WARNING: The signal "node_selected" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:32)
+WARNING: The signal "encounter_started" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:33)
+WARNING: The signal "encounter_ended" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:34)
+WARNING: The signal "run_ended" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:35)
+WARNING: The signal "draft_choice_made" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:38)
+WARNING: The signal "shop_purchase" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:39)
+WARNING: The signal "relic_acquired" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:40)
+WARNING: The function parameter "seed" has the same name as a built-in function.
+     at: GDScript::reload (res://scripts/autoloads/RunState.gd:31)
+WARNING: The parameter "peg" is never used in the function "_get_local_corruption()". If this is intended, prefix it with an underscore: "_peg".
+     at: GDScript::reload (res://scripts/autoloads/MutationEngine.gd:71)
+WARNING: The local function parameter "position" is shadowing an already-declared property in the base class "Node2D".
+     at: GDScript::reload (res://scripts/game/pegs/FungalPeg.gd:73)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The parameter "old_state" is never used in the function "_on_peg_state_changed()". If this is intended, prefix it with an underscore: "_old_state".
+     at: GDScript::reload (res://scripts/game/CorruptionMapManager.gd:36)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The class variable "_pocket_scene" is declared but never used in the class.
+     at: GDScript::reload (res://scripts/game/Board.gd:19)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: Integer division. Decimal part will be discarded.
+     at: GDScript::reload (res://scripts/game/Board.gd:59)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: Integer division. Decimal part will be discarded.
+     at: GDScript::reload (res://scripts/game/Board.gd:72)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: Integer division. Decimal part will be discarded.
+     at: GDScript::reload (res://scripts/game/Board.gd:87)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The parameter "pocket_type" is never used in the function "_on_pocket_body_entered()". If this is intended, prefix it with an underscore: "_pocket_type".
+     at: GDScript::reload (res://scripts/game/Board.gd:150)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: Integer division. Decimal part will be discarded.
+     at: GDScript::reload (res://scripts/game/Board.gd:161)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The local variable "material" is shadowing an already-declared property in the base class "CanvasItem".
+     at: GDScript::reload (res://scripts/game/Board.gd:190)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The local variable "transform" is shadowing an already-declared property in the base class "Node2D".
+     at: GDScript::reload (res://scripts/game/PhysicsDebugOverlay.gd:93)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The local variable "transform" is shadowing an already-declared property in the base class "Node2D".
+     at: GDScript::reload (res://scripts/game/PhysicsDebugOverlay.gd:112)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The local function parameter "position" is shadowing an already-declared property in the base class "Node2D".
+     at: GDScript::reload (res://scripts/game/PhysicsDebugOverlay.gd:212)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 0) | Ball velocity: 1209.5
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 1209.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 0) | Ball velocity: 1314.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 1) | Ball velocity: 1314.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 1) | Ball velocity: 1350.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 1) | Ball velocity: 1319.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 0) | Ball velocity: 1314.6
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 1) | Ball velocity: 1314.6
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 0) | Ball velocity: 796.9
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 1) | Ball velocity: 796.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 1) | Ball velocity: 837.8
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 2) | Ball velocity: 837.8
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 0) | Ball velocity: 879.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 1) | Ball velocity: 879.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 407.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 404.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 2) | Ball velocity: 348.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 2) | Ball velocity: 332.2
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 2) | Ball velocity: 374.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 2) | Ball velocity: 336.8
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 287.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 274.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 349.4
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 2) | Ball velocity: 349.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 355.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 319.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 3) | Ball velocity: 244.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 3) | Ball velocity: 241.4
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 0) | Ball velocity: 300.6
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 300.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 288.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 283.7
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 2) | Ball velocity: 1255.5
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 2) | Ball velocity: 1265.1
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 200.3
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 201.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 1018.2
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 4) | Ball velocity: 1018.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 1303.0
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 1303.0
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 2) | Ball velocity: 983.5
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 3) | Ball velocity: 983.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 1) | Ball velocity: 957.8
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 2) | Ball velocity: 957.8
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 1) | Ball velocity: 461.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 2) | Ball velocity: 1134.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 3) | Ball velocity: 1134.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 0) | Ball velocity: 1302.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 1302.8
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 1322.1
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 0) | Ball velocity: 392.2
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 1) | Ball velocity: 392.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 1291.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 2) | Ball velocity: 1291.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 3) | Ball velocity: 947.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 4) | Ball velocity: 947.7
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 0) | Ball velocity: 385.4
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 385.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 1) | Ball velocity: 329.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 1) | Ball velocity: 315.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 3) | Ball velocity: 332.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 3) | Ball velocity: 336.3
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 5) | Ball velocity: 316.8
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 576.7
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 576.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 2) | Ball velocity: 550.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 2) | Ball velocity: 502.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 5) | Ball velocity: 341.3
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 5) | Ball velocity: 319.3
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 538.9
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 538.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 520.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 516.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 5) | Ball velocity: 483.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 6) | Ball velocity: 483.4
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 4) | Ball velocity: 131.5
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 4) | Ball velocity: 120.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 515.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 5) | Ball velocity: 515.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 7) | Ball velocity: 489.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 7) | Ball velocity: 491.3
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 545.3
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 554.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 8) | Ball velocity: 170.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 8) | Ball velocity: 215.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 6) | Ball velocity: 339.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 6) | Ball velocity: 342.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 770.1
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 779.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 7) | Ball velocity: 391.4
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 7) | Ball velocity: 398.1
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 845.6
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 849.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 7) | Ball velocity: 429.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 7) | Ball velocity: 440.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 839.0
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 835.1
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 5) | Ball velocity: 504.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 5) | Ball velocity: 509.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 0) | Ball velocity: 749.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 1) | Ball velocity: 749.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 771.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 2) | Ball velocity: 771.2
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 1) | Ball velocity: 692.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 2) | Ball velocity: 692.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 4) | Ball velocity: 505.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 4) | Ball velocity: 477.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 3) | Ball velocity: 744.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 8) | Ball velocity: 408.3
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 0) | Ball velocity: 797.0
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 797.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 2) | Ball velocity: 614.2
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 614.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 3) | Ball velocity: 630.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 630.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 564.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 4) | Ball velocity: 564.7
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 5) | Ball velocity: 182.7
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 5) | Ball velocity: 159.9
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 690.5
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 690.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 0) | Ball velocity: 605.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 1) | Ball velocity: 605.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 3) | Ball velocity: 208.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 3) | Ball velocity: 207.5
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 622.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 622.2
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 1) | Ball velocity: 554.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 2) | Ball velocity: 554.1
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 537.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 5) | Ball velocity: 537.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 2) | Ball velocity: 545.8
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 545.8
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 4) | Ball velocity: 588.3
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 4) | Ball velocity: 592.8
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 1) | Ball velocity: 125.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 582.3
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 577.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 916.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 2) | Ball velocity: 916.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 1) | Ball velocity: 451.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 1) | Ball velocity: 453.0
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 1) | Ball velocity: 421.5
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 1) | Ball velocity: 423.6
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+[SynergyChecker] No active synergies
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 2) | Ball velocity: 466.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 2) | Ball velocity: 472.0
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 1) | Ball velocity: 472.1
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 1) | Ball velocity: 467.2
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 2) | Ball velocity: 420.7
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 2) | Ball velocity: 420.1
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 2) | Ball velocity: 457.8
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 2) | Ball velocity: 459.2
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 2) | Ball velocity: 430.1
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 1294.3
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 3) | Ball velocity: 430.1
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 4) | Ball velocity: 1294.3
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 3) | Ball velocity: 480.1
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 3) | Ball velocity: 484.4
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 3) | Ball velocity: 483.1
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 3) | Ball velocity: 479.1
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 4) | Ball velocity: 415.9
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 4) | Ball velocity: 412.0
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 4) | Ball velocity: 1265.0
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 5) | Ball velocity: 1265.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 4) | Ball velocity: 423.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 4) | Ball velocity: 432.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 4) | Ball velocity: 423.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 5) | Ball velocity: 423.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 5) | Ball velocity: 398.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 5) | Ball velocity: 391.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 4) | Ball velocity: 321.3
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 4) | Ball velocity: 314.6
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 5) | Ball velocity: 321.5
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 5) | Ball velocity: 332.8
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 4) | Ball velocity: 399.6
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 4) | Ball velocity: 401.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 6) | Ball velocity: 373.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 6) | Ball velocity: 367.3
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 1304.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 1287.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 8) | Ball velocity: 649.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 9) | Ball velocity: 649.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 4) | Ball velocity: 662.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 4) | Ball velocity: 640.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 5) | Ball velocity: 192.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 5) | Ball velocity: 185.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 7) | Ball velocity: 680.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 8) | Ball velocity: 680.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 10) | Ball velocity: 622.1
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 10) | Ball velocity: 610.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 5) | Ball velocity: 1303.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 5) | Ball velocity: 531.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 10) | Ball velocity: 1286.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 11) | Ball velocity: 1286.5
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 6) | Ball velocity: 154.9
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 6) | Ball velocity: 157.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 6) | Ball velocity: 229.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 6) | Ball velocity: 197.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 6) | Ball velocity: 257.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 6) | Ball velocity: 213.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 8) | Ball velocity: 367.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 6) | Ball velocity: 1282.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 9) | Ball velocity: 367.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 7) | Ball velocity: 1282.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 6) | Ball velocity: 337.1
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 11) | Ball velocity: 1304.3
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 7) | Ball velocity: 337.1
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 12) | Ball velocity: 1304.3
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 8) | Ball velocity: 355.3
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 8) | Ball velocity: 319.3
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 9) | Ball velocity: 682.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 10) | Ball velocity: 682.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 12) | Ball velocity: 669.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 13) | Ball velocity: 669.2
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 7) | Ball velocity: 268.2
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 7) | Ball velocity: 266.1
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 11) | Ball velocity: 366.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 11) | Ball velocity: 367.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 12) | Ball velocity: 721.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 14) | Ball velocity: 333.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 783.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 14) | Ball velocity: 337.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 783.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 8) | Ball velocity: 334.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 8) | Ball velocity: 346.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 9) | Ball velocity: 722.8
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 9) | Ball velocity: 710.3
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 13) | Ball velocity: 402.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 13) | Ball velocity: 182.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 9) | Ball velocity: 775.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 6) | Ball velocity: 384.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 6) | Ball velocity: 346.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 9) | Ball velocity: 315.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 9) | Ball velocity: 309.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 10) | Ball velocity: 179.8
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 10) | Ball velocity: 169.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 7) | Ball velocity: 215.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 7) | Ball velocity: 209.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 14) | Ball velocity: 190.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 14) | Ball velocity: 200.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 10) | Ball velocity: 283.8
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 11) | Ball velocity: 216.3
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 11) | Ball velocity: 202.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 15) | Ball velocity: 223.4
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 15) | Ball velocity: 227.2
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 12) | Ball velocity: 255.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 5) | Ball velocity: 502.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 5) | Ball velocity: 506.8
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 12) | Ball velocity: 254.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 1) | Ball velocity: 547.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 1) | Ball velocity: 555.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 7) | Ball velocity: 379.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 7) | Ball velocity: 382.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 3) | Ball velocity: 605.8
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 4) | Ball velocity: 605.8
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 1017.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 16) | Ball velocity: 359.1
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 4) | Ball velocity: 1017.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 16) | Ball velocity: 356.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 605.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 9) | Ball velocity: 1002.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 600.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 9) | Ball velocity: 998.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 14) | Ball velocity: 756.1
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 382.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 15) | Ball velocity: 756.1
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 378.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 17) | Ball velocity: 781.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 17) | Ball velocity: 781.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 502.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 491.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 9) | Ball velocity: 687.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 18) | Ball velocity: 307.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 10) | Ball velocity: 687.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 18) | Ball velocity: 299.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 18) | Ball velocity: 702.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 19) | Ball velocity: 702.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 11) | Ball velocity: 409.1
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 11) | Ball velocity: 409.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 5) | Ball velocity: 1243.0
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 6) | Ball velocity: 1243.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 16) | Ball velocity: 632.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 16) | Ball velocity: 621.1
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 5) | Ball velocity: 276.0
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 5) | Ball velocity: 280.4
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 362.5
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 363.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 571.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 7) | Ball velocity: 571.2
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 6) | Ball velocity: 526.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 6) | Ball velocity: 488.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 19) | Ball velocity: 329.1
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 20) | Ball velocity: 329.1
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 1) | Ball velocity: 477.5
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 373.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 2) | Ball velocity: 477.5
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 4) | Ball velocity: 373.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 21) | Ball velocity: 340.4
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 21) | Ball velocity: 341.8
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 7) | Ball velocity: 505.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 7) | Ball velocity: 510.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 8) | Ball velocity: 412.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 8) | Ball velocity: 418.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 5) | Ball velocity: 586.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 5) | Ball velocity: 572.3
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 5) | Ball velocity: 434.8
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 5) | Ball velocity: 437.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 9) | Ball velocity: 444.4
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 9) | Ball velocity: 447.2
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 10) | Ball velocity: 455.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 11) | Ball velocity: 455.6
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 6) | Ball velocity: 458.7
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 6) | Ball velocity: 464.7
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 1) | Ball velocity: 706.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 2) | Ball velocity: 1318.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 3) | Ball velocity: 1318.5
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 2) | Ball velocity: 538.1
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 6) | Ball velocity: 1366.7
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 7) | Ball velocity: 1415.5
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 3) | Ball velocity: 1456.4
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 1094.3
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 1104.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 6) | Ball velocity: 1133.5
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 7) | Ball velocity: 1133.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 12) | Ball velocity: 1096.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 12) | Ball velocity: 1082.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 6) | Ball velocity: 1330.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 7) | Ball velocity: 1330.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 7) | Ball velocity: 1392.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 8) | Ball velocity: 1392.2
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 0) | Ball velocity: 212.0
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 1) | Ball velocity: 212.0
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 468.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 5) | Ball velocity: 468.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 16) | Ball velocity: 330.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 17) | Ball velocity: 330.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 17) | Ball velocity: 1297.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 18) | Ball velocity: 1297.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 13) | Ball velocity: 318.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 13) | Ball velocity: 300.0
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 1) | Ball velocity: 1229.5
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 2) | Ball velocity: 1229.5
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 5) | Ball velocity: 1218.5
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 6) | Ball velocity: 1218.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 13) | Ball velocity: 846.3
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 14) | Ball velocity: 846.3
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 604.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 606.0
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 8) | Ball velocity: 594.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 12) | Ball velocity: 957.2
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 13) | Ball velocity: 957.2
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 7) | Ball velocity: 943.0
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 7) | Ball velocity: 944.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 7) | Ball velocity: 975.1
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 8) | Ball velocity: 975.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 14) | Ball velocity: 293.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 14) | Ball velocity: 269.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 19) | Ball velocity: 294.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 19) | Ball velocity: 296.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 9) | Ball velocity: 293.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 9) | Ball velocity: 300.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 7) | Ball velocity: 415.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 7) | Ball velocity: 414.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 20) | Ball velocity: 762.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 20) | Ball velocity: 767.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 10) | Ball velocity: 442.0
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 10) | Ball velocity: 442.3
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 14) | Ball velocity: 532.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 15) | Ball velocity: 532.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 8) | Ball velocity: 413.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 8) | Ball velocity: 397.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 20) | Ball velocity: 1320.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 21) | Ball velocity: 1320.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 21) | Ball velocity: 1349.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 22) | Ball velocity: 1349.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 1329.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 10) | Ball velocity: 196.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 7) | Ball velocity: 1329.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 10) | Ball velocity: 179.9
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 1) | Ball velocity: 1143.3
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 2) | Ball velocity: 1143.3
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 15) | Ball velocity: 133.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 15) | Ball velocity: 139.6
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 2) | Ball velocity: 478.0
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 3) | Ball velocity: 478.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 11) | Ball velocity: 240.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 11) | Ball velocity: 260.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 9) | Ball velocity: 371.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 9) | Ball velocity: 339.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 12) | Ball velocity: 295.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 12) | Ball velocity: 297.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 10) | Ball velocity: 350.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 10) | Ball velocity: 321.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 13) | Ball velocity: 282.3
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 13) | Ball velocity: 277.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 12) | Ball velocity: 311.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 12) | Ball velocity: 309.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 14) | Ball velocity: 239.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 14) | Ball velocity: 234.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 13) | Ball velocity: 286.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 13) | Ball velocity: 294.8
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 15) | Ball velocity: 1065.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 16) | Ball velocity: 1065.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 21) | Ball velocity: 1056.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 22) | Ball velocity: 1056.6
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 5) | Ball velocity: 313.3
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 5) | Ball velocity: 310.4
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 8) | Ball velocity: 241.1
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 8) | Ball velocity: 238.7
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 6) | Ball velocity: 289.0
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 6) | Ball velocity: 287.6
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 1) | Ball velocity: 104.4
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 1) | Ball velocity: 93.9
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 7) | Ball velocity: 290.6
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 7) | Ball velocity: 294.1
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 14) | Ball velocity: 296.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 14) | Ball velocity: 293.0
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 9) | Ball velocity: 199.3
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 9) | Ball velocity: 179.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 11) | Ball velocity: 415.3
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 3) | Ball velocity: 496.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 3) | Ball velocity: 502.9
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 521.7
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 521.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 493.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 4) | Ball velocity: 486.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 15) | Ball velocity: 364.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 15) | Ball velocity: 355.5
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 4) | Ball velocity: 184.3
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 4) | Ball velocity: 184.3
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 12) | Ball velocity: 264.8
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 5) | Ball velocity: 181.9
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 5) | Ball velocity: 182.1
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 11) | Ball velocity: 334.0
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 11) | Ball velocity: 342.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 13) | Ball velocity: 404.0
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 6) | Ball velocity: 204.3
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 6) | Ball velocity: 219.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 5) | Ball velocity: 538.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 5) | Ball velocity: 549.0
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 604.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 604.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 579.3
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 581.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 623.9
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 633.0
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 8) | Ball velocity: 264.1
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 8) | Ball velocity: 265.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 7) | Ball velocity: 672.0
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 8) | Ball velocity: 672.0
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 2) | Ball velocity: 714.1
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 7) | Ball velocity: 240.1
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 7) | Ball velocity: 235.2
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 9) | Ball velocity: 291.1
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 9) | Ball velocity: 300.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 15) | Ball velocity: 452.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 15) | Ball velocity: 458.9
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 10) | Ball velocity: 483.7
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 10) | Ball velocity: 484.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 15) | Ball velocity: 459.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 16) | Ball velocity: 459.9
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 7) | Ball velocity: 411.1
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 8) | Ball velocity: 411.1
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 17) | Ball velocity: 446.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 17) | Ball velocity: 446.5
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 9) | Ball velocity: 408.9
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 9) | Ball velocity: 410.3
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 18) | Ball velocity: 486.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 16) | Ball velocity: 583.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 16) | Ball velocity: 583.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 19) | Ball velocity: 537.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 19) | Ball velocity: 529.4
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 11) | Ball velocity: 514.6
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 11) | Ball velocity: 514.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 20) | Ball velocity: 526.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 20) | Ball velocity: 534.3
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 17) | Ball velocity: 576.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 17) | Ball velocity: 577.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 21) | Ball velocity: 547.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 21) | Ball velocity: 547.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 18) | Ball velocity: 572.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 18) | Ball velocity: 571.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 22) | Ball velocity: 498.7
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 9) | Ball velocity: 379.2
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 10) | Ball velocity: 379.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 23) | Ball velocity: 477.1
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 18) | Ball velocity: 553.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 19) | Ball velocity: 553.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 24) | Ball velocity: 523.3
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 24) | Ball velocity: 522.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 20) | Ball velocity: 550.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 20) | Ball velocity: 550.3
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 11) | Ball velocity: 517.5
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 12) | Ball velocity: 517.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 20) | Ball velocity: 540.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 21) | Ball velocity: 540.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 24) | Ball velocity: 464.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 25) | Ball velocity: 464.8
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 13) | Ball velocity: 426.6
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 13) | Ball velocity: 417.6
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 10) | Ball velocity: 339.5
+TONE: 523.3 Hz (peg: heart, state: dormant)
+[DEBUG] PEG HIT: heart (hits: 11) | Ball velocity: 339.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 26) | Ball velocity: 410.5
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 26) | Ball velocity: 418.6
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 14) | Ball velocity: 449.0
+TONE: 440.0 Hz (peg: eye, state: dormant)
+[DEBUG] PEG HIT: eye (hits: 14) | Ball velocity: 456.9
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 22) | Ball velocity: 538.0
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 22) | Ball velocity: 543.1
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 14) | Ball velocity: 554.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 14) | Ball velocity: 504.2
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 27) | Ball velocity: 461.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 27) | Ball velocity: 462.0
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 6) | Ball velocity: 611.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 7) | Ball velocity: 611.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 22) | Ball velocity: 575.7
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 23) | Ball velocity: 575.7
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 2) | Ball velocity: 618.4
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 618.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 15) | Ball velocity: 587.3
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 15) | Ball velocity: 538.9
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 3) | Ball velocity: 676.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 4) | Ball velocity: 676.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 8) | Ball velocity: 659.2
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 8) | Ball velocity: 659.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 9) | Ball velocity: 684.4
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 9) | Ball velocity: 683.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 9) | Ball velocity: 655.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 9) | Ball velocity: 655.7
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 4) | Ball velocity: 683.7
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 5) | Ball velocity: 683.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 10) | Ball velocity: 668.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 10) | Ball velocity: 662.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 8) | Ball velocity: 591.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 8) | Ball velocity: 555.5
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 10) | Ball velocity: 514.8
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 10) | Ball velocity: 505.1
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 24) | Ball velocity: 435.3
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 24) | Ball velocity: 427.7
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 15) | Ball velocity: 379.4
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 16) | Ball velocity: 379.4
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 11) | Ball velocity: 436.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 11) | Ball velocity: 436.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 25) | Ball velocity: 373.4
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 25) | Ball velocity: 368.0
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 16) | Ball velocity: 350.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 17) | Ball velocity: 350.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 12) | Ball velocity: 413.0
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 12) | Ball velocity: 412.7
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 12) | Ball velocity: 399.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 13) | Ball velocity: 399.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 18) | Ball velocity: 128.5
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 18) | Ball velocity: 135.6
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 26) | Ball velocity: 241.8
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 26) | Ball velocity: 260.6
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 13) | Ball velocity: 390.9
+TONE: 293.7 Hz (peg: bone, state: dormant)
+[DEBUG] PEG HIT: bone (hits: 14) | Ball velocity: 390.9
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 19) | Ball velocity: 361.6
+TONE: 329.6 Hz (peg: fungal, state: dormant)
+[DEBUG] PEG HIT: fungal (hits: 19) | Ball velocity: 346.5
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 4) | Ball velocity: 467.2
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 6) | Ball velocity: 549.4
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 6) | Ball velocity: 554.8
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 0) | Ball velocity: 359.8
+TONE: 130.8 Hz (peg: void_rift, state: dormant)
+[DEBUG] PEG HIT: void_rift (hits: 1) | Ball velocity: 359.8

@@ -1,0 +1,76 @@
+{
+  "stone": {
+    "display_name": "Stone Peg",
+    "tier": "common",
+    "tags": ["foundation"],
+    "restitution": 0.6,
+    "friction": 0.1,
+    "base_bonus": {"gold": 1},
+    "description": "The bedrock of any board. Reliable, humble, foundational."
+  },
+  "bone": {
+    "display_name": "Bone Peg",
+    "tier": "common",
+    "tags": ["death"],
+    "restitution": 0.5,
+    "friction": 0.05,
+    "base_bonus": {"damage": 2},
+    "description": "Slick and sharp. Every contact draws something vital from the enemy."
+  },
+  "fungal": {
+    "display_name": "Fungal Peg",
+    "tier": "uncommon",
+    "tags": ["growth", "death"],
+    "restitution": 0.4,
+    "friction": 0.45,
+    "base_bonus": {"stability": 1},
+    "growth_interval_drops": 3,
+    "description": "It grows. Given time, it will fill every empty slot it can reach."
+  },
+  "ember": {
+    "display_name": "Ember Peg",
+    "tier": "uncommon",
+    "tags": ["fire"],
+    "restitution": 0.9,
+    "friction": 0.05,
+    "base_bonus": {"damage": 1},
+    "chain_effect": "ignite_adjacent",
+    "description": "Touch it and everything nearby catches fire."
+  },
+  "eye": {
+    "display_name": "Eye Peg",
+    "tier": "rare",
+    "tags": ["void"],
+    "restitution": 0.6,
+    "friction": 0.1,
+    "base_bonus": {"reveal_pocket": true},
+    "description": "It watches. It remembers. It shows you what's coming."
+  },
+  "heart": {
+    "display_name": "Heart Peg",
+    "tier": "rare",
+    "tags": ["blood"],
+    "restitution": 0.7,
+    "friction": 0.15,
+    "base_bonus": {"stability": 5},
+    "description": "Pumps ichor through the board. Each contact is a heartbeat."
+  },
+  "oracle": {
+    "display_name": "Oracle Peg",
+    "tier": "legendary",
+    "tags": ["void", "death", "growth", "fire", "blood", "foundation"],
+    "restitution": 0.6,
+    "friction": 0.1,
+    "special": "split_ball_3",
+    "description": "One becomes three. The board awakens."
+  },
+  "void_rift": {
+    "display_name": "Void Rift Peg",
+    "tier": "legendary",
+    "tags": ["void"],
+    "restitution": 0.0,
+    "friction": 0.0,
+    "special": "teleport_to_best_pocket",
+    "description": "The ball does not bounce. It ceases. It arrives."
+  }
+}

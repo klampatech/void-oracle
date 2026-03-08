@@ -1,0 +1,46 @@
+{
+  "project": "Void Oracle",
+  "branchName": "ralph/m1-physics-sandbox",
+  "description": "M1: Physics Sandbox - Complete foundational physics system with playable ball-peg interactions",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Add peg spawning to Board.gd",
+      "description": "As a developer, I need pegs to be instantiated on the board so the physics sandbox is playable.",
+      "acceptanceCriteria": [
+        "Add _create_pegs() method to Board.gd",
+        "Load all 8 peg scenes: StonePeg, BonePeg, FungalPeg, EmberPeg, EyePeg, HeartPeg, OraclePeg, VoidRiftPeg",
+        "Place pegs in staggered grid pattern (~15-20 pegs total)",
+        "Position pegs between top (y=150) and pocket row (y=700)",
+        "Use proper spacing: columns ~70px apart, rows ~60px apart",
+        "Odd rows offset by half column width for staggered pattern",
+        "Add each peg to 'peg' group for collision detection",
+        "Balls can hit pegs and bounce realistically",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Physics Debug Overlay",
+      "description": "As a developer, I need debug visualization to tune physics values and verify collision behavior.",
+      "acceptanceCriteria": [
+        "Create scenes/game/PhysicsDebugOverlay.tscn (CanvasLayer node)",
+        "Create scripts/game/PhysicsDebugOverlay.gd",
+        "Toggle with F1 key (Input.is_action_just_pressed)",
+        "Show all collision shapes using draw_rect/draw_circle",
+        "Show ball velocity vector as arrow/line",
+        "Show peg hit_count labels above each peg",
+        "Connect to EventBus.peg_hit for console logging",
+        "Add PhysicsDebugOverlay to Board.tscn scene tree",
+        "Press F1 to toggle debug overlay visibility",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "necrotic_bloom": {
+    "display_name": "Necrotic Bloom",
+    "required_tags": ["death", "growth"],
+    "min_count": 3,
+    "tiers": [
+      {"count": 3, "effect": "rot_pegs_deal_3_damage_on_contact"},
+      {"count": 6, "effect": "all_pegs_regen_1_stability_per_drop"}
+    ],
+    "curse_risk": "rot_spreads_2x_faster",
+    "description": "Death feeds growth. Growth feeds death. The cycle accelerates."
+  },
+  "cursed_flame": {
+    "display_name": "Cursed Flame",
+    "required_tags": ["fire", "cursed"],
+    "min_count": 3,
+    "tiers": [
+      {"count": 3, "effect": "burning_pegs_corrupt_adjacent_on_ignite"},
+      {"count": 6, "effect": "ball_speed_plus_20pct_double_damage"}
+    ],
+    "curse_risk": "board_takes_5_damage_per_drop",
+    "description": "The fire is wrong. It burns inward."
+  },
+  "void_choir": {
+    "display_name": "Void Choir",
+    "required_tags": ["void"],
+    "min_count": 3,
+    "tiers": [
+      {"count": 3, "effect": "every_5th_ball_becomes_void_ball"},
+      {"count": 6, "effect": "void_balls_open_extra_pocket_slot"}
+    ],
+    "curse_risk": "void_consumes_1_blessed_peg_per_run",
+    "description": "The void does not stay silent forever."
+  },
+  "bleeding_architecture": {
+    "display_name": "Bleeding Architecture",
+    "required_tags": ["blood", "foundation"],
+    "min_count": 3,
+    "tiers": [
+      {"count": 3, "effect": "stone_pegs_heal_1_stability_on_contact"},
+      {"count": 6, "effect": "board_gains_regen_2_passive"}
+    ],
+    "curse_risk": "heart_pegs_slowly_rot",
+    "description": "The stones remember being alive."
+  },
+  "profane_eye": {
+    "display_name": "The Profane Eye",
+    "required_tags": ["void", "death"],
+    "min_count": 3,
+    "tiers": [
+      {"count": 3, "effect": "eye_pegs_reveal_enemy_next_move"},
+      {"count": 6, "effect": "bone_pegs_double_damage_vs_revealed"}
+    ],
+    "curse_risk": "eye_pegs_blind_randomly",
+    "description": "To see clearly is to invite what you see."
+  }
+}

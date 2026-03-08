@@ -1,0 +1,124 @@
+{
+  "project": "Void Oracle",
+  "branchName": "ralph/m2-core-systems",
+  "description": "M2: Core Systems - Peg state shaders, mutation engine, synergies, and special peg behaviors",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Peg State Shader",
+      "description": "As a player, I want pegs to visually transform when their state changes so I can see the blessing/corruption axis.",
+      "acceptanceCriteria": [
+        "Create shaders/peg_state.gdshader",
+        "Uniform: corruption_level: float (0.0 = blessed gold, 0.5 = neutral, 1.0 = cursed crimson)",
+        "Uniform: mutation_pulse: float (animated sine, drives green pustule effect)",
+        "Uniform: void_factor: float (0.0-1.0, drives star-field overlay)",
+        "Interpolate visual: gold veins (0.0) → neutral (0.5) → crimson cracks (1.0)",
+        "Mutation pulse creates green pustule effect when corruption_level ≈ 0.5",
+        "Void factor adds star-field/void overlay",
+        "Apply ShaderMaterial to all peg types",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Mutation Engine Integration",
+      "description": "As a player, I want pegs to mutate over time so my board evolves across encounters.",
+      "acceptanceCriteria": [
+        "Wire MutationEngine to listen to EventBus.peg_hit",
+        "After MUTATION_THRESHOLD (5) hits, 15% chance per hit to shift peg state",
+        "State transitions: dormant → blessed/cursed → mutant → void",
+        "On state change: update peg shader uniforms + emit EventBus.peg_state_changed",
+        "Implement state transition rules: Dormant→Blessed/Cursed, Blessed→Mutant(30%), Cursed→Mutant(40%), Mutant→Void(10%)",
+        "Hit a peg 5+ times and verify it visibly mutates",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "Synergy Checker Integration",
+      "description": "As a player, I want synergies to activate when I have matching pegs so I can build powerful combos.",
+      "acceptanceCriteria": [
+        "Wire SynergyChecker to EventBus.peg_state_changed and EventBus.peg_spawned",
+        "Maintain tag count dictionary: { death: 3, growth: 2, ... }",
+        "Check 5 synergies against tag counts: necrotic_bloom, cursed_flame, void_choir, bleeding_arch, profane_eye",
+        "Emit synergy_activated / synergy_broken / synergy_scaled as appropriate",
+        "Debug: print active synergies to console on any change",
+        "Place 3 Fungal + 3 Bone pegs manually and verify necrotic_bloom activates in console",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-004",
+      "title": "Special Peg Behaviors - Void Rift, Ember, Fungal",
+      "description": "As a player, I want special pegs to have unique effects so strategic choices matter.",
+      "acceptanceCriteria": [
+        "Void Rift Peg: on hit, queue_free ball, RunState.gold += 10",
+        "Ember Peg: on hit, iterate adjacent pegs within 150px, shift their corruption toward cursed by 0.1",
+        "Fungal Peg: after every 3 drops (RunState.total_drops % 3 == 0), check adjacent empty slots, 25% chance spawn Sprout",
+        "Each special behavior demonstrable in physics sandbox",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "VOID RIFT, EMBER, FUNGAL implemented. Oracle peg (ball splitting) is disabled - see US-005."
+    },
+    {
+      "id": "US-005",
+      "title": "Special Peg Behavior - Oracle Ball Splitting",
+      "description": "As a player, I want the Oracle peg to split balls so I can create powerful chain reactions.",
+      "acceptanceCriteria": [
+        "Uncomment the ball-splitting code in scripts/game/pegs/OraclePeg.gd",
+        "On hit, spawn 2 additional balls at ±15° angle offset",
+        "Handle ball count limits to prevent performance issues",
+        "Test in physics sandbox to verify balls split correctly",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": "NOTE: Implementation exists but is disabled. Need to uncomment and add ball count limits to prevent exponential ball multiplication. The splitting logic is at lines 34-69 in OraclePeg.gd, currently commented out at lines 20-27."
+    },
+    {
+      "id": "US-006",
+      "title": "Corruption Spread Shader",
+      "description": "As a player, I want corruption to visually spread across the board so the world reflects my choices.",
+      "acceptanceCriteria": [
+        "Create shaders/corruption_spread.gdshader",
+        "Accept sampler2D corruption_map uniform (64x64 Image)",
+        "Shader bleeds/blurs the corruption map across background",
+        "Create CorruptionMapManager.gd to manage 64x64 Image",
+        "On peg_state_changed to cursed, paint circle on Image at peg position",
+        "Wire CorruptionMapManager to EventBus.peg_state_changed",
+        "Cursing a peg visibly spreads ink across the board background",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-007",
+      "title": "Ball Trail Effect",
+      "description": "As a player, I want balls to leave a trail so I can see their path through the board.",
+      "acceptanceCriteria": [
+        "Ball script maintains Array of last 20 positions",
+        "Line2D created for each ball, updated each frame from position array",
+        "Shader fades opacity: tail (0.0) → head (1.0)",
+        "Shader shifts color: white → ghost-blue",
+        "Ball leaves visible fading trail as it falls",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}

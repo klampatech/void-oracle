@@ -1,0 +1,12 @@
+res://scenes/game/Ball.tscn
+res://scripts/game/Board.gd
+res://scripts/game/BallSpawner.gd
+res://scripts/autoloads/MutationEngine.gd
+res://scripts/autoloads/SynergyChecker.gd
+res://scripts/game/Ball.gd
+res://scripts/game/pegs/BasePeg.gd
+res://scripts/game/pegs/EmberPeg.gd
+res://scripts/game/pegs/FungalPeg.gd
+res://scripts/game/pegs/OraclePeg.gd
+res://scripts/game/pegs/VoidRiftPeg.gd
+res://scripts/game/CorruptionMapManager.gd

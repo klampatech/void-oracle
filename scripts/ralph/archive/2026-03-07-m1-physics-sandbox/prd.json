@@ -1,0 +1,162 @@
+{
+  "project": "Void Oracle",
+  "branchName": "ralph/m2-core-systems",
+  "description": "M2: Core Systems - Peg state shaders, mutation engine, synergies, special peg behaviors, corruption spread, and ball trails",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Peg State Shader",
+      "description": "As a developer, I need a shader that visually transforms pegs based on their blessing/corruption state so players can see mutations.",
+      "acceptanceCriteria": [
+        "Create shaders/peg_state.gdshader",
+        "Shader accepts corruption_level uniform (0.0 = blessed gold, 0.5 = neutral, 1.0 = cursed crimson)",
+        "Shader accepts mutation_pulse uniform (animated sine wave driving green pustule effect)",
+        "Shader accepts void_factor uniform (0.0-1.0 driving star-field overlay)",
+        "Interpolates visual: gold veins (0.0) → neutral (0.5) → crimson cracks (1.0)",
+        "Mutation pulse creates green pustule effect when corruption_level ≈ 0.5",
+        "Apply shader to all peg types via ShaderMaterial",
+        "Tweaking uniforms visibly shifts peg appearance",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Corruption Spread Shader",
+      "description": "As a developer, I need a shader on the board background that spreads corruption visually like ink in water.",
+      "acceptanceCriteria": [
+        "Create shaders/corruption_spread.gdshader",
+        "Shader accepts sampler2D corruption_map uniform (64x64 Image)",
+        "Shader blurs and bleeds corruption map across background",
+        "Create GDScript to maintain 64x64 Image for corruption map",
+        "On peg_state_changed to 'cursed', paint circle on Image at peg position",
+        "Update shader texture when map changes",
+        "Cursing a peg visibly spreads ink across board background",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "Ball Trail Effect",
+      "description": "As a developer, I need a visual trail effect following balls so players can see their path through the board.",
+      "acceptanceCriteria": [
+        "Create shaders/ball_trail.gdshader",
+        "Ball script maintains Array of last 20 positions",
+        "Line2D added to ball scene, points updated each frame",
+        "Shader fades opacity: tail (0.0) → head (1.0)",
+        "Shader shifts color: white → ghost-blue toward tail",
+        "Ball leaves visible fading trail as it falls",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-004",
+      "title": "Mutation Engine Integration",
+      "description": "As a developer, I need the MutationEngine to subscribe to peg hits and manage state transitions so pegs evolve over time.",
+      "acceptanceCriteria": [
+        "MutationEngine subscribes to EventBus.peg_hit signal",
+        "Tracks hit_count per peg instance",
+        "After 5 hits (MUTATION_THRESHOLD), 15% chance to mutate on each subsequent hit",
+        "State transitions follow rules: Dormant→Blessed/Cursed, Blessed→Mutant (30%), Cursed→Mutant (40%), Mutant→Void (10%)",
+        "Emits EventBus.peg_state_changed on transition",
+        "Updates shader uniforms on peg instance",
+        "Hit a peg 5+ times and watch it visibly mutate",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-005",
+      "title": "Synergy Checker Integration",
+      "description": "As a developer, I need SynergyChecker to track tag counts and activate synergies so players can build powerful combos.",
+      "acceptanceCriteria": [
+        "SynergyChecker subscribes to EventBus.peg_state_changed and EventBus.peg_spawned",
+        "Maintains tag count dictionary: { 'death': 3, 'growth': 2, ... }",
+        "Checks 5 synergies against tag counts: necrotic_bloom, cursed_flame, void_choir, bleeding_arch, profane_eye",
+        "Requires minimum 3 pegs for synergy activation",
+        "Emits synergy_activated/synergy_broken/synergy_scaled as appropriate",
+        "Debug: print active synergies to console on any change",
+        "Place 3 Fungal + 3 Bone pegs manually → 'necrotic_bloom' activates in console",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "Oracle Peg Special Behavior",
+      "description": "As a developer, I need the Oracle peg to split balls on hit so it provides strategic value.",
+      "acceptanceCriteria": [
+        "Oracle Peg overrides _on_body_entered method",
+        "On hit: spawn 2 additional balls at ±15° angle offset from original trajectory",
+        "New balls inherit parent ball's velocity magnitude",
+        "All balls continue physics simulation independently",
+        "Oracle peg emits EventBus.peg_hit as normal",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-007",
+      "title": "Void Rift Peg Special Behavior",
+      "description": "As a developer, I need the Void Rift peg to teleport balls and grant gold so it provides resource value.",
+      "acceptanceCriteria": [
+        "Void Rift Peg overrides _on_body_entered method",
+        "On hit: queue_free ball (remove from physics)",
+        "Add +10 gold via RunState.gold += 10",
+        "Ball teleport simulates entering best available pocket",
+        "Void Rift emits EventBus.peg_hit as normal",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-008",
+      "title": "Ember Peg Special Behavior",
+      "description": "As a developer, I need the Ember peg to corrupt adjacent pegs on hit so it spreads destruction.",
+      "acceptanceCriteria": [
+        "Ember Peg overrides _on_body_entered method",
+        "On hit: iterate all pegs in group 'pegs'",
+        "For each adjacent peg (within 3 peg distances): shift corruption_level toward cursed by 0.1",
+        "Adjacent pegs emit EventBus.peg_state_changed if state changes",
+        "Ember peg emits EventBus.peg_hit as normal",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-009",
+      "title": "Fungal Peg Special Behavior",
+      "description": "As a developer, I need the Fungal peg to spawn new Sprout pegs periodically so the board can grow.",
+      "acceptanceCriteria": [
+        "Fungal Peg checks RunState.total_drops % 3 == 0 after each drop phase",
+        "When triggered: check adjacent empty slots (within 2 peg distances)",
+        "25% chance to spawn Sprout peg in random empty adjacent slot",
+        "Sprout peg is a lighter variant of Fungal (same type, starts at Dormant)",
+        "New peg emits EventBus.peg_spawned",
+        "Fungal peg emits EventBus.peg_hit as normal",
+        "Project compiles without errors in Godot"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}

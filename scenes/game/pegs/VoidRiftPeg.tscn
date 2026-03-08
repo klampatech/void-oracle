@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ctakxhj1cdw8k"]
+
+[ext_resource type="Script" path="res://scripts/game/pegs/VoidRiftPeg.gd" id="1_voidriftpeg"]
+[ext_resource type="PackedScene" uid="uid://basepeg12345678" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+
+[node name="VoidRiftPeg" instance=ExtResource("2_base")]
+script = ExtResource("1_voidriftpeg")
+
+[node name="Visual" parent="." index="1"]
+color = Color(0.0392157, 0.0392157, 0.164706, 1)

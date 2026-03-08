@@ -1,0 +1,70 @@
+# Ralph Progress Tracker - M1: Physics Sandbox
+
+## Codebase Patterns
+- Godot 4.x scene files (.tscn) use format=3 and uid for resources
+- Use `RigidBody2D` with `physics_material_override` for ball physics
+- All cross-system communication via EventBus signals (defined in scripts/autoloads/)
+- Physics values loaded from JSON data files (data/pegs/peg_definitions.json)
+- Shaders use canvas_item for 2D effects, apply via ShaderMaterial to ColorRect nodes
+- Debug overlays extend Node2D for _draw() methods, placed inside CanvasLayer
+
+## Current Status
+- **Project:** Void Oracle
+- **Branch:** ralph/m1-physics-sandbox
+- **Stories Total:** 2
+- **Completed:** 2
+- **In Progress:** 0
+
+## Progress
+- [x] US-001: Add peg spawning to Board.gd
+- [x] US-002: Physics Debug Overlay
+
+## Notes
+Starting M1: Physics Sandbox - Complete the physics foundation before moving to M2
+
+## 2026-03-08 - US-001
+- Implemented peg spawning in Board.gd with _create_pegs() method
+- Added PegContainer node to Board.tscn
+- All 8 peg types (Stone, Bone, Fungal, Ember, Eye, Heart, Oracle, VoidRift) preloaded and instantiated
+- Staggered grid pattern: columns 70px apart, rows 60px apart, odd rows offset by 35px
+- Pegs positioned between y=150 and y=700
+- Each peg added to "peg" group for collision detection
+- Files changed: scripts/game/Board.gd, scenes/game/Board.tscn
+- **Learnings for future iterations:**
+  - Peg scenes extend BasePeg (StaticBody2D) which provides collision shape and visual
+  - Use `instantiate()` to create pegs at runtime (not `new()`)
+  - Preload all peg scenes at class level for performance
+---
+
+## 2026-03-08 - US-002
+- Implemented PhysicsDebugOverlay with F1 key toggle
+- Created scenes/game/PhysicsDebugOverlay.tscn (CanvasLayer with Node2D child)
+- Created scripts/game/PhysicsDebugOverlay.gd with debug visualization:
+  - Collision shape rendering (pegs, walls, pockets)
+  - Ball velocity vectors with arrow heads
+  - Peg hit count labels
+  - EventBus.peg_hit console logging
+- Added PhysicsDebugOverlay to Board.tscn scene tree
+- Files changed: scenes/game/PhysicsDebugOverlay.tscn, scripts/game/PhysicsDebugOverlay.gd, scenes/game/Board.tscn
+- **Learnings for future iterations:**
+  - Use Node2D inside CanvasLayer for drawing (_draw() method only available on Node2D/Control)
+  - Get parent reference via get_parent().get_parent() when script is on nested node
+  - All type annotations must be explicit in GDScript (no type inference from :=)
+  - CanvasLayer doesn't have draw methods - must use child Node2D
+---
+
+## 2026-03-08 - US-001 (Peg State Shader)
+- Verified shader at shaders/peg_state.gdshader implements all required uniforms:
+  - corruption_level: float (0.0 blessed → 0.5 neutral → 1.0 cursed)
+  - mutation_pulse: float (drives green pustule effect)
+  - void_factor: float (drives star-field overlay)
+- Verified shader interpolates gold veins → neutral → crimson cracks
+- Verified BasePeg.gd applies shader via _setup_shader() to Visual ColorRect node
+- Verified project compiles successfully with godot --headless
+- Files changed: prd.json (marked passes: true)
+- **Learnings for future iterations:**
+  - Godot shaders use canvas_item for 2D effects
+  - ShaderMaterial created per-peg instance in BasePeg for unique state
+  - Use set_shader_parameter() to update uniforms at runtime
+---
+

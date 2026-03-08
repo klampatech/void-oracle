@@ -1,0 +1,208 @@
+Godot Engine v4.6.1.stable.official.14d19694e - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+WARNING: The signal "peg_hit" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:6)
+WARNING: The signal "ball_entered_pocket" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:7)
+WARNING: The signal "ball_lost" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:8)
+WARNING: The signal "peg_state_changed" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:11)
+WARNING: The signal "peg_destroyed" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:12)
+WARNING: The signal "peg_spawned" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:13)
+WARNING: The signal "synergy_activated" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:16)
+WARNING: The signal "synergy_broken" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:17)
+WARNING: The signal "synergy_scaled" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:18)
+WARNING: The signal "drop_started" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:21)
+WARNING: The signal "drop_ended" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:22)
+WARNING: The signal "chaos_drop_triggered" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:23)
+WARNING: The signal "enemy_turn_start" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:26)
+WARNING: The signal "enemy_action" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:27)
+WARNING: The signal "enemy_defeated" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:28)
+WARNING: The signal "player_stability_changed" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:29)
+WARNING: The signal "node_selected" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:32)
+WARNING: The signal "encounter_started" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:33)
+WARNING: The signal "encounter_ended" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:34)
+WARNING: The signal "run_ended" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:35)
+WARNING: The signal "draft_choice_made" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:38)
+WARNING: The signal "shop_purchase" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:39)
+WARNING: The signal "relic_acquired" is declared but never explicitly used in the class.
+     at: GDScript::reload (res://scripts/autoloads/EventBus.gd:40)
+WARNING: The function parameter "seed" has the same name as a built-in function.
+     at: GDScript::reload (res://scripts/autoloads/RunState.gd:31)
+WARNING: The parameter "peg" is never used in the function "_get_local_corruption()". If this is intended, prefix it with an underscore: "_peg".
+     at: GDScript::reload (res://scripts/autoloads/MutationEngine.gd:71)
+WARNING: The local function parameter "position" is shadowing an already-declared property in the base class "Node2D".
+     at: GDScript::reload (res://scripts/game/pegs/FungalPeg.gd:73)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The parameter "old_state" is never used in the function "_on_peg_state_changed()". If this is intended, prefix it with an underscore: "_old_state".
+     at: GDScript::reload (res://scripts/game/CorruptionMapManager.gd:36)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The class variable "_pocket_scene" is declared but never used in the class.
+     at: GDScript::reload (res://scripts/game/Board.gd:19)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: Integer division. Decimal part will be discarded.
+     at: GDScript::reload (res://scripts/game/Board.gd:59)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: Integer division. Decimal part will be discarded.
+     at: GDScript::reload (res://scripts/game/Board.gd:72)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: Integer division. Decimal part will be discarded.
+     at: GDScript::reload (res://scripts/game/Board.gd:87)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The parameter "pocket_type" is never used in the function "_on_pocket_body_entered()". If this is intended, prefix it with an underscore: "_pocket_type".
+     at: GDScript::reload (res://scripts/game/Board.gd:150)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: Integer division. Decimal part will be discarded.
+     at: GDScript::reload (res://scripts/game/Board.gd:161)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The local variable "material" is shadowing an already-declared property in the base class "CanvasItem".
+     at: GDScript::reload (res://scripts/game/Board.gd:190)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The local variable "transform" is shadowing an already-declared property in the base class "Node2D".
+     at: GDScript::reload (res://scripts/game/PhysicsDebugOverlay.gd:93)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The local variable "transform" is shadowing an already-declared property in the base class "Node2D".
+     at: GDScript::reload (res://scripts/game/PhysicsDebugOverlay.gd:112)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+WARNING: The local function parameter "position" is shadowing an already-declared property in the base class "Node2D".
+     at: GDScript::reload (res://scripts/game/PhysicsDebugOverlay.gd:212)
+     GDScript backtrace (most recent call first):
+         [0] _on_start_pressed (res://scripts/ui/MainMenu.gd:9)
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 0) | Ball velocity: 1263.3
+TONE: 261.6 Hz (peg: stone, state: dormant)
+[DEBUG] PEG HIT: stone (hits: 1) | Ball velocity: 1263.3
+TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 0) | Ball velocity: 358.3
+SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (BonePeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (BonePeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (FungalPeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (FungalPeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (EyePeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (EyePeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (HeartPeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (HeartPeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (StonePeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (StonePeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (BonePeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (BonePeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (FungalPeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (FungalPeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (EmberPeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (EmberPeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (StonePeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (StonePeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (BonePeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (BonePeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> SCRIPT ERROR: Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (FungalPeg.gd)'.
+          at: _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+          GDScript backtrace (most recent call first):
+              [0] _corrupt_peg (res://scripts/game/pegs/EmberPeg.gd:45)
+              [1] _on_body_entered (res://scripts/game/pegs/EmberPeg.gd:33)
+
+Debugger Break, Reason: 'Invalid call. Nonexistent function 'has_property' in base 'StaticBody2D (FungalPeg.gd)'.'
+*Frame 0 - res://scripts/game/pegs/EmberPeg.gd:45 in function '_corrupt_peg'
+Enter "help" for assistance.
+debug> TONE: 392.0 Hz (peg: ember, state: dormant)
+[DEBUG] PEG HIT: ember (hits: 1) | Ball velocity: 358.3

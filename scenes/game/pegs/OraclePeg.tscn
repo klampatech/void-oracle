@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://crxpajeg7d2er"]
+
+[ext_resource type="Script" path="res://scripts/game/pegs/OraclePeg.gd" id="1_oraclepeg"]
+[ext_resource type="PackedScene" uid="uid://basepeg12345678" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+
+[node name="OraclePeg" instance=ExtResource("2_base")]
+script = ExtResource("1_oraclepeg")
+
+[node name="Visual" parent="." index="1"]
+color = Color(0.788235, 0.658824, 0.298039, 1)
