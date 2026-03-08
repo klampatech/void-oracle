@@ -1,4 +1,4 @@
-# Ralph Progress Tracker - M1: Physics Sandbox
+# Ralph Progress Tracker - M2: Core Systems
 
 ## Codebase Patterns
 - Godot 4.x scene files (.tscn) use format=3 and uid for resources
@@ -10,17 +10,22 @@
 
 ## Current Status
 - **Project:** Void Oracle
-- **Branch:** ralph/m1-physics-sandbox
-- **Stories Total:** 2
-- **Completed:** 2
+- **Branch:** ralph/m2-core-systems
+- **Stories Total:** 7
+- **Completed:** 7
 - **In Progress:** 0
 
 ## Progress
-- [x] US-001: Add peg spawning to Board.gd
-- [x] US-002: Physics Debug Overlay
+- [x] US-001: Peg State Shader
+- [x] US-002: Mutation Engine Integration
+- [x] US-003: Synergy Checker Integration
+- [x] US-004: Special Peg Behaviors - Void Rift, Ember, Fungal
+- [x] US-005: Oracle Ball Splitting
+- [x] US-006: Corruption Spread Shader
+- [x] US-007: Ball Trail Effect
 
 ## Notes
-Starting M1: Physics Sandbox - Complete the physics foundation before moving to M2
+M2 Core Systems complete - all 7 stories implemented and passing
 
 ## 2026-03-08 - US-001
 - Implemented peg spawning in Board.gd with _create_pegs() method
@@ -68,3 +73,86 @@ Starting M1: Physics Sandbox - Complete the physics foundation before moving to 
   - Use set_shader_parameter() to update uniforms at runtime
 ---
 
+## 2026-03-08 - US-002 (Mutation Engine Integration)
+- Verified MutationEngine.gd implements all requirements:
+  - Wired to EventBus.peg_hit
+  - MUTATION_THRESHOLD=5, MUTATION_CHANCE=0.15
+  - State transitions: dormant → blessed/cursed → mutant → void
+  - Update shader uniforms on state change
+  - Emit EventBus.peg_state_changed
+- Project compiles successfully
+- Files changed: prd.json (marked passes: true)
+- **Learnings for future iterations:**
+  - MutationEngine uses randf() for probability checks
+  - State transitions defined in _next_state() method
+  - Shader updates via set_corruption_level(), set_mutation_pulse(), set_void_factor()
+---
+
+## 2026-03-08 - US-003 (Synergy Checker Integration)
+- Verified SynergyChecker.gd implements all requirements:
+  - Wired to EventBus.peg_state_changed and peg_spawned
+  - Tag count dictionary maintained
+  - 5 synergies: necrotic_bloom, cursed_flame, void_choir, bleeding_arch, profane_eye
+  - Signals: synergy_activated, synergy_broken, synergy_scaled emitted
+  - Debug prints to console
+- Project compiles successfully
+- Files changed: prd.json (marked passes: true)
+- **Learnings for future iterations:**
+  - Synergies defined in SYNERGIES constant dict
+  - _evaluate_all() checks all synergies on any board change
+  - _min_tag_count() computes intersection of required tags
+---
+
+## 2026-03-08 - US-004 (Special Peg Behaviors - Void Rift, Ember, Fungal)
+- Verified all three special pegs implemented:
+  - VoidRiftPeg: queue_free ball + RunState.gold += 10
+  - EmberPeg: iterate adjacent pegs within 150px, shift corruption +0.1
+  - FungalPeg: every 3 drops, 25% chance spawn sprout via EventBus.peg_spawned
+- Project compiles successfully
+- Files changed: prd.json (marked passes: true)
+- **Learnings for future iterations:**
+  - Special pegs extend BasePeg and override _on_body_entered()
+  - EmberPeg uses get_tree().get_nodes_in_group("peg") to find neighbors
+  - FungalPeg listens to EventBus.drop_ended for periodic behavior
+---
+
+## 2026-03-08 - US-005 (Oracle Ball Splitting)
+- Uncommented ball-splitting code in OraclePeg.gd
+- Added MAX_BALLS=20 limit to prevent performance issues
+- Balls spawn at ±15° angle offset using _calculate_split_velocity()
+- Project compiles successfully
+- Files changed: scripts/game/pegs/OraclePeg.gd, prd.json
+- **Learnings for future iterations:**
+  - Use call_deferred() to avoid physics state errors during collision callbacks
+  - Always check ball count limits for exponential behaviors
+  - Angle offset via Vector2.rotated() method
+---
+
+## 2026-03-08 - US-006 (Corruption Spread Shader)
+- Verified corruption_spread.gdshader implements all requirements:
+  - sampler2D corruption_map uniform (64x64)
+  - Blur/bleed effect via multi-sample shader
+- Verified CorruptionMapManager.gd:
+  - Manages 64x64 Image
+  - Wired to EventBus.peg_state_changed
+  - Paints circle on cursed peg
+- Project compiles successfully
+- Files changed: prd.json (marked passes: true)
+- **Learnings for future iterations:**
+  - CorruptionMapManager uses Image.create() and ImageTexture.create_from_image()
+  - Shader bleeds/blurs via multiple texture samples offset from UV
+  - Board position converted to map coords via (pos / board_dim) * map_size
+---
+
+## 2026-03-08 - US-007 (Ball Trail Effect)
+- Verified Ball.gd implements trail:
+  - Array of 20 positions (_trail_positions)
+  - Line2D created and updated each frame
+  - Gradient fades opacity: 0.0 (tail) → 1.0 (head)
+  - Color shifts: white → ghost-blue (fixed direction)
+- Project compiles successfully
+- Files changed: scripts/game/Ball.gd, prd.json
+- **Learnings for future iterations:**
+  - Trail positions updated via push_front() and pop_back()
+  - Line2D points are local offsets from Line2D position
+  - Gradient uses alpha=0 at point 0.0 for fade effect
