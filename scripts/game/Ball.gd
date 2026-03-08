@@ -27,9 +27,9 @@ func _ready() -> void:
 
 	# Create gradient for fade effect
 	var gradient = Gradient.new()
-	gradient.add_point(0.0, Color(0.4, 0.6, 0.9, 0.0))   # Transparent at tail
-	gradient.add_point(0.5, Color(0.4, 0.6, 0.9, 0.4))  # Mid trail
-	gradient.add_point(1.0, Color(1.0, 1.0, 1.0, 1.0))  # Opaque at head
+	gradient.add_point(0.0, Color(1.0, 1.0, 1.0, 0.0))   # Transparent at tail (white)
+	gradient.add_point(0.5, Color(0.7, 0.8, 0.95, 0.4)) # Mid trail
+	gradient.add_point(1.0, Color(0.4, 0.6, 0.9, 1.0))  # Opaque at head (ghost-blue)
 	_trail_line.gradient = gradient
 
 	# Add to scene at ball position

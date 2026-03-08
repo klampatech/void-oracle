@@ -5,6 +5,9 @@ extends BasePeg
 const BALL_SCENE_PATH := "res://scenes/game/Ball.tscn"
 var _ball_scene: PackedScene
 
+## Maximum number of balls allowed to prevent performance issues
+const MAX_BALLS := 20
+
 
 func _ready() -> void:
 	peg_type = PegType.ORACLE
@@ -17,14 +20,13 @@ func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("ball"):
 		return
 
-	# M1: Ball splitting disabled for physics sandbox milestone
-	# This causes exponential ball multiplication and performance issues
-	# TODO: Re-enable for M2+ with proper ball count limits
-	#
-	# var ball := body as RigidBody2D
-	# if ball and ball.linear_velocity.length() > 0:
-	# 	call_deferred("_spawn_split_ball_deferred", body, _calculate_split_velocity(ball.linear_velocity, 15.0))
-	# 	call_deferred("_spawn_split_ball_deferred", body, _calculate_split_velocity(ball.linear_velocity, -15.0))
+	# Check ball count limit to prevent exponential multiplication
+	var current_balls := get_tree().get_nodes_in_group("ball").size()
+	if current_balls < MAX_BALLS:
+		var ball := body as RigidBody2D
+		if ball and ball.linear_velocity.length() > 0:
+			call_deferred("_spawn_split_ball_deferred", body, _calculate_split_velocity(ball.linear_velocity, 15.0))
+			call_deferred("_spawn_split_ball_deferred", body, _calculate_split_velocity(ball.linear_velocity, -15.0))
 
 	# Always emit the peg hit signal
 	hit_count += 1

@@ -36,8 +36,8 @@
         "Project compiles without errors in Godot"
       ],
       "priority": 2,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "MutationEngine.gd fully implements all requirements: wired to EventBus.peg_hit, MUTATION_THRESHOLD=5, MUTATION_CHANCE=0.15, state transitions match spec, shader uniforms updated on state change, EventBus.peg_state_changed emitted. Project compiles."
     },
     {
       "id": "US-003",
@@ -53,8 +53,8 @@
         "Project compiles without errors in Godot"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "SynergyChecker.gd fully implements all requirements: wired to EventBus.peg_state_changed and peg_spawned, tag count dictionary, 5 synergies checked, signals emitted, debug prints to console. Project compiles."
     },
     {
       "id": "US-004",
@@ -68,8 +68,8 @@
         "Project compiles without errors in Godot"
       ],
       "priority": 4,
-      "passes": false,
-      "notes": "VOID RIFT, EMBER, FUNGAL implemented. Oracle peg (ball splitting) is disabled - see US-005."
+      "passes": true,
+      "notes": "VOID RIFT, EMBER, FUNGAL implemented. VoidRiftPeg: queue_free ball + gold+=10. EmberPeg: affects adjacent pegs within 150px, shifts corruption +0.1. FungalPeg: every 3 drops, 25% chance to spawn sprout. Oracle peg (ball splitting) is disabled - see US-005."
     },
     {
       "id": "US-005",
@@ -83,8 +83,8 @@
         "Project compiles without errors in Godot"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": "NOTE: Implementation exists but is disabled. Need to uncomment and add ball count limits to prevent exponential ball multiplication. The splitting logic is at lines 34-69 in OraclePeg.gd, currently commented out at lines 20-27."
+      "passes": true,
+      "notes": "Uncommented ball-splitting code in OraclePeg.gd. Added MAX_BALLS=20 limit to prevent performance issues. Balls spawn at ±15° angle offset. Project compiles."
     },
     {
       "id": "US-006",
@@ -101,8 +101,8 @@
         "Project compiles without errors in Godot"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "CorruptionSpread shader implemented with sampler2D corruption_map (64x64), blur/bleed effect. CorruptionMapManager.gd manages 64x64 Image, wired to EventBus.peg_state_changed, paints circle on cursed peg. Project compiles."
     },
     {
       "id": "US-007",
@@ -117,8 +117,8 @@
         "Project compiles without errors in Godot"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Ball.gd implements trail: Array of 20 positions, Line2D updated each frame, gradient fades opacity 0.0→1.0 tail→head, color shifts white→ghost-blue. Fixed color direction to match spec. Project compiles."
     }
   ]
 }
