@@ -29,6 +29,10 @@ signal enemy_action(enemy: Node, action: Dictionary)  # {type, target, value}
 signal enemy_defeated(enemy: Node)
 signal enemy_ball_spawned(ball: Node)                  # emitted when enemy spawns a ball
 signal player_stability_changed(new_value: float, delta: float)
+signal boss_phase_changed(phase: int)                  # emitted when boss changes phase
+
+# ── Board Effects ───────────────────────────────────────
+signal ball_entered_crack(ball: Node, effect_type: String)  # emitted when ball hits Architect crack
 
 # ── Economy ───────────────────────────────────────────────
 signal gold_stolen(amount: int)                        # emitted when enemy steals gold
@@ -39,6 +43,8 @@ signal node_selected(map_node: Dictionary)
 signal encounter_started(encounter_type: String, data: Dictionary)
 signal encounter_ended(result: String)               # "victory", "death", "fled"
 signal run_ended(cause: String, board_state: Dictionary)
+signal zone_completed(zone_number: int)               # emitted when a zone boss is defeated
+signal game_victory()                                 # emitted when Final Oracle is defeated
 
 # ── UI ───────────────────────────────────────────────────
 signal draft_choice_made(peg_type: String)

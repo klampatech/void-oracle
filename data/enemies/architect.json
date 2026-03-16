@@ -1,0 +1,73 @@
+{
+	"id": "architect",
+	"name": "Architect of Ruin",
+	"description": "A master builder who tears down the board frame and reconstructs it as a weapon against you.",
+	"hp": 200,
+	"max_hp": 200,
+	"is_boss": true,
+	"zone": 2,
+	"intent_display": "Will crack the board frame",
+	"phases": [
+		{
+			"phase": 1,
+			"hp_threshold": 0.6,
+			"actions": [
+				{
+					"type": "crack_frame",
+					"width_reduction": 20,
+					"frequency": 2,
+					"description": "Cracks the board frame, reducing its width"
+				}
+			]
+		},
+		{
+			"phase": 2,
+			"hp_threshold": 0.3,
+			"actions": [
+				{
+					"type": "void_channels",
+					"multiplier": 2,
+					"description": "Cracks become Void Channels - balls passing through grant 2x Void Essence"
+				}
+			]
+		},
+		{
+			"phase": 3,
+			"hp_threshold": 0.0,
+			"actions": [
+				{
+					"type": "hazard_cracks",
+					"effect": "cursed",
+					"description": "Cracks become hazards - balls touching them gain Cursed"
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "crack_frame",
+			"width_reduction": 20,
+			"frequency": 2,
+			"description": "Cracks the board frame every 2 turns"
+		},
+		{
+			"type": "void_channels",
+			"multiplier": 2,
+			"description": "Doubles void essence from crack passages"
+		},
+		{
+			"type": "hazard_cracks",
+			"effect": "cursed",
+			"description": "Balls touching cracks gain Cursed state"
+		}
+	],
+	"on_death": {
+		"rewards": {
+			"gold": 50,
+			"void_essence": 15,
+			"unlocks": ["zone_3"]
+		}
+	},
+	"weakness": "void_touched",
+	"weakness_description": "Void-touched pegs resist the Architect's frame damage"
+}

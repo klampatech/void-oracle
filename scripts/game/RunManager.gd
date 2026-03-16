@@ -20,16 +20,21 @@ const BOARD_SCENE_PATH := "res://scenes/game/Board.tscn"
 ## Current map seed
 var _map_seed: int = 0
 
+## Current zone (1, 2, or 3)
+var _current_zone: int = 1
+
 
 func _ready() -> void:
 	# Connect to EventBus
 	EventBus.encounter_ended.connect(_on_encounter_ended)
 	EventBus.run_ended.connect(_on_run_ended)
+	EventBus.enemy_defeated.connect(_on_enemy_defeated)
 
 
 ## Start a new run with given seed
 func start_new_run(seed: int) -> void:
 	_map_seed = seed
+	_current_zone = 1
 	_run_map = null
 	_board = null
 	_encounter_manager = null
@@ -119,32 +124,68 @@ func _start_encounter_by_type(encounter_type: String) -> void:
 				_encounter_manager.start_encounter(corruptor_scene)
 				print("RunManager: Elite encounter (using Corruptor for now)")
 		"boss":
-			# Load Gardener boss
-			var gardener_scene := load("res://scenes/game/enemies/Gardener.tscn") as PackedScene
-			if gardener_scene:
-				_encounter_manager.start_encounter(gardener_scene)
-				print("RunManager: Boss encounter - The Gardener")
+			# Load boss based on current zone
+			_load_boss_for_zone()
+
+
+## Load the appropriate boss for the current zone
+func _load_boss_for_zone() -> void:
+	if not _encounter_manager:
+		return
+
+	var boss_scene: PackedScene
+
+	match _current_zone:
+		1:
+			# Zone 1: The Gardener
+			boss_scene = load("res://scenes/game/enemies/Gardener.tscn") as PackedScene
+			if boss_scene:
+				_encounter_manager.start_encounter(boss_scene)
+				print("RunManager: Boss encounter - The Gardener (Zone 1)")
 			else:
 				push_error("Failed to load Gardener scene")
-				# Fallback to Corruptor
-				var corruptor_scene := load("res://scenes/game/enemies/Corruptor.tscn") as PackedScene
-				if corruptor_scene:
-					_encounter_manager.start_encounter(corruptor_scene)
-		"event":
-			# TODO: Handle event encounters
-			print("RunManager: Event encounter - not implemented, returning to map")
-			_return_to_map()
-		"shop":
-			# TODO: Handle shop
-			print("RunManager: Shop - not implemented, returning to map")
-			_return_to_map()
-		"rest":
-			# TODO: Handle rest sites
-			print("RunManager: Rest site - not implemented, returning to map")
-			_return_to_map()
+		2:
+			# Zone 2: Architect of Ruin
+			boss_scene = load("res://scenes/game/enemies/Architect.tscn") as PackedScene
+			if boss_scene:
+				_encounter_manager.start_encounter(boss_scene)
+				print("RunManager: Boss encounter - Architect of Ruin (Zone 2)")
+			else:
+				push_error("Failed to load Architect scene")
+		3:
+			# Zone 3: Final Oracle (not yet implemented)
+			print("RunManager: Final Oracle not yet implemented, loading Gardener")
+			boss_scene = load("res://scenes/game/enemies/Gardener.tscn") as PackedScene
+			if boss_scene:
+				_encounter_manager.start_encounter(boss_scene)
 		_:
-			print("RunManager: Unknown encounter type: ", encounter_type)
-			_return_to_map()
+			print("RunManager: Unknown zone ", _current_zone, ", loading Gardener")
+			boss_scene = load("res://scenes/game/enemies/Gardener.tscn") as PackedScene
+			if boss_scene:
+				_encounter_manager.start_encounter(boss_scene)
+
+
+## Called when an enemy is defeated
+func _on_enemy_defeated(enemy: Node) -> void:
+	if enemy.has_method("is_boss") and enemy.is_boss():
+		print("RunManager: Boss defeated in zone ", _current_zone)
+
+		# Check if this was zone 1 boss - unlock zone 2
+		if _current_zone == 1:
+			_current_zone = 2
+			EventBus.zone_completed.emit(1)
+			print("RunManager: Zone 1 completed, unlocked Zone 2")
+
+		# Check if this was zone 2 boss - unlock zone 3
+		elif _current_zone == 2:
+			_current_zone = 3
+			EventBus.zone_completed.emit(2)
+			print("RunManager: Zone 2 completed, unlocked Zone 3")
+
+		# Check if this was zone 3 boss - game victory
+		elif _current_zone == 3:
+			EventBus.game_victory.emit()
+			print("RunManager: GAME VICTORY! Final Oracle defeated!")
 
 
 ## Called when encounter ends

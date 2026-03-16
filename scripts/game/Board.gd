@@ -34,10 +34,19 @@ var _peg_scenes: Dictionary = {
 ## Corruption map manager
 var _corruption_manager: CorruptionMapManager
 
+## Crack system for Architect boss
+var _cracks: Array[Dictionary] = []
+var _crack_effect: String = "none"  # "none", "void_channel", "hazard"
+var _cracks_container: Node2D = null
+
 
 func _ready() -> void:
 	# Center board in viewport
 	_center_board()
+	# Create cracks container
+	_cracks_container = Node2D.new()
+	_cracks_container.name = "CracksContainer"
+	_physics_world.add_child(_cracks_container)
 	# Create pockets
 	_create_pockets()
 	# Create pegs
@@ -46,6 +55,9 @@ func _ready() -> void:
 	_setup_ball_lost_detector()
 	# Setup corruption map shader
 	_setup_corruption_map()
+
+	# Connect to encounter end to clear cracks
+	EventBus.encounter_ended.connect(_on_encounter_ended)
 
 
 func _center_board() -> void:
@@ -278,3 +290,122 @@ func _input(event: InputEvent) -> void:
 					if local_pos.x >= 0 and local_pos.x <= BOARD_WIDTH and local_pos.y >= 0 and local_pos.y <= BOARD_HEIGHT:
 						# Try to place the peg
 						draft_system.place_peg_at(local_pos)
+
+
+## Get board width
+func get_board_width() -> int:
+	return BOARD_WIDTH
+
+
+## Get board height
+func get_board_height() -> int:
+	return BOARD_HEIGHT
+
+
+## Add a crack to the board (for Architect boss)
+func add_crack(crack_data: Dictionary) -> void:
+	var crack_pos: Vector2 = crack_data.get("position", Vector2.ZERO)
+	var phase: int = crack_data.get("phase", 1)
+
+	# Create visual representation of crack
+	var crack_visual := ColorRect.new()
+	crack_visual.size = Vector2(15, 40)
+	crack_visual.position = crack_pos - Vector2(7.5, 20)
+
+	# Color based on phase
+	match phase:
+		1:
+			crack_visual.color = Color("#4A4A4A")  # Dark gray for Phase 1
+		2:
+			crack_visual.color = Color("#6A0DAD")  # Purple for Phase 2 (void channel)
+		3:
+			crack_visual.color = Color("#FF0000")  # Red for Phase 3 (hazard)
+
+	crack_visual.name = "Crack_" + str(_cracks.size())
+	_cracks_container.add_child(crack_visual)
+
+	# Create collision area for the crack
+	var crack_area := Area2D.new()
+	crack_area.name = "CrackArea_" + str(_cracks.size())
+	crack_area.position = crack_pos
+
+	var collision := CollisionShape2D.new()
+	var shape := RectangleShape2D.new()
+	shape.size = Vector2(15, 40)
+	collision.shape = shape
+	crack_area.add_child(collision)
+
+	# Connect to ball detection
+	crack_area.body_entered.connect(_on_crack_body_entered.bind(crack_area))
+
+	_cracks_container.add_child(crack_area)
+
+	# Store crack data
+	_cracks.append({
+		"visual": crack_visual,
+		"area": crack_area,
+		"position": crack_pos,
+		"phase": phase,
+	})
+
+	print("Board: Added crack at ", crack_pos, " phase ", phase)
+
+
+## Handle ball entering a crack
+func _on_crack_body_entered(body: Node2D, crack_area: Area2D) -> void:
+	if not body.is_in_group("ball"):
+		return
+
+	match _crack_effect:
+		"void_channel":
+			# Double void essence - handled by ball entering pocket
+			EventBus.ball_entered_crack.emit(body, "void_channel")
+		"hazard":
+			# Ball gains Cursed state
+			if body.has_method("add_state"):
+				body.add_state("cursed")
+			EventBus.ball_entered_crack.emit(body, "hazard")
+
+
+## Set the effect type for all cracks
+func set_crack_effect(effect_type: String) -> void:
+	_crack_effect = effect_type
+
+	# Update visual colors based on new effect
+	for crack in _cracks:
+		var visual: ColorRect = crack.get("visual")
+		if visual:
+			match effect_type:
+				"void_channel":
+					visual.color = Color("#6A0DAD")  # Purple
+				"hazard":
+					visual.color = Color("#FF0000")  # Red
+				_:
+					visual.color = Color("#4A4A4A")  # Default gray
+
+	print("Board: Crack effect set to: ", effect_type)
+
+
+## Get crack count
+func get_crack_count() -> int:
+	return _cracks.size()
+
+
+## Clear all cracks (used when encounter ends)
+func clear_cracks() -> void:
+	for crack in _cracks:
+		var visual: Node = crack.get("visual")
+		var area: Node = crack.get("area")
+		if visual:
+			visual.queue_free()
+		if area:
+			area.queue_free()
+
+	_cracks.clear()
+	_crack_effect = "none"
+
+
+## Called when encounter ends to clean up cracks
+func _on_encounter_ended(_result: String) -> void:
+	clear_cracks()
+

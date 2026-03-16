@@ -188,8 +188,15 @@
 - [x] Wired Gardener to RunManager for boss encounters
 
 ### P5.2 Zone 2 Boss — Architect of Ruin
-- [ ] Creates cracks in board frame
-- [ ] Phase 2: Cracks become Void Channels
+- [x] Created architect.json enemy data (HP 200, 3 phases)
+- [x] Created Architect.gd with 3-phase mechanics
+- [x] Phase 1: Cracks board frame every 2 turns (-20px width)
+- [x] Phase 2: Cracks become Void Channels (2x Void Essence)
+- [x] Phase 3: Cracks become hazards (balls gain Cursed)
+- [x] Added crack system to Board.gd (add_crack, set_crack_effect, clear_cracks)
+- [x] Added zone tracking to RunManager (current_zone)
+- [x] Wired Architect to load based on zone
+- [x] Added zone_completed and game_victory signals to EventBus
 
 ### P5.3 Zone 3 Boss — Final Oracle
 - [ ] Mirrors player's board layout
@@ -286,7 +293,7 @@
 | `data/enemies/spawner.json` | ✅ Complete |
 | `data/enemies/leech.json` | ✅ Complete |
 | `data/enemies/gardener.json` | ✅ Complete |
-| `data/enemies/architect.json` | ❌ MISSING |
+| `data/enemies/architect.json` | ✅ Complete |
 | `data/enemies/final_oracle.json` | ❌ MISSING |
 
 ---
