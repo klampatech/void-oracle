@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://runmap123"]
+
+[ext_resource type="Script" path="res://scripts/game/map/RunMap.gd" id="1_runmap"]
+
+[node name="RunMap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_runmap")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0392157, 0.0392157, 0.101961, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "CHOOSE YOUR PATH"
+
+[node name="Instructions" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "Click a highlighted node to travel"

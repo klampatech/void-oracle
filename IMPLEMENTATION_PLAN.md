@@ -146,15 +146,15 @@
 ## Priority 4: Map & Run Loop (M5)
 
 ### P4.1 Map Generator
-- [ ] Create `scripts/game/map/MapGenerator.gd` script
-- [ ] Generate 3 zones, 8-10 nodes per zone
-- [ ] Implement branching paths (DAG)
-- [ ] Weight node types by board state
+- [x] Create `scripts/game/map/MapGenerator.gd` script
+- [x] Generate 3 zones, 8-10 nodes per zone
+- [x] Implement branching paths (DAG)
+- [x] Weight node types by board state
 
 ### P4.2 Run Map Scene
-- [ ] Create `scenes/game/map/RunMap.tscn`
-- [ ] Create `scenes/game/map/MapNode.tscn`
-- [ ] Implement node selection and path visualization
+- [x] Create `scenes/game/map/RunMap.tscn`
+- [x] Create `scenes/game/map/MapNode.tscn`
+- [x] Implement node selection and path visualization
 - [ ] Connect to encounter loading
 
 ### P4.3 Navigation Phase
