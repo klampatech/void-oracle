@@ -24,10 +24,16 @@ var _peg_scenes: Dictionary = {
 }
 
 ## Peg definitions
-var _peg_data: Dictionary = preload("res://data/pegs/peg_definitions.json")
+var _peg_data: Dictionary = {}
+
+## Peg definitions path
+const PEG_DATA_PATH := "res://data/pegs/peg_definitions.json"
 
 
 func _ready() -> void:
+	# Load peg definitions
+	_load_peg_data()
+
 	# Get DraftSystem reference
 	_draft_system = get_tree().get_first_node_in_group("draft_system")
 	if not _draft_system:
@@ -35,6 +41,17 @@ func _ready() -> void:
 
 	# Hide initially
 	hide()
+
+
+func _load_peg_data() -> void:
+	var file := FileAccess.open(PEG_DATA_PATH, FileAccess.READ)
+	if file:
+		var json_text := file.get_as_text()
+		var json := JSON.new()
+		var error := json.parse(json_text)
+		if error == OK:
+			_peg_data = json.data
+		file.close()
 
 
 ## Show draft UI with offerings

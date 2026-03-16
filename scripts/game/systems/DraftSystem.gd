@@ -18,8 +18,11 @@ const PEGS_BY_TIER := {
 	"legendary": ["oracle", "void_rift"],
 }
 
-## Preload peg definitions
-var _peg_data: Dictionary = preload("res://data/pegs/peg_definitions.json")
+## Peg definitions
+var _peg_data: Dictionary = {}
+
+## Peg definitions path
+const PEG_DATA_PATH := "res://data/pegs/peg_definitions.json"
 
 ## Current offerings
 var _current_offerings: Array[String] = []
@@ -35,10 +38,24 @@ var _board: Node2D = null
 
 
 func _ready() -> void:
+	# Load peg definitions
+	_load_peg_data()
+
 	# Get board reference
 	_board = get_tree().get_first_node_in_group("board")
 	if not _board:
 		_board = get_node_or_null("../Board")
+
+
+func _load_peg_data() -> void:
+	var file := FileAccess.open(PEG_DATA_PATH, FileAccess.READ)
+	if file:
+		var json_text := file.get_as_text()
+		var json := JSON.new()
+		var error := json.parse(json_text)
+		if error == OK:
+			_peg_data = json.data
+		file.close()
 
 
 ## Generate 3 random peg offerings based on tier weights
