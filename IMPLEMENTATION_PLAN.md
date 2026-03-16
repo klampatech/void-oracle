@@ -1,6 +1,6 @@
 # Implementation Plan — Void Oracle
 
-**Last Updated:** 2026-03-16
+**Last Updated:** 2026-03-16 (analysis refreshed)
 **Analysis:** Gap between `specs/*.md` and current `scripts/` + `scenes/` + `shaders/`
 
 ---
@@ -21,15 +21,19 @@
 - ✅ PhysicsDebugOverlay.tscn exists
 - ✅ Data files: peg_definitions.json, synergy_definitions.json
 
+### BUGS FOUND (Must Fix):
+- ⚠️ BasePeg.gd missing `get_hit_count()` and `get_peg_state()` methods - MutationEngine calls these but they don't exist (uses direct property access instead)
+
 ### NOT Yet Implemented (M3 - Single Encounter):
-- ❌ EncounterManager/GameManager - NO script exists
-- ❌ Enemy system - no enemies directory has NO JSON files
-- ❌ Phase system (DROP/RESULT/BOARD) - no GameManager to orchestrate
+- ❌ EncounterManager - NO script exists to orchestrate DROP/RESULT/BOARD phases
+- ❌ Enemy system - no enemies directory, no JSON files
+- ❌ Phase system - no GameManager to coordinate turn flow
 - ❌ Stability UI - HUD bar needs scene + script
 - ❌ Ghost save on death wiring - RunState.snapshot_board exists but not wired to EventBus.run_ended
 - ❌ Draft system stub UI
 - ❌ Pocket result calculation (damage, healing, gold, void, chaos effects)
 - ❌ Enemy Corruptor implementation
+- ⚠️ FungalPeg growth emits signal but doesn't actually spawn new peg instance
 
 ### NOT Yet Implemented (M4+):
 - ❌ Map generation
@@ -39,6 +43,19 @@
 - ❌ Synergy effects implementation
 - ❌ Meta-progression
 - ❌ Audio polish
+
+---
+
+## Priority 0: Bug Fixes (DO FIRST)
+
+### P0.1 BasePeg Method Fixes
+- [ ] Add `get_hit_count()` method to `BasePeg.gd` that returns `hit_count`
+- [ ] Add `get_peg_state_string()` method to `BasePeg.gd` that returns state as string
+- [ ] Update MutationEngine to use the new methods
+
+### P0.2 Fungal Growth Completion
+- [ ] Implement actual peg instantiation in FungalPeg._spawn_sprout()
+- [ ] Wire to Board.gd to handle placement
 
 ---
 
