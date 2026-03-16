@@ -98,6 +98,20 @@ func get_peg_type_string() -> String:
 	return _get_peg_key()
 
 
+func get_hit_count() -> int:
+	return hit_count
+
+
+func get_peg_state_string() -> String:
+	match peg_state:
+		PegState.DORMANT: return "dormant"
+		PegState.BLESSED: return "blessed"
+		PegState.CURSED: return "cursed"
+		PegState.MUTANT: return "mutant"
+		PegState.VOID: return "void"
+	return "dormant"
+
+
 func _setup_shader() -> void:
 	# Load the shader
 	var shader := load(SHADER_PATH) as Shader

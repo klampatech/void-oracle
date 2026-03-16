@@ -20,7 +20,7 @@ func _on_peg_hit(peg: Node, _ball: Node) -> void:
 		_try_mutate(peg)
 
 func _try_mutate(peg: Node) -> void:
-	var current = peg.get("peg_state") if peg.get("peg_state") else "dormant"
+	var current = peg.get_peg_state_string() if peg.has_method("get_peg_state_string") else "dormant"
 	var new_state = _next_state(current, peg)
 	if new_state != current:
 		var old = current

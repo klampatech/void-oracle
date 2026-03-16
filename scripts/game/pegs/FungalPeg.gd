@@ -71,5 +71,15 @@ func _find_empty_adjacent_slots() -> Array[Vector2]:
 
 
 func _spawn_sprout(position: Vector2) -> void:
-	# Emit the signal to indicate a new peg would spawn
-	EventBus.peg_spawned.emit(self, position)
+	# Find the board via parent chain: peg -> peg_container -> board
+	var peg_container = get_parent()
+	var board = peg_container.get_parent() if peg_container else null
+
+	if board and board.has_method("add_peg_at_position"):
+		# Spawn a new fungal peg at the position
+		var new_peg = board.add_peg_at_position("fungal", position)
+		if new_peg:
+			# Emit the signal for other systems (synergy tracking, etc.)
+			EventBus.peg_spawned.emit(self, position)
+	else:
+		push_warning("FungalPeg: Could not find board to spawn sprout")

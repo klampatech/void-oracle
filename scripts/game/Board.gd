@@ -191,3 +191,18 @@ func _setup_corruption_map() -> void:
 		material.shader = shader
 		_background.material = material
 		_corruption_manager.setup_shader(material)
+
+
+## Add a new peg at the specified position
+## Returns the instantiated peg, or null if failed
+func add_peg_at_position(peg_type: String, position: Vector2) -> Node2D:
+	if not _peg_scenes.has(peg_type):
+		push_warning("Unknown peg type: " + peg_type)
+		return null
+
+	var peg: Node2D = _peg_scenes[peg_type].instantiate()
+	peg.position = position
+	peg.add_to_group("peg")
+
+	_peg_container.add_child(peg)
+	return peg

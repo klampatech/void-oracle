@@ -22,7 +22,7 @@
 - ✅ Data files: peg_definitions.json, synergy_definitions.json
 
 ### BUGS FOUND (Must Fix):
-- ⚠️ BasePeg.gd missing `get_hit_count()` and `get_peg_state()` methods - MutationEngine calls these but they don't exist (uses direct property access instead)
+- ✅ BasePeg.gd missing `get_hit_count()` and `get_peg_state()` methods - FIXED in this commit
 
 ### NOT Yet Implemented (M3 - Single Encounter):
 - ❌ EncounterManager - NO script exists to orchestrate DROP/RESULT/BOARD phases
@@ -33,7 +33,7 @@
 - ❌ Draft system stub UI
 - ❌ Pocket result calculation (damage, healing, gold, void, chaos effects)
 - ❌ Enemy Corruptor implementation
-- ⚠️ FungalPeg growth emits signal but doesn't actually spawn new peg instance
+- ✅ FungalPeg growth - FIXED in this commit (now actually spawns new pegs)
 
 ### NOT Yet Implemented (M4+):
 - ❌ Map generation
@@ -49,13 +49,13 @@
 ## Priority 0: Bug Fixes (DO FIRST)
 
 ### P0.1 BasePeg Method Fixes
-- [ ] Add `get_hit_count()` method to `BasePeg.gd` that returns `hit_count`
-- [ ] Add `get_peg_state_string()` method to `BasePeg.gd` that returns state as string
-- [ ] Update MutationEngine to use the new methods
+- [x] Add `get_hit_count()` method to `BasePeg.gd` that returns `hit_count`
+- [x] Add `get_peg_state_string()` method to `BasePeg.gd` that returns state as string
+- [x] Update MutationEngine to use the new methods
 
 ### P0.2 Fungal Growth Completion
-- [ ] Implement actual peg instantiation in FungalPeg._spawn_sprout()
-- [ ] Wire to Board.gd to handle placement
+- [x] Implement actual peg instantiation in FungalPeg._spawn_sprout()
+- [x] Wire to Board.gd to handle placement
 
 ---
 
