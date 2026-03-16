@@ -40,19 +40,10 @@ func _calculate_split_velocity(velocity: Vector2, angle_offset: float) -> Vector
 	return new_direction * velocity.length()
 
 
-func _spawn_split_ball(original_ball: Node, velocity: Vector2, angle_offset: float) -> void:
+func _spawn_split_ball_deferred(original_ball: Node, new_velocity: Vector2) -> void:
 	if not _ball_scene:
 		return
 
-	# Calculate new velocity with angle offset
-	var new_velocity := _calculate_split_velocity(velocity, angle_offset)
-
-	# Defer physics operations to avoid "Can't change this state while flushing queries"
-	# This happens because we're in a collision callback
-	_spawn_split_ball_deferred(original_ball, new_velocity)
-
-
-func _spawn_split_ball_deferred(original_ball: Node, new_velocity: Vector2) -> void:
 	# Create new ball
 	var new_ball := _ball_scene.instantiate() as RigidBody2D
 	if not new_ball:

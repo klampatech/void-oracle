@@ -20,6 +20,18 @@ var peg_state: PegState = PegState.DORMANT
 var hit_count: int = 0
 var corruption_level: float = 0.5  ## 0.0 = blessed, 0.5 = neutral, 1.0 = cursed
 
+## Placeholder colors from CLAUDE.md spec
+const PEG_COLORS = {
+	PegType.STONE: Color(0.533, 0.533, 0.533, 1.0),    # #888888
+	PegType.BONE: Color(0.91, 0.878, 0.816, 1.0),       # #E8E0D0
+	PegType.FUNGAL: Color(0.29, 0.478, 0.227, 1.0),     # #4A7A3A
+	PegType.EMBER: Color(0.91, 0.353, 0.125, 1.0),      # #E85A20
+	PegType.EYE: Color(0.565, 0.376, 0.91, 1.0),         # #9060E8
+	PegType.HEART: Color(0.91, 0.188, 0.376, 1.0),      # #E83060
+	PegType.ORACLE: Color(0.788, 0.659, 0.298, 1.0),    # #C9A84C
+	PegType.VOID_RIFT: Color(0.039, 0.039, 0.165, 1.0),  # #0A0A2A
+}
+
 ## Loaded data
 var _peg_data: Dictionary
 
@@ -101,6 +113,10 @@ func _setup_shader() -> void:
 	_shader_material.set_shader_parameter("corruption_level", corruption_level)
 	_shader_material.set_shader_parameter("mutation_pulse", 0.0)
 	_shader_material.set_shader_parameter("void_factor", 0.0)
+
+	# Set base color based on peg type
+	var base_col: Color = PEG_COLORS.get(peg_type, Color.GRAY)
+	_shader_material.set_shader_parameter("base_color", base_col)
 
 	# Apply to visual node
 	var visual := get_node_or_null("Visual")

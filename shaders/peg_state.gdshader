@@ -5,6 +5,9 @@ uniform float corruption_level : hint_range(0.0, 1.0) = 0.5;
 uniform float mutation_pulse : hint_range(0.0, 1.0) = 0.0;
 uniform float void_factor : hint_range(0.0, 1.0) = 0.0;
 
+// Base color from the peg type (set by GDScript)
+uniform vec4 base_color : source_color = vec4(0.533, 0.533, 0.533, 1.0);
+
 // Colors
 const vec3 COLOR_BLESSED = vec3(0.788, 0.659, 0.298); // Gold #C9A84C
 const vec3 COLOR_NEUTRAL = vec3(0.533, 0.533, 0.533); // Gray #888888
@@ -40,7 +43,9 @@ float fbm(vec2 uv) {
 
 void fragment() {
 	vec2 uv = UV;
-	vec4 base_color = texture(TEXTURE, uv);
+
+	// Use the uniform base color (set by GDScript based on peg type)
+	vec4 base = base_color;
 
 	// Calculate base color interpolation
 	// 0.0 = blessed (gold), 0.5 = neutral (gray), 1.0 = cursed (crimson)
@@ -91,7 +96,7 @@ void fragment() {
 		state_color += vec3(star_field * twinkle * 0.3);
 	}
 
-	// Apply to base texture color (multiply with original)
-	COLOR.rgb = base_color.rgb * state_color;
-	COLOR.a = base_color.a;
+	// Apply state color (use base alpha for circular shape)
+	COLOR.rgb = state_color;
+	COLOR.a = base.a;
 }

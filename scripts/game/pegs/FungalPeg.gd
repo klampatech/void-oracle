@@ -71,19 +71,5 @@ func _find_empty_adjacent_slots() -> Array[Vector2]:
 
 
 func _spawn_sprout(position: Vector2) -> void:
-	# Create a new Fungal peg at the position
-	# Note: For simplicity, we clone the current peg type
-	# In a full implementation, this would instantiate a Sprout scene
-
-	# For now, we'll emit the signal to indicate a new peg would spawn
-	# The actual spawning would need to be handled by the Board or a spawner system
+	# Emit the signal to indicate a new peg would spawn
 	EventBus.peg_spawned.emit(self, position)
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if not body.is_in_group("ball"):
-		return
-
-	# Emit peg hit signal
-	hit_count += 1
-	EventBus.peg_hit.emit(self, body)
