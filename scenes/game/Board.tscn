@@ -5,11 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://physicsdebug12345" path="res://scenes/game/PhysicsDebugOverlay.tscn" id="3_debug"]
 [ext_resource type="PackedScene" uid="uid://encountermanager123" path="res://scenes/game/EncounterManager.tscn" id="4_encounter"]
 [ext_resource type="PackedScene" uid="uid://stabilitybar123" path="res://scenes/ui/StabilityBar.tscn" id="5_stability"]
+[ext_resource type="PackedScene" uid="uid://deathscreen123456" path="res://scenes/ui/DeathScreen.tscn" id="6_death"]
+[ext_resource type="PackedScene" uid="uid://boardphaseui123456" path="res://scenes/ui/BoardPhaseUI.tscn" id="7_board_phase"]
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_board")
 
 [node name="EncounterManager" parent="." instance=ExtResource("4_encounter")]
+groups = ["encounter_manager"]
 
 [node name="PhysicsDebugOverlay" parent="." instance=ExtResource("3_debug")]
 
@@ -64,3 +67,7 @@ offset_left = 20.0
 offset_top = 20.0
 offset_right = 220.0
 offset_bottom = 60.0
+
+[node name="DeathScreen" parent="." instance=ExtResource("6_death")]
+
+[node name="BoardPhaseUI" parent="." instance=ExtResource("7_board_phase")]

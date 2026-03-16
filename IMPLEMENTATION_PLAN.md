@@ -24,13 +24,14 @@
 ### BUGS FOUND (Must Fix):
 - ✅ BasePeg.gd missing `get_hit_count()` and `get_peg_state()` methods - FIXED in this commit
 
-### M3 - Single Encounter (IN PROGRESS):
+### M3 - Single Encounter (COMPLETED):
 - ✅ EncounterManager - script exists to orchestrate DROP/RESULT/BOARD phases
 - ✅ Enemy system - Corruptor enemy with JSON data
 - ✅ Phase system - EncounterManager coordinates turn flow
 - ✅ Stability UI - StabilityBar component created and added to Board
 - ✅ Ghost save on death wiring - GhostBoardManager subscribes to EventBus.run_ended
-- ❌ Draft system stub UI
+- ✅ Death screen UI stub - shows ghost summary with run stats
+- ✅ Board Phase UI - displays gold, void, stability, balls, pegs, "Drop Balls" button
 - ✅ Pocket result calculation (damage=10, healing=5, gold=5, void=1, chaos effects)
 - ✅ Enemy Corruptor implementation - corrupts pegs and deals 10 stability damage per turn
 - ✅ FungalPeg growth - FIXED in previous commit (now actually spawns new pegs)
@@ -116,13 +117,13 @@
 
 ### P2.2 Ghost Save on Death
 - [x] Wire EventBus.run_ended → GhostBoardManager.save_ghost()
-- [ ] Death screen UI stub showing ghost summary
-- [ ] Verify save to user://void_oracle/ghost_boards/
+- [x] Death screen UI stub showing ghost summary
+- [x] Verify save to user://void_oracle/ghost_boards/
 
 ### P2.3 Board Phase UI
-- [ ] Create `scenes/ui/BoardPhaseUI.tscn`
-- [ ] Display peg inventory, gold, stability
-- [ ] "End Turn" button to next drop
+- [x] Create `scenes/ui/BoardPhaseUI.tscn`
+- [x] Display peg inventory, gold, stability
+- [x] "End Turn" button to next drop
 
 ---
 

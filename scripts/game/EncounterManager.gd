@@ -5,6 +5,9 @@ class_name EncounterManager
 ## Encounter phases
 enum Phase { DROP, RESULT, BOARD, ENEMY_TURN, VICTORY, DEFEAT }
 
+## Signals
+signal phase_changed(new_phase: Phase)
+
 ## Current phase
 var _current_phase: Phase = Phase.BOARD
 
@@ -291,6 +294,7 @@ func _trigger_chaos_effect(count: int) -> void:
 ## Set current phase
 func _set_phase(new_phase: Phase) -> void:
 	_current_phase = new_phase
+	phase_changed.emit(_current_phase)
 
 	match _current_phase:
 		Phase.DROP:
