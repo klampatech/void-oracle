@@ -19,6 +19,7 @@ signal synergy_scaled(synergy_id: String, new_count: int)
 
 # ── Drop Phase ───────────────────────────────────────────
 signal drop_started(ball_count: int)
+signal ball_launched(ball: Node)                     # emitted when a ball is launched
 signal drop_ended(results: Dictionary)               # {damage, healing, gold, void_essence}
 signal chaos_drop_triggered(chaos_type: String)
 

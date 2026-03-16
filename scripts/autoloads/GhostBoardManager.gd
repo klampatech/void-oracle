@@ -9,6 +9,15 @@ var active_ghost: Dictionary = {}   # Ghost scheduled for this run's encounter
 func _ready() -> void:
 	DirAccess.make_dir_recursive_absolute(SAVE_DIR)
 
+	# Subscribe to run ended to save ghost board
+	EventBus.run_ended.connect(_on_run_ended)
+
+
+func _on_run_ended(cause: String, board_state: Dictionary) -> void:
+	if cause == "stability_depleted" and not board_state.is_empty():
+		save_ghost(board_state)
+		print("Ghost board saved on death")
+
 func save_ghost(board_state: Dictionary) -> void:
 	_rotate_ghosts()
 	var path = SAVE_DIR + "ghost_001.json"

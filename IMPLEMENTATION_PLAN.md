@@ -24,16 +24,16 @@
 ### BUGS FOUND (Must Fix):
 - ✅ BasePeg.gd missing `get_hit_count()` and `get_peg_state()` methods - FIXED in this commit
 
-### NOT Yet Implemented (M3 - Single Encounter):
-- ❌ EncounterManager - NO script exists to orchestrate DROP/RESULT/BOARD phases
-- ❌ Enemy system - no enemies directory, no JSON files
-- ❌ Phase system - no GameManager to coordinate turn flow
-- ❌ Stability UI - HUD bar needs scene + script
-- ❌ Ghost save on death wiring - RunState.snapshot_board exists but not wired to EventBus.run_ended
+### M3 - Single Encounter (IN PROGRESS):
+- ✅ EncounterManager - script exists to orchestrate DROP/RESULT/BOARD phases
+- ✅ Enemy system - Corruptor enemy with JSON data
+- ✅ Phase system - EncounterManager coordinates turn flow
+- ✅ Stability UI - StabilityBar component created and added to Board
+- ✅ Ghost save on death wiring - GhostBoardManager subscribes to EventBus.run_ended
 - ❌ Draft system stub UI
-- ❌ Pocket result calculation (damage, healing, gold, void, chaos effects)
-- ❌ Enemy Corruptor implementation
-- ✅ FungalPeg growth - FIXED in this commit (now actually spawns new pegs)
+- ✅ Pocket result calculation (damage=10, healing=5, gold=5, void=1, chaos effects)
+- ✅ Enemy Corruptor implementation - corrupts pegs and deals 10 stability damage per turn
+- ✅ FungalPeg growth - FIXED in previous commit (now actually spawns new pegs)
 
 ### NOT Yet Implemented (M4+):
 - ❌ Map generation
@@ -59,21 +59,21 @@
 
 ---
 
-## Priority 1: Single Encounter Loop (M3) — START HERE
+## Priority 1: Single Encounter Loop (M3) — COMPLETED
 
 ### P1.0 Encounter Manager System
-- [ ] Create `scripts/game/EncounterManager.gd` (AutoLoad or scene)
-- [ ] Create `scenes/game/EncounterManager.tscn`
-- [ ] Implement turn-based phases: DROP → RESULT → BOARD
-- [ ] Track ball inventory and drop completion
-- [ ] Wire to existing BallSpawner
+- [x] Create `scripts/game/EncounterManager.gd` (AutoLoad or scene)
+- [x] Create `scenes/game/EncounterManager.tscn`
+- [x] Implement turn-based phases: DROP → RESULT → BOARD
+- [x] Track ball inventory and drop completion
+- [x] Wire to existing BallSpawner
 
 ### P1.1 Ball Drop Phase Logic
-- [ ] Wire BallSpawner to drop phase state
-- [ ] Implement multi-ball drop (1-5 balls, from RunState.ball_count)
-- [ ] Add drop ending detection (all balls in pockets or lost)
-- [ ] Calculate drop results: damage, healing, gold, void essence
-- [ ] Implement pocket result logic:
+- [x] Wire BallSpawner to drop phase state
+- [x] Implement multi-ball drop (1-5 balls, from RunState.ball_count)
+- [x] Add drop ending detection (all balls in pockets or lost)
+- [x] Calculate drop results: damage, healing, gold, void essence
+- [x] Implement pocket result logic:
   | Pocket | Effect |
   |--------|--------|
   | Damage | enemy.hp -= damage_value |
@@ -83,39 +83,39 @@
   | Chaos | trigger_chaos_effect() |
 
 ### P1.2 Enemy JSON Data
-- [ ] Create `data/enemies/corruptor.json`
-- [ ] Define HP (80), actions, intent display text
-- [ ] Create enemy data schema
+- [x] Create `data/enemies/corruptor.json`
+- [x] Define HP (80), actions, intent display text
+- [x] Create enemy data schema
 
 ### P1.3 First Enemy Type — Corruptor
-- [ ] Create `scripts/game/enemies/Enemy.gd` base class
-- [ ] Create `scripts/game/enemies/Corruptor.gd` script
-- [ ] Create `scenes/game/enemies/Corruptor.tscn`
-- [ ] Implement: turns random blessed peg to cursed each turn
+- [x] Create `scripts/game/enemies/Enemy.gd` base class
+- [x] Create `scripts/game/enemies/Corruptor.gd` script
+- [x] Create `scenes/game/enemies/Corruptor.tscn`
+- [x] Implement: turns random blessed peg to cursed each turn
 
 ### P1.4 Enemy Attack Phase
-- [ ] Connect enemy actions to EventBus
-- [ ] Implement enemy → board interaction (corruption)
-- [ ] Track and apply damage to Stability
+- [x] Connect enemy actions to EventBus
+- [x] Implement enemy → board interaction (corruption)
+- [x] Track and apply damage to Stability
 
 ### P1.5 Victory/Defeat Conditions
-- [ ] Enemy defeated when damage threshold met
-- [ ] Run defeat when Stability <= 0
-- [ ] Display encounter result UI
+- [x] Enemy defeated when damage threshold met
+- [x] Run defeat when Stability <= 0
+- [x] Display encounter result UI (stub)
 
 ---
 
 ## Priority 2: Stability UI & Ghost Save (M3)
 
 ### P2.1 Stability UI
-- [ ] Create `scripts/ui/StabilityBar.gd`
-- [ ] Create `scenes/ui/StabilityBar.tscn`
-- [ ] HUD stability bar (gold → red as depletes)
-- [ ] Connect to EventBus.player_stability_changed
-- [ ] Run ends at 0 → show death screen
+- [x] Create `scripts/ui/StabilityBar.gd`
+- [x] Create `scenes/ui/StabilityBar.tscn`
+- [x] HUD stability bar (gold → red as depletes)
+- [x] Connect to EventBus.player_stability_changed
+- [x] Run ends at 0 → show death screen
 
 ### P2.2 Ghost Save on Death
-- [ ] Wire EventBus.run_ended → GhostBoardManager.save_ghost()
+- [x] Wire EventBus.run_ended → GhostBoardManager.save_ghost()
 - [ ] Death screen UI stub showing ghost summary
 - [ ] Verify save to user://void_oracle/ghost_boards/
 
@@ -275,7 +275,7 @@
 |------|--------|
 | `data/pegs/peg_definitions.json` | ✅ Complete |
 | `data/synergies/synergy_definitions.json` | ✅ Complete |
-| `data/enemies/corruptor.json` | ❌ MISSING |
+| `data/enemies/corruptor.json` | ✅ Complete |
 | `data/enemies/wrecker.json` | ❌ MISSING |
 | `data/enemies/spawner.json` | ❌ MISSING |
 | `data/enemies/leech.json` | ❌ MISSING |

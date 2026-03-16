@@ -3,9 +3,13 @@
 [ext_resource type="Script" path="res://scripts/game/Board.gd" id="1_board"]
 [ext_resource type="PackedScene" uid="uid://ballspawner123456" path="res://scenes/game/BallSpawner.tscn" id="2_spawner"]
 [ext_resource type="PackedScene" uid="uid://physicsdebug12345" path="res://scenes/game/PhysicsDebugOverlay.tscn" id="3_debug"]
+[ext_resource type="PackedScene" uid="uid://encountermanager123" path="res://scenes/game/EncounterManager.tscn" id="4_encounter"]
+[ext_resource type="PackedScene" uid="uid://stabilitybar123" path="res://scenes/ui/StabilityBar.tscn" id="5_stability"]
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_board")
+
+[node name="EncounterManager" parent="." instance=ExtResource("4_encounter")]
 
 [node name="PhysicsDebugOverlay" parent="." instance=ExtResource("3_debug")]
 
@@ -54,3 +58,9 @@ color = Color(0.0392157, 0.0392157, 0.101961, 1)
 [node name="EffectsLayer" type="CanvasLayer" parent="."]
 
 [node name="BoardUI" type="CanvasLayer" parent="."]
+
+[node name="StabilityBar" parent="BoardUI" instance=ExtResource("5_stability")]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 60.0

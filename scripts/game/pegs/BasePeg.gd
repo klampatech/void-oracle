@@ -112,6 +112,32 @@ func get_peg_state_string() -> String:
 	return "dormant"
 
 
+func get_peg_state() -> String:
+	return get_peg_state_string()
+
+
+func mutate_to(new_state: String) -> void:
+	var old_state: String = get_peg_state_string()
+	match new_state:
+		"dormant":
+			peg_state = PegState.DORMANT
+			set_corruption_level(0.0)
+		"blessed":
+			peg_state = PegState.BLESSED
+			set_corruption_level(0.0)
+		"cursed":
+			peg_state = PegState.CURSED
+			set_corruption_level(1.0)
+		"mutant":
+			peg_state = PegState.MUTANT
+			set_mutation_pulse(1.0)
+		"void":
+			peg_state = PegState.VOID
+			set_void_factor(1.0)
+
+	EventBus.peg_state_changed.emit(self, old_state, new_state)
+
+
 func _setup_shader() -> void:
 	# Load the shader
 	var shader := load(SHADER_PATH) as Shader

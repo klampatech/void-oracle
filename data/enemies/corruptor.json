@@ -1,0 +1,22 @@
+{
+	"id": "corruptor",
+	"name": "Corruptor",
+	"description": "A twisted entity that corrupts the sacred order of your board.",
+	"hp": 80,
+	"max_hp": 80,
+	"intent_display": "Will corrupt a peg",
+	"actions": [
+		{
+			"type": "corrupt",
+			"target_type": "peg",
+			"target_state": "blessed",
+			"description": "Corrupts a blessed peg"
+		}
+	],
+	"on_death": {
+		"rewards": {
+			"gold": 10,
+			"void_essence": 2
+		}
+	}
+}

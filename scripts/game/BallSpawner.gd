@@ -14,10 +14,19 @@ const DEFAULT_BALL_COUNT := 1
 ## Spawn position (relative to board)
 var _spawn_position := Vector2(300, 50)
 
+## Reference to EncounterManager for ball tracking
+var _encounter_manager: Node = null
+
 
 func _ready() -> void:
 	# RunState.ball_count is initialized in autoload
-	pass
+	# Get encounter manager reference
+	_encounter_manager = get_node_or_null("../EncounterManager")
+
+
+func _add_ball_to_tracking(ball: RigidBody2D) -> void:
+	if _encounter_manager and _encounter_manager.has_method("register_ball"):
+		_encounter_manager.register_ball(ball)
 
 
 func _process(_delta: float) -> void:
@@ -45,8 +54,11 @@ func _launch_ball(mouse_pos: Vector2) -> void:
 	# Add to scene tree
 	get_tree().root.add_child(ball)
 
-	# Emit drop started signal
-	EventBus.drop_started.emit(RunState.ball_count)
+	# Track ball for drop phase
+	_add_ball_to_tracking(ball)
+
+	# Emit ball launched signal
+	EventBus.ball_launched.emit(ball)
 
 
 func _draw() -> void:
