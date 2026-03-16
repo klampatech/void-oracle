@@ -1,0 +1,21 @@
+{
+	"id": "spawner",
+	"name": "Spawner",
+	"description": "A malevolent entity that spawns hostile balls to disrupt your board.",
+	"hp": 70,
+	"max_hp": 70,
+	"intent_display": "Will spawn enemy balls",
+	"actions": [
+		{
+			"type": "spawn",
+			"target_type": "ball",
+			"description": "Spawns enemy balls that interfere with drops"
+		}
+	],
+	"on_death": {
+		"rewards": {
+			"gold": 12,
+			"void_essence": 4
+		}
+	}
+}

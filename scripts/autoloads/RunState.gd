@@ -49,6 +49,11 @@ func modify_stability(delta: float) -> void:
 	if stability <= 0.0:
 		EventBus.run_ended.emit("stability_depleted", snapshot_board())
 
+func modify_gold(delta: int) -> void:
+	var old_gold := gold
+	gold = max(0, gold + delta)
+	EventBus.gold_changed.emit(gold, gold - old_gold)
+
 func snapshot_board() -> Dictionary:
 	return {
 		"version": "1.0",

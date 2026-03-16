@@ -1,0 +1,22 @@
+{
+	"id": "leech",
+	"name": "Leech",
+	"description": "A parasitic entity that drains your gold with each attack.",
+	"hp": 90,
+	"max_hp": 90,
+	"intent_display": "Will steal gold",
+	"actions": [
+		{
+			"type": "drain",
+			"target_type": "gold",
+			"amount": 5,
+			"description": "Steals gold each turn"
+		}
+	],
+	"on_death": {
+		"rewards": {
+			"gold": 20,
+			"void_essence": 2
+		}
+	}
+}

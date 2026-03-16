@@ -1,0 +1,21 @@
+{
+	"id": "wrecker",
+	"name": "Wrecker",
+	"description": "A brutal entity that shatters the pegs on your board.",
+	"hp": 100,
+	"max_hp": 100,
+	"intent_display": "Will shatter a peg",
+	"actions": [
+		{
+			"type": "shatter",
+			"target_type": "peg",
+			"description": "Shatters a random peg"
+		}
+	],
+	"on_death": {
+		"rewards": {
+			"gold": 15,
+			"void_essence": 3
+		}
+	}
+}

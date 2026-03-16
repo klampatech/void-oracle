@@ -27,7 +27,12 @@ signal chaos_drop_triggered(chaos_type: String)
 signal enemy_turn_start(enemy: Node)
 signal enemy_action(enemy: Node, action: Dictionary)  # {type, target, value}
 signal enemy_defeated(enemy: Node)
+signal enemy_ball_spawned(ball: Node)                  # emitted when enemy spawns a ball
 signal player_stability_changed(new_value: float, delta: float)
+
+# ── Economy ───────────────────────────────────────────────
+signal gold_stolen(amount: int)                        # emitted when enemy steals gold
+signal gold_changed(new_value: int, delta: int)
 
 # ── Run / Map ────────────────────────────────────────────
 signal node_selected(map_node: Dictionary)

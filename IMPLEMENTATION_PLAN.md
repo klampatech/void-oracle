@@ -171,9 +171,9 @@
 - [x] Shop appears every 4 encounters after victory
 
 ### P4.5 More Enemy Types
-- [ ] Wrecker: Shatters 1 peg per turn
-- [ ] Spawner: Drops enemy balls mid-turn
-- [ ] Leech: Steals gold each turn
+- [x] Wrecker: Shatters 1 peg per turn
+- [x] Spawner: Drops enemy balls mid-turn
+- [x] Leech: Steals gold each turn
 
 ---
 
@@ -279,9 +279,9 @@
 | `data/pegs/peg_definitions.json` | ✅ Complete |
 | `data/synergies/synergy_definitions.json` | ✅ Complete |
 | `data/enemies/corruptor.json` | ✅ Complete |
-| `data/enemies/wrecker.json` | ❌ MISSING |
-| `data/enemies/spawner.json` | ❌ MISSING |
-| `data/enemies/leech.json` | ❌ MISSING |
+| `data/enemies/wrecker.json` | ✅ Complete |
+| `data/enemies/spawner.json` | ✅ Complete |
+| `data/enemies/leech.json` | ✅ Complete |
 | `data/enemies/gardener.json` | ❌ MISSING |
 | `data/enemies/architect.json` | ❌ MISSING |
 | `data/enemies/final_oracle.json` | ❌ MISSING |
