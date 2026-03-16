@@ -48,6 +48,18 @@ var _draft_system: Node = null
 ## Draft UI reference
 var _draft_ui: Node = null
 
+## Shop system reference
+var _shop_system: Node = null
+
+## Shop UI reference
+var _shop_ui: Node = null
+
+## Encounter counter for shop spawning
+var _encounter_count: int = 0
+
+## Shop appears every N encounters
+const ENCOUNTERS_PER_SHOP: int = 4
+
 
 func _ready() -> void:
 	# Get references to board and ball spawner
@@ -75,6 +87,14 @@ func _ready() -> void:
 	_draft_ui = get_tree().get_first_node_in_group("draft_ui")
 	if not _draft_ui:
 		_draft_ui = get_node_or_null("../DraftUI")
+
+	# Get shop system reference
+	_shop_system = get_tree().get_first_node_in_group("shop_system")
+	if not _shop_system:
+		_shop_system = get_node_or_null("../ShopSystem")
+
+	# Get shop UI reference
+	_shop_ui = get_node_or_null("../ShopUI")
 
 	# Defer enemy start to ensure all scripts are loaded
 	call_deferred("_start_initial_encounter")
@@ -250,12 +270,17 @@ func _on_enemy_defeated(enemy: Node) -> void:
 
 	# Update stats
 	RunState.enemies_defeated += 1
+	_encounter_count += 1
 
 	# Emit encounter ended
 	EventBus.encounter_ended.emit("victory")
 
-	# Trigger draft phase
-	_start_draft_phase()
+	# Check if it's time for a shop (every ~4 encounters)
+	if _encounter_count > 0 and _encounter_count % ENCOUNTERS_PER_SHOP == 0:
+		_show_shop()
+	else:
+		# Trigger draft phase
+		_start_draft_phase()
 
 
 ## Start draft phase after victory
@@ -269,6 +294,15 @@ func _start_draft_phase() -> void:
 
 		# Enable placement mode
 		_set_phase(Phase.BOARD)
+
+
+## Show shop UI
+func _show_shop() -> void:
+	if _shop_ui and _shop_ui.has_method("show_shop"):
+		_shop_ui.show_shop()
+
+	# Set phase to BOARD (waiting for shop to close)
+	_set_phase(Phase.BOARD)
 
 
 ## Handle player death (stability depleted)

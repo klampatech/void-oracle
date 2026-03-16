@@ -163,10 +163,12 @@
 - [x] Player selects next node
 
 ### P4.4 Shop System
-- [ ] Create `scripts/game/systems/ShopSystem.gd` script
-- [ ] Create `scenes/ui/ShopUI.tscn`
-- [ ] Services: Bless, Purify, Remove, Transmute pegs
-- [ ] Purchase pegs and relics
+- [x] Create `scripts/game/systems/ShopSystem.gd` script
+- [x] Create `scenes/ui/ShopUI.tscn`
+- [x] Services: Bless, Purify, Remove, Transmute pegs
+- [x] Purchase pegs and relics
+- [x] Added set_peg_state method to BasePeg.gd for shop services
+- [x] Shop appears every 4 encounters after victory
 
 ### P4.5 More Enemy Types
 - [ ] Wrecker: Shatters 1 peg per turn

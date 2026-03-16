@@ -116,6 +116,11 @@ func get_peg_state() -> String:
 	return get_peg_state_string()
 
 
+## Set peg state directly (for shop services)
+func set_peg_state(new_state: String) -> void:
+	mutate_to(new_state)
+
+
 func mutate_to(new_state: String) -> void:
 	var old_state: String = get_peg_state_string()
 	match new_state:
