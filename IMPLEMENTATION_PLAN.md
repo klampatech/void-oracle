@@ -9,59 +9,51 @@
 
 ### Completed (M1-M2 Core Systems):
 - ✅ Physics sandbox: Board, Ball, BallSpawner, all 8 peg types with physics materials
-- ✅ EventBus, RunState, SynergyChecker, MutationEngine wired up
-- ✅ CorruptionMapManager, GhostBoardManager (basic)
+- ✅ EventBus with all required signals (peg_hit, ball_entered_pocket, peg_state_changed, etc.)
+- ✅ RunState with all required state (stability, gold, ball_count, snapshot_board, etc.)
+- ✅ SynergyChecker, MutationEngine, AudioManager, GhostBoardManager wired up
+- ✅ CorruptionMapManager, Board scene with pockets
 - ✅ All 3 shaders: peg_state, corruption_spread, ball_trail
-- ✅ Peg State Shader with corruption_level, mutation_pulse, void_factor
-- ✅ MutationEngine connected to EventBus.peg_hit
-- ✅ SynergyChecker connected to peg_state_changed and peg_spawned
+- ✅ Peg State Shader with corruption_level, mutation_pulse, void_factor uniforms
+- ✅ Ball Trail Effect - fully wired in Ball.gd (Line2D with gradient)
+- ✅ All 8 peg types implemented (Stone, Bone, Fungal, Ember, Eye, Heart, Oracle, VoidRift)
+- ✅ Special peg behaviors: Oracle ball split, VoidRift ball consume, Ember chain corrupt, Fungal growth
+- ✅ PhysicsDebugOverlay.tscn exists
 - ✅ Data files: peg_definitions.json, synergy_definitions.json
 
-### Partially Complete (M1-M2):
-- ⚠️ Special peg behaviors (Oracle, Void Rift, Ember, Fungal) — partial implementation
-- ⚠️ Ball Trail Effect — shader exists, needs wiring in Ball.gd
-- ⚠️ Console logging for peg_hit — signal fires, limited data
+### NOT Yet Implemented (M3 - Single Encounter):
+- ❌ EncounterManager/GameManager - NO script exists
+- ❌ Enemy system - no enemies directory has NO JSON files
+- ❌ Phase system (DROP/RESULT/BOARD) - no GameManager to orchestrate
+- ❌ Stability UI - HUD bar needs scene + script
+- ❌ Ghost save on death wiring - RunState.snapshot_board exists but not wired to EventBus.run_ended
+- ❌ Draft system stub UI
+- ❌ Pocket result calculation (damage, healing, gold, void, chaos effects)
+- ❌ Enemy Corruptor implementation
 
-### NOT Yet Implemented (M3+):
-- ❌ Phase system (DROP/RESULT/BOARD)
-- ❌ Enemy system (Corruptor, etc.)
-- ❌ Stability UI
-- ❌ Ghost save on death (wiring)
+### NOT Yet Implemented (M4+):
 - ❌ Map generation
-- ❌ Draft system
 - ❌ Shop system
+- ❌ Ghost Board Encounter
+- ❌ Boss encounters
+- ❌ Synergy effects implementation
+- ❌ Meta-progression
+- ❌ Audio polish
 
 ---
 
-## Priority 0: M1 Verification Fixes (IMMEDIATE)
+## Priority 1: Single Encounter Loop (M3) — START HERE
 
-### P0.1 Physics Debug Overlay
-- [ ] Create `scenes/game/PhysicsDebugOverlay.tscn`
-- [ ] Create `scripts/game/PhysicsDebugOverlay.gd`
-- [ ] F1 key toggles visibility
-- [ ] Shows collision shapes via debug draw
-- [ ] Shows ball velocity vector (Line2D)
-- [ ] Shows peg hit_count as labels
-- [ ] Console logging: peg_type, position, ball velocity
-
-### P0.2 Ball Trail Wiring
-- [ ] Update `scripts/game/Ball.gd` to maintain position array (last 20)
-- [ ] Add Line2D child node, update each frame
-- [ ] Apply `shaders/ball_trail.gdshader`
-
----
-
-## Priority 1: Single Encounter Loop (M3)
-
-### P1.1 Encounter Manager System
-- [ ] Create `scripts/game/GameManager.gd` or `EncounterManager.gd`
-- [ ] Create scene `scenes/game/EncounterManager.tscn`
-- [ ] Implement turn-based phases: Drop Phase → Result Phase → Board Phase
+### P1.0 Encounter Manager System
+- [ ] Create `scripts/game/EncounterManager.gd` (AutoLoad or scene)
+- [ ] Create `scenes/game/EncounterManager.tscn`
+- [ ] Implement turn-based phases: DROP → RESULT → BOARD
 - [ ] Track ball inventory and drop completion
+- [ ] Wire to existing BallSpawner
 
-### P1.2 Ball Drop Phase Logic
+### P1.1 Ball Drop Phase Logic
 - [ ] Wire BallSpawner to drop phase state
-- [ ] Implement multi-ball drop (1-5 balls)
+- [ ] Implement multi-ball drop (1-5 balls, from RunState.ball_count)
 - [ ] Add drop ending detection (all balls in pockets or lost)
 - [ ] Calculate drop results: damage, healing, gold, void essence
 - [ ] Implement pocket result logic:
@@ -73,8 +65,12 @@
   | Void | void_essence += void_value |
   | Chaos | trigger_chaos_effect() |
 
+### P1.2 Enemy JSON Data
+- [ ] Create `data/enemies/corruptor.json`
+- [ ] Define HP (80), actions, intent display text
+- [ ] Create enemy data schema
+
 ### P1.3 First Enemy Type — Corruptor
-- [ ] Create enemy data in `data/enemies/corruptor.json`
 - [ ] Create `scripts/game/enemies/Enemy.gd` base class
 - [ ] Create `scripts/game/enemies/Corruptor.gd` script
 - [ ] Create `scenes/game/enemies/Corruptor.tscn`
@@ -87,69 +83,42 @@
 
 ### P1.5 Victory/Defeat Conditions
 - [ ] Enemy defeated when damage threshold met
-- [ ] Run defeat when Stability <= 0 (wire to existing RunState)
+- [ ] Run defeat when Stability <= 0
 - [ ] Display encounter result UI
 
 ---
 
-## Priority 2: Peg Special Abilities (M3)
+## Priority 2: Stability UI & Ghost Save (M3)
 
-### P2.1 Void Rift Ball Teleportation
-- [x] Basic implementation exists in VoidRiftPeg.gd
-- [ ] Ball teleports to "best" pocket (highest value)
-- [ ] Apply pocket effect immediately
+### P2.1 Stability UI
+- [ ] Create `scripts/ui/StabilityBar.gd`
+- [ ] Create `scenes/ui/StabilityBar.tscn`
+- [ ] HUD stability bar (gold → red as depletes)
+- [ ] Connect to EventBus.player_stability_changed
+- [ ] Run ends at 0 → show death screen
 
-### P2.2 Oracle Ball Split
-- [ ] Implement in `scripts/game/pegs/OraclePeg.gd`
-- [ ] On contact, spawn 2 additional balls with slight velocity offset (±15°)
-- [ ] Track original ball for scoring
+### P2.2 Ghost Save on Death
+- [ ] Wire EventBus.run_ended → GhostBoardManager.save_ghost()
+- [ ] Death screen UI stub showing ghost summary
+- [ ] Verify save to user://void_oracle/ghost_boards/
 
-### P2.3 Eye Peg Pocket Vision
-- [ ] Implement reveal_pocket bonus in `scripts/game/pegs/EyePeg.gd`
-- [ ] UI overlay showing pocket types during drop
-
-### P2.4 Fungal Peg Growth
-- [x] Basic implementation exists
-- [ ] Implement growth_interval_drops from peg_definitions (every 3 drops)
-- [ ] After N drops, spawn adjacent Fungal peg in empty slot (25% chance)
-- [ ] Track growth state per peg
-
-### P2.5 Ember Peg Chain Ignite
-- [x] Basic implementation exists
-- [ ] On contact, find adjacent pegs and apply ignite effect (shift toward cursed by 0.1)
-
-### P2.6 Heart Peg Stability Bonus
-- [x] Basic implementation exists
-- [ ] Wire stability bonus from `HeartPeg.gd` to RunState
+### P2.3 Board Phase UI
+- [ ] Create `scenes/ui/BoardPhaseUI.tscn`
+- [ ] Display peg inventory, gold, stability
+- [ ] "End Turn" button to next drop
 
 ---
 
-## Priority 3: Board Phase & Draft (M3-M4)
+## Priority 3: Draft System (M4)
 
-### P3.1 Stability UI
-- [ ] Create `scripts/ui/StabilityBar.gd`
-- [ ] HUD stability bar (gold → red as depletes)
-- [ ] Tick down 10 stability per enemy action
-- [ ] Run ends at 0 → emit run_ended
-
-### P3.2 Ghost Save on Death
-- [ ] Wire EventBus.run_ended → GhostBoardManager.save_ghost()
-- [ ] Death screen UI stub
-- [ ] Verify save to user://void_oracle/ghost_boards/
-
-### P3.3 Board Phase UI
-- [ ] Create `scenes/ui/BoardPhaseUI.tscn`
-- [ ] Display peg inventory, gold, stability
-- [ ] "Continue" button to next node
-
-### P3.4 Draft System
+### P3.1 Draft System
 - [ ] Create `scripts/game/systems/DraftSystem.gd` script
 - [ ] Create `scenes/ui/DraftUI.tscn`
 - [ ] Draw 3 random pegs from available pool
 - [ ] Player selects 1, placed in chosen empty slot
 - [ ] Connect to RunState.pegs array
 
-### P3.5 Peg Placement
+### P3.2 Peg Placement
 - [ ] Click empty slot to place selected peg
 - [ ] Validate placement (bounds, collision)
 - [ ] Trigger peg_spawned signal
@@ -302,23 +271,23 @@
 ## Dependency Graph
 
 ```
-P0.1 → P0.2
-   ↓
-P1.1 → P1.2 → P1.3 → P1.4 → P1.5
+P1.0 EncounterManager → P1.1 Drop Phase → P1.2 Enemy Data → P1.3 Corruptor
+         ↓                              ↓
+P1.4 Enemy Attack ← P1.5 Victory/Defeat
+         ↓
+P2.1 Stability UI ← P2.2 Ghost Save ← P2.3 Board Phase
+         ↓
+P3.1 Draft System ← P3.2 Peg Placement
+         ↓
+P4.1 Map Generator → P4.2 Run Map → P4.3 Navigation → P4.4 Shop
             ↓
-P2.1 → P2.2 → P2.3 → P2.4 → P2.5 → P2.6
-                                    ↓
-P3.1 ← P3.2 ← P3.3 ← P3.4 ← P3.5 ← P1.5 (complete encounter)
+P4.5 More Enemies → P5.1 Gardener → P5.2 Architect → P5.3 Final Oracle
             ↓
-P4.1 → P4.2 → P4.3 → P4.4
+P6.1 Ghost Loading → P6.2 Ghost Behavior → P6.3 Ghost Trigger
             ↓
-          P4.5 → P5.1 → P5.2 → P5.3
+P7.1 Necrotic Bloom → P7.2 Cursed Flame → P7.3 Void Choir → P7.4 Bleeding Arch → P7.5 Profane Eye
             ↓
-          P6.1 → P6.2 → P6.3
+P8.1 Void Shards ← P8.2 Oracle Classes
             ↓
-P7.1 → P7.2 → P7.3 → P7.4 → P7.5
-            ↓
-P8.1 ← P8.2
-            ↓
-P9.1 → P9.2 → P9.3
+P9.1 Audio → P9.2 Particles → P9.3 Web Export
 ```
