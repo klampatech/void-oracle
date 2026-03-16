@@ -180,9 +180,12 @@
 ## Priority 5: Boss Encounters (M5-M6)
 
 ### P5.1 Zone 1 Boss — The Gardener
-- [ ] Create boss encounter scene
-- [ ] Phase 1: Converts blessed to dormant
-- [ ] Phase 2: Places unremovable Thorn pegs
+- [x] Create boss encounter scene (Gardener.tscn)
+- [x] Phase 1: Converts blessed to dormant
+- [x] Phase 2: Places unremovable Thorn pegs
+- [x] Added ThornPeg.gd and ThornPeg.tscn
+- [x] Added void_touched state (Gardener weakness)
+- [x] Wired Gardener to RunManager for boss encounters
 
 ### P5.2 Zone 2 Boss — Architect of Ruin
 - [ ] Creates cracks in board frame
@@ -282,7 +285,7 @@
 | `data/enemies/wrecker.json` | ✅ Complete |
 | `data/enemies/spawner.json` | ✅ Complete |
 | `data/enemies/leech.json` | ✅ Complete |
-| `data/enemies/gardener.json` | ❌ MISSING |
+| `data/enemies/gardener.json` | ✅ Complete |
 | `data/enemies/architect.json` | ❌ MISSING |
 | `data/enemies/final_oracle.json` | ❌ MISSING |
 

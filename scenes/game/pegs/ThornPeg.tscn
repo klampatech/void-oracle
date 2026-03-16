@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://thornpeg123456"]
+
+[ext_resource type="Script" path="res://scripts/game/pegs/ThornPeg.gd" id="1_thornpeg"]
+[ext_resource type="PackedScene" uid="uid://basepeg12345678" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+
+[node name="ThornPeg" instance=ExtResource("2_base")]
+script = ExtResource("1_thornpeg")
+
+[node name="Visual" parent="." index="1"]
+color = Color(0.6, 0.2, 0.1, 1)

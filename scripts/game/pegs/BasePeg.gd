@@ -3,10 +3,10 @@ extends StaticBody2D
 class_name BasePeg
 
 ## Peg types
-enum PegType { STONE, BONE, FUNGAL, EMBER, EYE, HEART, ORACLE, VOID_RIFT }
+enum PegType { STONE, BONE, FUNGAL, EMBER, EYE, HEART, ORACLE, VOID_RIFT, THORN }
 
 ## Peg states
-enum PegState { DORMANT, BLESSED, CURSED, MUTANT, VOID }
+enum PegState { DORMANT, BLESSED, CURSED, MUTANT, VOID, VOID_TOUCHED }
 
 ## Data file path
 const PEG_DATA_PATH := "res://data/pegs/peg_definitions.json"
@@ -30,6 +30,7 @@ const PEG_COLORS = {
 	PegType.HEART: Color(0.91, 0.188, 0.376, 1.0),      # #E83060
 	PegType.ORACLE: Color(0.788, 0.659, 0.298, 1.0),    # #C9A84C
 	PegType.VOID_RIFT: Color(0.039, 0.039, 0.165, 1.0),  # #0A0A2A
+	PegType.THORN: Color(0.6, 0.2, 0.1, 1.0),            # #99331A (dark red/brown)
 }
 
 ## Loaded data
@@ -83,6 +84,7 @@ func _get_peg_key() -> String:
 		PegType.HEART: return "heart"
 		PegType.ORACLE: return "oracle"
 		PegType.VOID_RIFT: return "void_rift"
+		PegType.THORN: return "thorn"
 	return ""
 
 
@@ -109,6 +111,7 @@ func get_peg_state_string() -> String:
 		PegState.CURSED: return "cursed"
 		PegState.MUTANT: return "mutant"
 		PegState.VOID: return "void"
+		PegState.VOID_TOUCHED: return "void_touched"
 	return "dormant"
 
 
@@ -139,6 +142,9 @@ func mutate_to(new_state: String) -> void:
 		"void":
 			peg_state = PegState.VOID
 			set_void_factor(1.0)
+		"void_touched":
+			peg_state = PegState.VOID_TOUCHED
+			set_void_factor(0.5)
 
 	EventBus.peg_state_changed.emit(self, old_state, new_state)
 
@@ -187,3 +193,9 @@ func set_void_factor(factor: float) -> void:
 
 func get_shader_material() -> ShaderMaterial:
 	return _shader_material
+
+
+## Check if this peg can be removed by player
+## Override in subclasses to return false for enemy-placed pegs
+func can_be_removed() -> bool:
+	return true

@@ -72,5 +72,16 @@
     "friction": 0.0,
     "special": "teleport_to_best_pocket",
     "description": "The ball does not bounce. It ceases. It arrives."
+  },
+  "thorn": {
+    "display_name": "Thorn Peg",
+    "tier": "enemy",
+    "tags": ["enemy_only"],
+    "restitution": 0.8,
+    "friction": 0.0,
+    "deflect_angle": 30,
+    "is_enemy_owned": true,
+    "cannot_be_removed": true,
+    "description": "Sharp thorns placed by the Gardener. Deflects balls sideways."
   }
 }

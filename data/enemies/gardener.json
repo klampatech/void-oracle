@@ -1,0 +1,63 @@
+{
+	"id": "gardener",
+	"name": "The Gardener",
+	"description": "A twisted guardian of the board who prunes away your blessed pegs and grows thorns to defend itself.",
+	"hp": 150,
+	"max_hp": 150,
+	"is_boss": true,
+	"zone": 1,
+	"intent_display": "Will prune a blessed peg",
+	"phases": [
+		{
+			"phase": 1,
+			"hp_threshold": 0.5,
+			"actions": [
+				{
+					"type": "prune",
+					"target_type": "peg",
+					"target_state": "blessed",
+					"description": "Converts a blessed peg to dormant"
+				}
+			]
+		},
+		{
+			"phase": 2,
+			"hp_threshold": 0.5,
+			"actions": [
+				{
+					"type": "prune",
+					"target_type": "peg",
+					"target_state": "blessed",
+					"description": "Converts a blessed peg to dormant"
+				},
+				{
+					"type": "thorns",
+					"count": 2,
+					"description": "Places 2 thorn pegs"
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "prune",
+			"target_type": "peg",
+			"target_state": "blessed",
+			"description": "Converts a blessed peg to dormant"
+		},
+		{
+			"type": "thorns",
+			"count": 2,
+			"description": "Places 2 thorn pegs"
+		}
+	],
+	"on_death": {
+		"rewards": {
+			"gold": 30,
+			"void_essence": 10,
+			"unlocks": ["zone_2"]
+		}
+	},
+	"weakness": "void_touched",
+	"weakness_description": "Void-touched pegs are invisible to the Gardener's pruning"
+}

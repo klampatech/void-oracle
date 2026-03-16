@@ -28,6 +28,7 @@ var _peg_scenes: Dictionary = {
 	"heart": preload("res://scenes/game/pegs/HeartPeg.tscn"),
 	"oracle": preload("res://scenes/game/pegs/OraclePeg.tscn"),
 	"void_rift": preload("res://scenes/game/pegs/VoidRiftPeg.tscn"),
+	"thorn": preload("res://scenes/game/pegs/ThornPeg.tscn"),
 }
 
 ## Corruption map manager
@@ -195,10 +196,10 @@ func _setup_corruption_map() -> void:
 
 ## Add a new peg at the specified position
 ## Returns the instantiated peg, or null if failed
-func add_peg_at_position(peg_type: String, position: Vector2) -> Node2D:
+func add_peg_at_position(peg_type: String, position: Vector2) -> bool:
 	if not _peg_scenes.has(peg_type):
 		push_warning("Unknown peg type: " + peg_type)
-		return null
+		return false
 
 	var peg: Node2D = _peg_scenes[peg_type].instantiate()
 	peg.position = position
@@ -209,7 +210,57 @@ func add_peg_at_position(peg_type: String, position: Vector2) -> Node2D:
 	# Emit peg spawned signal
 	EventBus.peg_spawned.emit(peg, position)
 
-	return peg
+	return true
+
+
+## Get list of empty positions where new pegs can be placed
+## Returns array of Vector2 positions in grid coordinates
+func get_empty_slots() -> Array[Vector2]:
+	var empty_slots: Array[Vector2] = []
+
+	# Grid parameters (same as _create_pegs)
+	var start_y := 150.0
+	var end_y := 700.0
+	var column_spacing := 70.0
+	var row_spacing := 60.0
+	var left_margin := 60.0
+	var right_margin := 60.0
+
+	# Calculate grid positions
+	var num_columns := int((BOARD_WIDTH - left_margin - right_margin) / column_spacing) + 1
+	var num_rows := int((end_y - start_y) / row_spacing) + 1
+
+	# Get all existing peg positions
+	var existing_positions: Array[Vector2] = []
+	for peg in _peg_container.get_children():
+		if peg is Node2D:
+			existing_positions.append(peg.position)
+
+	# Generate all possible grid positions and filter out occupied ones
+	for row in range(num_rows):
+		var y := start_y + row * row_spacing
+		var x_offset := column_spacing / 2.0 if row % 2 == 1 else 0.0
+
+		for col in range(num_columns):
+			var x := left_margin + x_offset + col * column_spacing
+
+			# Skip if outside board bounds
+			if x < left_margin or x > BOARD_WIDTH - right_margin:
+				continue
+
+			var pos := Vector2(x, y)
+
+			# Check if this position is already occupied
+			var is_occupied := false
+			for existing_pos in existing_positions:
+				if pos.distance_to(existing_pos) < 30.0:  # Within 30 pixels = occupied
+					is_occupied = true
+					break
+
+			if not is_occupied:
+				empty_slots.append(pos)
+
+	return empty_slots
 
 
 func _input(event: InputEvent) -> void:

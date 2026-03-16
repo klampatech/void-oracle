@@ -119,11 +119,17 @@ func _start_encounter_by_type(encounter_type: String) -> void:
 				_encounter_manager.start_encounter(corruptor_scene)
 				print("RunManager: Elite encounter (using Corruptor for now)")
 		"boss":
-			# TODO: Load boss enemy
-			var corruptor_scene := load("res://scenes/game/enemies/Corruptor.tscn") as PackedScene
-			if corruptor_scene:
-				_encounter_manager.start_encounter(corruptor_scene)
-				print("RunManager: Boss encounter (using Corruptor for now)")
+			# Load Gardener boss
+			var gardener_scene := load("res://scenes/game/enemies/Gardener.tscn") as PackedScene
+			if gardener_scene:
+				_encounter_manager.start_encounter(gardener_scene)
+				print("RunManager: Boss encounter - The Gardener")
+			else:
+				push_error("Failed to load Gardener scene")
+				# Fallback to Corruptor
+				var corruptor_scene := load("res://scenes/game/enemies/Corruptor.tscn") as PackedScene
+				if corruptor_scene:
+					_encounter_manager.start_encounter(corruptor_scene)
 		"event":
 			# TODO: Handle event encounters
 			print("RunManager: Event encounter - not implemented, returning to map")

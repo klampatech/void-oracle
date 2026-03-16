@@ -73,3 +73,28 @@ func _on_body_entered(body: Node2D) -> void:
 
 func get_velocity() -> Vector2:
 	return _last_velocity
+
+
+## Apply deflection to the ball (for ThornPeg)
+## angle: deflection angle in degrees (positive = right, negative = left)
+func apply_deflect(angle_degrees: float) -> void:
+	# Get current velocity direction
+	var current_dir := linear_velocity.normalized()
+
+	# Calculate deflection direction (perpendicular to current motion, biased downward)
+	var deflection_dir := Vector2(0, 1)  # Default downward
+
+	# If moving significantly horizontally, deflect more horizontally
+	if abs(current_dir.x) > 0.3:
+		deflection_dir = Vector2(current_dir.x, -0.5).normalized()
+
+	# Apply rotation to deflection direction
+	var angle_rad := deg_to_rad(angle_degrees)
+	var deflected_dir := deflection_dir.rotated(angle_rad)
+
+	# Apply new velocity with same magnitude but deflected direction
+	var speed := linear_velocity.length()
+	# Ensure minimum speed so ball doesn't stop
+	speed = max(speed, 200.0)
+
+	linear_velocity = deflected_dir * speed
