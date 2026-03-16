@@ -2,8 +2,11 @@
 extends Control
 class_name RunMap
 
-## Map Generator reference
-var _map_generator: MapGenerator = null
+## Map Generator script (preloaded for instantiation)
+const MAP_GENERATOR_SCRIPT := preload("res://scripts/game/map/MapGenerator.gd")
+
+## Map Generator reference (type inferred from instantiated class)
+var _map_generator = null
 
 ## Current map data
 var _map_data: Dictionary = {}
@@ -33,7 +36,7 @@ func _ready() -> void:
 	_map_node_scene = preload("res://scenes/game/map/MapNode.tscn")
 
 	# Create MapGenerator
-	_map_generator = MapGenerator.new()
+	_map_generator = MAP_GENERATOR_SCRIPT.new()
 	add_child(_map_generator)
 
 
@@ -175,7 +178,7 @@ func _on_node_clicked(node_id: String) -> void:
 		return
 
 	# Emit signal
-	var node_data := _map_generator.get_node(node_id)
+	var node_data: Dictionary = _map_generator.get_node_data(node_id)
 	node_selected.emit(node_id, node_data)
 
 
@@ -234,7 +237,7 @@ func travel_to_node(node_id: String) -> void:
 	if _is_node_selectable(node_id):
 		_set_current_node(node_id)
 		# Emit selection
-		var node_data := _map_generator.get_node(node_id)
+		var node_data: Dictionary = _map_generator.get_node_data(node_id)
 		node_selected.emit(node_id, node_data)
 
 
@@ -245,14 +248,14 @@ func get_current_node_id() -> String:
 
 ## Get current zone
 func get_current_zone() -> int:
-	var node := _map_generator.get_node(_current_node_id)
+	var node: Dictionary = _map_generator.get_node_data(_current_node_id)
 	return node.get("zone", 1)
 
 
 ## Check if current zone is complete (boss defeated)
 func is_zone_complete(zone_num: int) -> bool:
 	# For now, zones are complete when player reaches the boss node
-	var boss_node := _map_generator.get_zone_boss(zone_num)
+	var boss_node: Dictionary = _map_generator.get_zone_boss(zone_num)
 	if boss_node.is_empty():
 		return false
 

@@ -1,9 +1,14 @@
 extends Control
 
 func _ready() -> void:
-	# Load the Board scene when ready
-	# For now, this is a placeholder that will be replaced with actual menu
+	# Start button will call start_run
 	pass
 
+
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/game/Board.tscn")
+	# Generate random seed for the run
+	var seed := randi()
+	print("MainMenu: Starting new run with seed: ", seed)
+
+	# Start the run via RunManager
+	RunManager.start_new_run(seed)

@@ -155,12 +155,12 @@
 - [x] Create `scenes/game/map/RunMap.tscn`
 - [x] Create `scenes/game/map/MapNode.tscn`
 - [x] Implement node selection and path visualization
-- [ ] Connect to encounter loading
+- [x] Connect to encounter loading
 
 ### P4.3 Navigation Phase
-- [ ] After Board Phase, show map
-- [ ] Highlight available paths
-- [ ] Player selects next node
+- [x] After Board Phase, show map
+- [x] Highlight available paths
+- [x] Player selects next node
 
 ### P4.4 Shop System
 - [ ] Create `scripts/game/systems/ShopSystem.gd` script

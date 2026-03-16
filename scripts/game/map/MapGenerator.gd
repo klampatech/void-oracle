@@ -64,11 +64,11 @@ func generate_map(seed: int) -> Dictionary:
 
 ## Generate a single zone
 func _generate_zone(zone_num: int) -> void:
-	var node_count := _rng.randi_range(NODES_PER_ZONE_MIN, NODES_PER_ZONE_MAX)
+	var node_count: int = _rng.randi_range(NODES_PER_ZONE_MIN, NODES_PER_ZONE_MAX)
 	var zone_nodes: Array[Dictionary] = []
 
 	# Determine if this zone has a boss
-	var is_boss_zone := zone_num == ZONE_COUNT
+	var is_boss_zone: bool = zone_num == ZONE_COUNT
 
 	# Reserve spots for guaranteed nodes
 	var guaranteed_nodes: Array[Dictionary] = []
@@ -102,7 +102,7 @@ func _generate_zone(zone_num: int) -> void:
 	for i in range(node_count):
 		# Check if this position has a guaranteed node
 		var node_type: String = ""
-		var is_guaranteed := false
+		var is_guaranteed: bool = false
 
 		for gnode in guaranteed_nodes:
 			if gnode["position"] == i:
@@ -147,18 +147,18 @@ func _generate_zone(zone_num: int) -> void:
 
 ## Get weighted random node type based on board state
 func _get_weighted_node_type(zone_num: int) -> String:
-	var total_weight := 0
+	var total_weight: int = 0
 	for type in NODE_TYPE_WEIGHTS:
 		total_weight += NODE_TYPE_WEIGHTS[type]
 
 	# Apply board tag modifiers if available
-	var modifiers := _get_board_tag_modifiers()
+	var modifiers: Dictionary = _get_board_tag_modifiers()
 
-	var roll := _rng.randi() % total_weight
-	var cumulative := 0
+	var roll: int = _rng.randi() % total_weight
+	var cumulative: int = 0
 
 	for type in NODE_TYPE_WEIGHTS:
-		var weight := NODE_TYPE_WEIGHTS[type]
+		var weight: int = NODE_TYPE_WEIGHTS[type]
 		# Apply modifier if exists
 		if modifiers.has(type):
 			weight += modifiers[type]
@@ -187,7 +187,7 @@ func _get_board_tag_modifiers() -> Dictionary:
 	for tag in tag_counts:
 		if BOARD_TAG_WEIGHTS.has(tag):
 			for node_type in BOARD_TAG_WEIGHTS[tag]:
-				var bonus := BOARD_TAG_WEIGHTS[tag][node_type]
+				var bonus: int = BOARD_TAG_WEIGHTS[tag][node_type]
 				modifiers[node_type] = modifiers.get(node_type, 0) + bonus
 
 	return modifiers
@@ -199,15 +199,15 @@ func _generate_connections() -> void:
 
 	# For each zone (except last), connect to next zone
 	for zone_idx in range(_map_data["zones"].size() - 1):
-		var current_zone := _map_data["zones"][zone_idx]
-		var next_zone := _map_data["zones"][zone_idx + 1]
+		var current_zone: Dictionary = _map_data["zones"][zone_idx]
+		var next_zone: Dictionary = _map_data["zones"][zone_idx + 1]
 
-		var current_nodes := current_zone["nodes"]
-		var next_nodes := next_zone["nodes"]
+		var current_nodes: Array = current_zone["nodes"]
+		var next_nodes: Array = next_zone["nodes"]
 
 		# Connect each node in current zone to 1-3 nodes in next zone
 		for node in current_nodes:
-			var num_connections := _rng.randi_range(1, 3)
+			var num_connections: int = _rng.randi_range(1, 3)
 			var available_next: Array = next_nodes.duplicate()
 
 			for i in range(num_connections):
@@ -215,8 +215,8 @@ func _generate_connections() -> void:
 					break
 
 				# Prefer forward progression (nodes with higher index)
-				var next_idx := _rng.randi() % available_next.size()
-				var target := available_next[next_idx]
+				var next_idx: int = _rng.randi() % available_next.size()
+				var target: Dictionary = available_next[next_idx]
 				available_next.remove_at(next_idx)
 
 				# Add connection (from -> to)
@@ -245,9 +245,9 @@ func _add_start_node() -> void:
 
 	if not zone1_nodes.is_empty():
 		# Connect to 1-2 random nodes in zone 1
-		var num_start_connections := _rng.randi_range(1, min(2, zone1_nodes.size()))
+		var num_start_connections: int = _rng.randi_range(1, min(2, zone1_nodes.size()))
 		for i in range(num_start_connections):
-			var target_idx := _rng.randi() % zone1_nodes.size()
+			var target_idx: int = _rng.randi() % zone1_nodes.size()
 			_map_data["connections"].append([start_node["id"], zone1_nodes[target_idx]["id"]])
 
 
@@ -273,7 +273,7 @@ func get_available_next_nodes(current_node_id: String) -> Array[Dictionary]:
 
 
 ## Get node by ID
-func get_node(node_id: String) -> Dictionary:
+func get_node_data(node_id: String) -> Dictionary:
 	for node in _map_data["nodes"]:
 		if node["id"] == node_id:
 			return node
@@ -293,7 +293,7 @@ func can_reach_node(from_node_id: String, to_node_id: String) -> bool:
 			continue
 		visited.append(current)
 
-		var next_nodes := get_available_next_nodes(current)
+		var next_nodes: Array = get_available_next_nodes(current)
 		for node in next_nodes:
 			if not node["id"] in visited:
 				queue.append(node["id"])
@@ -316,7 +316,7 @@ func serialize() -> Dictionary:
 
 ## Get map statistics
 func get_map_stats() -> Dictionary:
-	var stats := {
+	var stats: Dictionary = {
 		"total_nodes": _map_data["nodes"].size(),
 		"zones": _map_data["zones"].size(),
 		"connections": _map_data["connections"].size(),
