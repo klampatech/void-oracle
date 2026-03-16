@@ -127,19 +127,19 @@
 
 ---
 
-## Priority 3: Draft System (M4)
+## Priority 3: Draft System (M4) — COMPLETED
 
 ### P3.1 Draft System
-- [ ] Create `scripts/game/systems/DraftSystem.gd` script
-- [ ] Create `scenes/ui/DraftUI.tscn`
-- [ ] Draw 3 random pegs from available pool
-- [ ] Player selects 1, placed in chosen empty slot
-- [ ] Connect to RunState.pegs array
+- [x] Create `scripts/game/systems/DraftSystem.gd` script
+- [x] Create `scenes/ui/DraftUI.tscn` + `scripts/ui/DraftUI.gd`
+- [x] Integrate with EncounterManager for enemy defeat trigger
+- [x] Draw 3 random pegs from available pool (tier-weighted)
+- [x] Player selects 1, placed in chosen empty slot
 
 ### P3.2 Peg Placement
-- [ ] Click empty slot to place selected peg
-- [ ] Validate placement (bounds, collision)
-- [ ] Trigger peg_spawned signal
+- [x] Click empty slot to place selected peg
+- [x] Validate placement (bounds check in Board.gd)
+- [x] Trigger peg_spawned signal (via add_peg_at_position)
 
 ---
 

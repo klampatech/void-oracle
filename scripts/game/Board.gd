@@ -205,4 +205,25 @@ func add_peg_at_position(peg_type: String, position: Vector2) -> Node2D:
 	peg.add_to_group("peg")
 
 	_peg_container.add_child(peg)
+
+	# Emit peg spawned signal
+	EventBus.peg_spawned.emit(peg, position)
+
 	return peg
+
+
+func _input(event: InputEvent) -> void:
+	# Handle mouse click for peg placement
+	if event is InputEventMouseButton:
+		var mouse_event := event as InputEventMouseButton
+		if mouse_event.button_index == MOUSE_BUTTON_LEFT and mouse_event.pressed:
+			# Check if draft system is in placement mode
+			var draft_system = get_tree().get_first_node_in_group("draft_system")
+			if draft_system and draft_system.has_method("is_in_placement_mode"):
+				if draft_system.is_in_placement_mode():
+					# Convert mouse position to local board position
+					var local_pos := get_local_mouse_position()
+					# Validate position is within board bounds
+					if local_pos.x >= 0 and local_pos.x <= BOARD_WIDTH and local_pos.y >= 0 and local_pos.y <= BOARD_HEIGHT:
+						# Try to place the peg
+						draft_system.place_peg_at(local_pos)

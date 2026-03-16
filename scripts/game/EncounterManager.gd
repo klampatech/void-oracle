@@ -42,6 +42,12 @@ var _board: Node2D = null
 ## Ball spawner reference
 var _ball_spawner: Node2D = null
 
+## Draft system reference
+var _draft_system: Node = null
+
+## Draft UI reference
+var _draft_ui: Node = null
+
 
 func _ready() -> void:
 	# Get references to board and ball spawner
@@ -53,6 +59,22 @@ func _ready() -> void:
 	EventBus.ball_lost.connect(_on_ball_lost)
 	EventBus.ball_launched.connect(_on_ball_launched)
 	EventBus.enemy_defeated.connect(_on_enemy_defeated)
+
+	# Get draft system reference
+	_draft_system = get_tree().get_first_node_in_group("draft_system")
+	if not _draft_system:
+		# Try to create draft system if not already in scene
+		var DraftSystemScript = load("res://scripts/game/systems/DraftSystem.gd")
+		if DraftSystemScript:
+			_draft_system = DraftSystemScript.new()
+			_draft_system.name = "DraftSystem"
+			_draft_system.add_to_group("draft_system")
+			add_child(_draft_system)
+
+	# Get draft UI reference
+	_draft_ui = get_tree().get_first_node_in_group("draft_ui")
+	if not _draft_ui:
+		_draft_ui = get_node_or_null("../DraftUI")
 
 	# Defer enemy start to ensure all scripts are loaded
 	call_deferred("_start_initial_encounter")
@@ -232,7 +254,21 @@ func _on_enemy_defeated(enemy: Node) -> void:
 	# Emit encounter ended
 	EventBus.encounter_ended.emit("victory")
 
-	# TODO: Trigger rewards/draft phase
+	# Trigger draft phase
+	_start_draft_phase()
+
+
+## Start draft phase after victory
+func _start_draft_phase() -> void:
+	if _draft_system and _draft_system.has_method("generate_offerings"):
+		var offerings = _draft_system.generate_offerings()
+
+		# Find DraftUI and show it
+		if _draft_ui and _draft_ui.has_method("show_draft"):
+			_draft_ui.show_draft(offerings)
+
+		# Enable placement mode
+		_set_phase(Phase.BOARD)
 
 
 ## Handle player death (stability depleted)

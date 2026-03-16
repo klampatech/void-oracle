@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://stabilitybar123" path="res://scenes/ui/StabilityBar.tscn" id="5_stability"]
 [ext_resource type="PackedScene" uid="uid://deathscreen123456" path="res://scenes/ui/DeathScreen.tscn" id="6_death"]
 [ext_resource type="PackedScene" uid="uid://boardphaseui123456" path="res://scenes/ui/BoardPhaseUI.tscn" id="7_board_phase"]
+[ext_resource type="PackedScene" uid="uid://draftui123456" path="res://scenes/ui/DraftUI.tscn" id="8_draft"]
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_board")
+groups = ["board"]
 
 [node name="EncounterManager" parent="." instance=ExtResource("4_encounter")]
 groups = ["encounter_manager"]
@@ -71,3 +73,6 @@ offset_bottom = 60.0
 [node name="DeathScreen" parent="." instance=ExtResource("6_death")]
 
 [node name="BoardPhaseUI" parent="." instance=ExtResource("7_board_phase")]
+
+[node name="DraftUI" parent="." instance=ExtResource("8_draft")]
+groups = ["draft_ui"]
