@@ -284,9 +284,13 @@
 ## Priority 9: Polish & Export (M7)
 
 ### P9.1 Audio System
-- [ ] Per-peg tone playback (AudioManager)
-- [ ] Boss music layering
-- [ ] Ambient sound design
+- [x] Per-peg tone playback (AudioManager) - Uses procedural sine wave samples
+- [x] Velocity-based volume scaling (harder hits = louder)
+- [x] State-based pitch modifiers (blessed, cursed, void, mutant)
+- [x] Audio bus system (Master, SFX, Music, Ambient)
+- [x] Volume settings persistence (user://void_oracle/settings.json)
+- [x] Boss music placeholder (zone/boss music system in place)
+- [x] Ambient music placeholder (zone-based music system in place)
 
 ### P9.2 Particle Effects
 - [ ] Blessed sparkle CPUParticles2D
