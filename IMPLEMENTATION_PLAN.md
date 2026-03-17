@@ -406,6 +406,7 @@ The core game is feature-complete! Most tasks from M1-M8 are implemented.
 - Mobile touch input refinement
 - Additional polish based on playtesting feedback
 - Minor TODOs: chaos effects enhancement, death screen flow improvements
+  - ✅ MutationEngine._get_local_corruption() - implemented proximity-based corruption sampling
 
 ---
 

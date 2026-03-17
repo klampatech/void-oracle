@@ -68,6 +68,45 @@ func _next_state(current: String, peg: Node) -> String:
 			return "void" if randf() < 0.1 else "mutant"
 	return current
 
+const NEIGHBOR_RADIUS := 150.0  # Pixels to sample for local corruption
+
 func _get_local_corruption(peg: Node) -> float:
-	# TODO: Sample nearby pegs' states and return corruption ratio 0.0-1.0
-	return 0.3  # placeholder
+	var all_pegs = get_tree().get_nodes_in_group("peg")
+	if all_pegs.size() == 0:
+		return 0.3  # Default if no pegs exist
+
+	var peg_position = peg.global_position
+	var total_corruption := 0.0
+	var count := 0
+
+	for other_peg in all_pegs:
+		if other_peg == peg:
+			continue
+		if not other_peg.has_method("get_peg_state_string"):
+			continue
+		var distance = peg_position.distance_to(other_peg.global_position)
+		if distance > NEIGHBOR_RADIUS:
+			continue
+
+		# Weight by proximity (closer pegs have more influence)
+		var weight = 1.0 - (distance / NEIGHBOR_RADIUS)
+		var state = other_peg.get_peg_state_string()
+
+		# Map state to corruption level
+		match state:
+			"blessed", "dormant":
+				total_corruption += 0.0 * weight
+			"cursed":
+				total_corruption += 1.0 * weight
+			"mutant":
+				total_corruption += 0.5 * weight
+			"void":
+				total_corruption += 1.0 * weight
+			"void_touched":
+				total_corruption += 0.75 * weight
+		count += 1
+
+	if count == 0:
+		return 0.3  # Default if no nearby pegs
+
+	return total_corruption / count
