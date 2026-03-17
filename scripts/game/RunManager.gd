@@ -31,16 +31,16 @@ func _ready() -> void:
 	EventBus.enemy_defeated.connect(_on_enemy_defeated)
 
 
-## Start a new run with given seed
-func start_new_run(seed: int) -> void:
+## Start a new run with given seed and optional class
+func start_new_run(seed: int, class_id: String = "none") -> void:
 	_map_seed = seed
 	_current_zone = 1
 	_run_map = null
 	_board = null
 	_encounter_manager = null
 
-	# Initialize RunState
-	RunState.new_run(seed)
+	# Initialize RunState with class bonuses
+	RunState.new_run(seed, class_id)
 
 	# Show the map
 	_show_map()
@@ -260,6 +260,20 @@ func _on_enemy_defeated(enemy: Node) -> void:
 	if enemy.has_method("is_boss") and enemy.is_boss():
 		print("RunManager: Boss defeated in zone ", _current_zone)
 
+		# Award void shards based on zone
+		var shard_reward := 0
+		match _current_zone:
+			1:
+				shard_reward = 5  # Gardener
+			2:
+				shard_reward = 10  # Architect
+			3:
+				shard_reward = 25  # Final Oracle
+
+		if shard_reward > 0:
+			MetaState.add_void_shards(shard_reward)
+			print("RunManager: Awarded ", shard_reward, " void shards")
+
 		# Check if this was zone 1 boss - unlock zone 2
 		if _current_zone == 1:
 			_current_zone = 2
@@ -275,6 +289,7 @@ func _on_enemy_defeated(enemy: Node) -> void:
 		# Check if this was zone 3 boss - game victory
 		elif _current_zone == 3:
 			EventBus.game_victory.emit()
+			MetaState.complete_run(3)
 			print("RunManager: GAME VICTORY! Final Oracle defeated!")
 
 

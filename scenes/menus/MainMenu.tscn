@@ -26,13 +26,92 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -200.0
-offset_top = 200.0
+offset_top = 80.0
 offset_right = 200.0
-offset_bottom = 300.0
+offset_bottom = 140.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.788, 0.659, 0.298, 1)
 theme_override_font_sizes/font_size = 48
 text = "VOID ORACLE"
+horizontal_alignment = 1
+
+[node name="VoidShardLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 150.0
+offset_right = 80.0
+offset_bottom = 180.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.565, 0.388, 0.906, 1)
+theme_override_font_sizes/font_size = 18
+text = "Void Shards: 0"
+horizontal_alignment = 1
+
+[node name="ClassContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -120.0
+offset_right = 250.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="ClassNone" type="Button" parent="ClassContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Wanderer"
+
+[node name="ClassNaturalist" type="Button" parent="ClassContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "The Naturalist"
+
+[node name="ClassDoomsayer" type="Button" parent="ClassContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "The Doomsayer"
+
+[node name="ClassArchitect" type="Button" parent="ClassContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "The Architect"
+
+[node name="ClassVoidWalker" type="Button" parent="ClassContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "The Void-Walker"
+
+[node name="ClassDescription" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 40.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "Select your Oracle class to begin"
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="."]
@@ -43,11 +122,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -30.0
+offset_top = 120.0
 offset_right = 100.0
-offset_bottom = 30.0
+offset_bottom = 160.0
 grow_horizontal = 2
-grow_vertical = 2
 text = "START RUN"
 
+[connection signal="pressed" from="ClassContainer/ClassNone" to="." method="_on_class_selected" binds= ["none"]]
+[connection signal="pressed" from="ClassContainer/ClassNaturalist" to="." method="_on_class_selected" binds= ["naturalist"]]
+[connection signal="pressed" from="ClassContainer/ClassDoomsayer" to="." method="_on_class_selected" binds= ["doomsayer"]]
+[connection signal="pressed" from="ClassContainer/ClassArchitect" to="." method="_on_class_selected" binds= ["architect"]]
+[connection signal="pressed" from="ClassContainer/ClassVoidWalker" to="." method="_on_class_selected" binds= ["void_walker"]]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_pressed"]

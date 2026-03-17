@@ -260,17 +260,24 @@
 
 ---
 
-## Priority 8: Meta-Progression (M6)
+## Priority 8: Meta-Progression (M6) — COMPLETED
 
 ### P8.1 Void Shards
-- [ ] Track shards from boss kills
-- [ ] Unlock new pegs, events, boss variants
+- [x] Track shards from boss kills (MetaState singleton + persistence)
+- [x] Unlock new pegs, events, boss variants (system in place)
 
 ### P8.2 Oracle Classes
-- [ ] The Naturalist: 4 Fungal, Growth bias
-- [ ] The Doomsayer: 2 Bone, 1 Cursed, Death/Void bias
-- [ ] The Architect: +10 Stability, Foundation/Fire bias
-- [ ] The Void-Walker: 1 Void Rift, Void/Eye bias
+- [x] The Naturalist: 4 Fungal, Growth bias
+- [x] The Doomsayer: 2 Bone, 1 Cursed, Death/Void bias
+- [x] The Architect: +10 Stability, Foundation/Fire bias
+- [x] The Void-Walker: 1 Void Rift, Void/Eye bias
+- [x] Class selection UI in MainMenu
+
+**Implementation Details:**
+- Created `MetaState.gd` AutoLoad for persistent shard tracking
+- Added 5 class options: Wanderer (default), Naturalist, Doomsayer, Architect, Void-Walker
+- Board loads starting pegs from RunState on class selection
+- Void shard rewards: Gardener=5, Architect=10, Final Oracle=25
 
 ---
 

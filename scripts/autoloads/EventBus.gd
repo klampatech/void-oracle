@@ -52,6 +52,7 @@ signal gold_changed(new_value: int, delta: int)
 signal node_selected(map_node: Dictionary)
 signal encounter_started(encounter_type: String, data: Dictionary)
 signal encounter_ended(result: String)               # "victory", "death", "fled"
+signal run_started(oracle_class: String)              # emitted when a new run begins
 signal run_ended(cause: String, board_state: Dictionary)
 signal zone_completed(zone_number: int)               # emitted when a zone boss is defeated
 signal game_victory()                                 # emitted when Final Oracle is defeated

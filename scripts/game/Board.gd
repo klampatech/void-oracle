@@ -105,6 +105,74 @@ func _create_pockets() -> void:
 
 
 func _create_pegs() -> void:
+	# Check if RunState has starting pegs (from class selection)
+	if RunState.pegs.size() > 0:
+		# Use class-specific starting pegs
+		_create_class_pegs()
+		return
+
+	# Default: create staggered grid of pegs
+	_create_default_pegs()
+
+
+func _create_class_pegs() -> void:
+	# Spawn pegs from RunState at their defined positions
+	for peg_data in RunState.pegs:
+		var peg_type: String = peg_data.get("type", "stone")
+		var position: Vector2 = peg_data.get("position", Vector2(300, 200))
+		var state: String = peg_data.get("state", "blessed")
+
+		if _peg_scenes.has(peg_type):
+			var peg: Node2D = _peg_scenes[peg_type].instantiate()
+			peg.position = position
+			peg.add_to_group("peg")
+
+			# Set initial state if different from blessed
+			if state != "blessed" and peg.has_method("set_peg_state"):
+				peg.set_peg_state(state)
+
+			_peg_container.add_child(peg)
+			print("Board: Spawned class starting peg: ", peg_type, " at ", position)
+
+	# Fill remaining slots with default pegs to have a playable board
+	_create_default_pegs_partial()
+
+
+func _create_default_pegs_partial() -> void:
+	# Add some additional pegs to make the board playable
+	# Grid parameters
+	var start_y := 350.0  # Start lower to leave room for class pegs
+	var end_y := 700.0
+	var column_spacing := 70.0
+	var row_spacing := 60.0
+	var left_margin := 60.0
+	var right_margin := 60.0
+
+	var num_columns := int((BOARD_WIDTH - left_margin - right_margin) / column_spacing) + 1
+	var num_rows := int((end_y - start_y) / row_spacing) + 1
+
+	var peg_types := _peg_scenes.keys()
+
+	for row in range(num_rows):
+		var y := start_y + row * row_spacing
+		var x_offset := column_spacing / 2.0 if row % 2 == 1 else 0.0
+
+		for col in range(num_columns):
+			var x := left_margin + x_offset + col * column_spacing
+
+			if x < left_margin or x > BOARD_WIDTH - right_margin:
+				continue
+
+			var peg_type: String = peg_types[(row * num_columns + col) % peg_types.size()]
+
+			var peg: Node2D = _peg_scenes[peg_type].instantiate()
+			peg.position = Vector2(x, y)
+			peg.add_to_group("peg")
+
+			_peg_container.add_child(peg)
+
+
+func _create_default_pegs() -> void:
 	# Grid parameters
 	var start_y := 150.0
 	var end_y := 700.0
@@ -408,4 +476,3 @@ func clear_cracks() -> void:
 ## Called when encounter ends to clean up cracks
 func _on_encounter_ended(_result: String) -> void:
 	clear_cracks()
-

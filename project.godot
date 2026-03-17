@@ -29,6 +29,7 @@ SynergyEffects="*res://scripts/autoloads/SynergyEffects.gd"
 AudioManager="*res://scripts/autoloads/AudioManager.gd"
 MutationEngine="*res://scripts/autoloads/MutationEngine.gd"
 RunManager="*res://scripts/game/RunManager.gd"
+MetaState="*res://scripts/autoloads/MetaState.gd"
 
 [display]
 
