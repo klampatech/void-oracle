@@ -204,9 +204,15 @@
 - [x] Added zone_completed and game_victory signals to EventBus
 
 ### P5.3 Zone 3 Boss — Final Oracle
-- [ ] Mirrors player's board layout
-- [ ] Has same synergies as player
-- [ ] Phase 3: Reveals as ghost of best run
+- [x] Created data/enemies/final_oracle.json (HP 300, 3 phases)
+- [x] Created FinalOracle.gd with multi-phase mechanics
+- [x] Phase 1 (100-67%): Copies player's primary synergy as resistance
+- [x] Phase 2 (66-34%): Adds second synergy as resistance
+- [x] Phase 3 (33-0%): All synergies resisted, reveals as ghost board
+- [x] Added get_active_synergies() to SynergyChecker
+- [x] Added get_peg_tags() to BasePeg for synergy detection
+- [x] Updated RunManager to load Final Oracle for Zone 3
+- [x] Wired game_victory signal on defeat
 
 ---
 
@@ -299,7 +305,7 @@
 | `data/enemies/leech.json` | ✅ Complete |
 | `data/enemies/gardener.json` | ✅ Complete |
 | `data/enemies/architect.json` | ✅ Complete |
-| `data/enemies/final_oracle.json` | ❌ MISSING |
+| `data/enemies/final_oracle.json` | ✅ Complete |
 
 ---
 

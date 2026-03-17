@@ -19,6 +19,7 @@ var peg_type: PegType = PegType.STONE
 var peg_state: PegState = PegState.DORMANT
 var hit_count: int = 0
 var corruption_level: float = 0.5  ## 0.0 = blessed, 0.5 = neutral, 1.0 = cursed
+var tags: Array[String] = []  ## Tags from peg definitions (e.g., ["foundation"], ["death", "growth"])
 
 ## Placeholder colors from CLAUDE.md spec
 const PEG_COLORS = {
@@ -61,6 +62,12 @@ func _load_peg_data() -> void:
 			_peg_data = json.data
 		file.close()
 
+	# Load tags from peg data
+	var peg_key := _get_peg_key()
+	if not peg_key.is_empty() and _peg_data.has(peg_key):
+		var data: Dictionary = _peg_data[peg_key]
+		tags = data.get("tags", [])
+
 
 func _apply_physics_material() -> void:
 	var peg_key := _get_peg_key()
@@ -98,6 +105,11 @@ func _on_body_entered(body: Node2D) -> void:
 
 func get_peg_type_string() -> String:
 	return _get_peg_key()
+
+
+## Get peg tags for synergy detection
+func get_peg_tags() -> Array[String]:
+	return tags
 
 
 func get_hit_count() -> int:

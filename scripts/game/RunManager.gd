@@ -153,11 +153,13 @@ func _load_boss_for_zone() -> void:
 			else:
 				push_error("Failed to load Architect scene")
 		3:
-			# Zone 3: Final Oracle (not yet implemented)
-			print("RunManager: Final Oracle not yet implemented, loading Gardener")
-			boss_scene = load("res://scenes/game/enemies/Gardener.tscn") as PackedScene
+			# Zone 3: Final Oracle
+			boss_scene = load("res://scenes/game/enemies/FinalOracle.tscn") as PackedScene
 			if boss_scene:
 				_encounter_manager.start_encounter(boss_scene)
+				print("RunManager: Boss encounter - The Final Oracle (Zone 3)")
+			else:
+				push_error("Failed to load Final Oracle scene")
 		_:
 			print("RunManager: Unknown zone ", _current_zone, ", loading Gardener")
 			boss_scene = load("res://scenes/game/enemies/Gardener.tscn") as PackedScene

@@ -69,3 +69,8 @@ func _min_tag_count(tags: Array) -> int:
 	for tag in tags:
 		min_count = min(min_count, _tag_counts.get(tag, 0))
 	return int(min_count) if min_count != INF else 0
+
+
+## Get active synergies as a dictionary (synergy_id -> peg_count)
+func get_active_synergies() -> Dictionary:
+	return _active.duplicate(true)

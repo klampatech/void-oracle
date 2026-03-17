@@ -1,0 +1,71 @@
+{
+	"id": "final_oracle",
+	"name": "The Final Oracle",
+	"description": "The ultimate test. The Final Oracle mirrors your board and reveals your past in Phase 3.",
+	"hp": 300,
+	"max_hp": 300,
+	"is_boss": true,
+	"zone": 3,
+	"intent_display": "Will reveal your fate",
+	"phases": [
+		{
+			"phase": 1,
+			"hp_threshold": 0.67,
+			"actions": [
+				{
+					"type": "mirror_synergy",
+					"synergy_index": 0,
+					"description": "Copies your primary synergy as a resistance"
+				}
+			]
+		},
+		{
+			"phase": 2,
+			"hp_threshold": 0.34,
+			"actions": [
+				{
+					"type": "mirror_synergy",
+					"synergy_index": 1,
+					"description": "Adds second synergy as resistance"
+				}
+			]
+		},
+		{
+			"phase": 3,
+			"hp_threshold": 0.0,
+			"actions": [
+				{
+					"type": "reveal_ghost",
+					"description": "Reveals as your best run's ghost board"
+				},
+				{
+					"type": "all_resistances",
+					"description": "All your synergies now provide resistance"
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "mirror_synergy",
+			"description": "Mirrors player's strongest synergy as resistance"
+		},
+		{
+			"type": "reveal_ghost",
+			"description": "Reveals as the ghost of player's best run"
+		},
+		{
+			"type": "all_resistances",
+			"description": "All player synergies become resistances"
+		}
+	],
+	"on_death": {
+		"rewards": {
+			"gold": 100,
+			"void_essence": 30,
+			"unlocks": ["oracle_classes", "new_game_plus"]
+		}
+	},
+	"weakness": "none",
+	"weakness_description": "The Final Oracle has no obvious weakness - you must outplay its mirror abilities"
+}
