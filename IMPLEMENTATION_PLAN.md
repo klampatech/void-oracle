@@ -269,11 +269,15 @@ All P0 items are COMPLETED.
 
 ## Priority 9: Polish & Export (M7) — COMPLETE
 
-## Priority 10: Steam (M8) - COMPLETE
+## Priority 10: Steam (M8) - PARTIALLY COMPLETE
 
 ### Completed in M8:
 - macOS export preset configuration (bundle identifier, version, category)
 - Run History / Stats Screen (M7 gap)
+
+### NOT Completed (Future Work):
+- VO-037: GodotSteam Integration (achievements system)
+- VO-038: Steam Page Assets
 
 ### P9.1 Audio System
 - [x] Per-peg tone playback (AudioManager) - Uses procedural sine wave samples
@@ -364,26 +368,32 @@ P9.1 Audio → P9.2 Particles → P9.3 Web Export
 
 ## Next Steps
 
-The game is feature-complete! All major tasks from M1-M8 are implemented:
+The core game is feature-complete! Most tasks from M1-M8 are implemented.
 
 ### Completed
 - ✅ macOS Export - Configured bundle identifier, version, and category
 - ✅ Testing Infrastructure - 53 unit tests implemented
-- ✅ Windows Steam export - Working exe
+- ✅ Windows/macOS Steam export - Working builds
 - ✅ Web export - Tested and working
+
+### Remaining Work (Not Started)
+- VO-037: GodotSteam Integration (achievements)
+- VO-038: Steam Page Assets
 
 ### Lower Priority (Nice to Have)
 - Linux export (stretch goal)
 - Mobile touch input refinement
 - Additional polish based on playtesting feedback
+- Minor TODOs: chaos effects enhancement, death screen flow improvements
 
 ---
 
 ## Notes
 
-- All spec requirements from M1-M8 have been implemented:
+- Core spec requirements from M1-M8 have been implemented:
   - macOS export - CONFIGURED (bundle identifier, version, category set)
   - Testing infrastructure - IMPLEMENTED (53 unit tests for RunState, SynergyChecker, SynergyEffects, MutationEngine)
+  - Steam builds - EXPORTS WORKING (achievements NOT implemented)
 - VO-029 (Run History/Stats Screen) from M7 - IMPLEMENTED
   - Run history accessible from main menu via "Run History" button
   - Displays: zone reached, drops taken, victory/defeat, class
