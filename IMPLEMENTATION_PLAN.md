@@ -30,15 +30,15 @@
 
 ### Testing Gap:
 The `specs/testing_strategy_components.md` document outlines extensive testing requirements:
-- Unit tests for: Ball, BallSpawner, BasePeg, Board, EncounterManager, DraftSystem
+- Unit tests for: Ball, BallSpawner, BasePeg, Board, EncounterManager, DraftSystem, SynergyChecker, RunState, MutationEngine
 - Integration tests for: all Autoloads (EventBus, RunState, SynergyChecker, SynergyEffects, MutationEngine)
 - Data validation tests for: peg_definitions.json, enemy JSONs, synergy_definitions.json
 - **Current state**: Only `test/unit/test_sanity.gd` exists
 
-### Remaining Tasks:
-1. **Run History / Stats Screen** - Display past runs from user://void_oracle/run_history.json
-2. **macOS export preset** - Export templates not configured (debug/release paths empty)
-3. **Write tests** - Per testing_strategy_components.md; only test_sanity.gd exists
+### Remaining Tasks (Priority Order):
+1. **Run History / Stats Screen** (VO-029 from M6) - NOT IMPLEMENTED
+2. **macOS export preset** - Templates not configured
+3. **Write tests** - Per testing_strategy_components.md - NOT IMPLEMENTED
 
 ---
 
