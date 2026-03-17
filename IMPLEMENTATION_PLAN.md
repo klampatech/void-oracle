@@ -274,9 +274,30 @@ All P0 items are COMPLETED.
 ### Completed in M8:
 - macOS export preset configuration (bundle identifier, version, category)
 - Run History / Stats Screen (M7 gap)
+- VO-037: SteamManager AutoLoad created with achievement system
+
+### Steam Achievements Implementation (VO-037):
+- [x] Created `scripts/autoloads/SteamManager.gd` - AutoLoad for Steam integration
+- [x] Added to project.godot autoload list
+- [x] Implemented achievement IDs:
+  - "FIRST_BLOOD" — Win first combat
+  - "MUTANT" — Get a peg to mutate
+  - "SYNERGY" — Activate first synergy
+  - "GHOST_HUNTER" — Defeat a ghost board
+  - "THE_GARDENER" — Defeat Zone 1 boss
+  - "ARCHITECT" — Defeat Zone 2 boss
+  - "ORACLE" — Complete the game
+  - "COLLECTOR" — Own all peg types
+  - "MASTER" — Win on hardest difficulty
+- [x] Connected to EventBus signals for automatic triggering
+- [x] Graceful fallback when Steam not available
+
+### External Dependency Required:
+- **GodotSteam plugin** must be downloaded from https://github.com/GodotSteam/GodotSteam/releases
+- Place in `addons/godotsteam/` directory
+- Steamworks SDK files (steam_api.dll/.so/.dylib) required for export
 
 ### NOT Completed (Future Work):
-- VO-037: GodotSteam Integration (achievements system)
 - VO-038: Steam Page Assets
 
 ### P9.1 Audio System
@@ -377,7 +398,7 @@ The core game is feature-complete! Most tasks from M1-M8 are implemented.
 - ✅ Web export - Tested and working
 
 ### Remaining Work (Not Started)
-- VO-037: GodotSteam Integration (achievements)
+- VO-037: GodotSteam Integration (requires plugin download)
 - VO-038: Steam Page Assets
 
 ### Lower Priority (Nice to Have)
@@ -393,7 +414,8 @@ The core game is feature-complete! Most tasks from M1-M8 are implemented.
 - Core spec requirements from M1-M8 have been implemented:
   - macOS export - CONFIGURED (bundle identifier, version, category set)
   - Testing infrastructure - IMPLEMENTED (53 unit tests for RunState, SynergyChecker, SynergyEffects, MutationEngine)
-  - Steam builds - EXPORTS WORKING (achievements NOT implemented)
+  - Steam builds - EXPORTS WORKING
+  - Steam achievements - CODE IMPLEMENTED (requires GodotSteam plugin download from GitHub)
 - VO-029 (Run History/Stats Screen) from M7 - IMPLEMENTED
   - Run history accessible from main menu via "Run History" button
   - Displays: zone reached, drops taken, victory/defeat, class
@@ -405,3 +427,8 @@ The core game is feature-complete! Most tasks from M1-M8 are implemented.
 - Web export is tested and working
 - Windows Steam export is configured and produces a working exe
 - macOS export is configured and produces a working .app bundle
+- Steam achievements - SteamManager AutoLoad created at scripts/autoloads/SteamManager.gd
+  - 9 achievements defined with proper IDs
+  - Connected to EventBus signals for automatic unlocking
+  - Graceful fallback when Steam not available
+  - Requires: GodotSteam plugin download + Steamworks SDK files for export

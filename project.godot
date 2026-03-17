@@ -32,6 +32,7 @@ ParticleEffects="*res://scripts/autoloads/ParticleEffects.gd"
 MutationEngine="*res://scripts/autoloads/MutationEngine.gd"
 RunManager="*res://scripts/game/RunManager.gd"
 MetaState="*res://scripts/autoloads/MetaState.gd"
+SteamManager="*res://scripts/autoloads/SteamManager.gd"
 
 [display]
 
