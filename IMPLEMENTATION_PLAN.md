@@ -29,9 +29,8 @@
 - ✅ GUT testing framework (downloaded, configured, sanity test passes)
 
 ### Specified Requirements NOT Implemented:
-1. **Run History / Stats Screen** (VO-029 from M7) - NOT IMPLEMENTED
-2. **macOS export** - Templates not configured (empty paths in export_presets.cfg)
-3. **Testing per testing_strategy_components.md** - ONLY test_sanity.gd EXISTS
+1. **macOS export** - Templates not configured (empty paths in export_presets.cfg)
+2. **Testing per testing_strategy_components.md** - ONLY test_sanity.gd EXISTS
 
 ### Remaining Tasks (Priority Order):
 1. **Run History / Stats Screen** (VO-029 from M6) - NOT IMPLEMENTED
@@ -299,12 +298,12 @@ All P0 items are COMPLETED.
 - [x] Add ETC2 ASTC texture compression for macOS export support
 - [x] Add bundle identifier for macOS
 
-### P9.5 Run History Screen (NOT IMPLEMENTED)
-- [ ] Create run history display in main menu
-- [ ] Show past runs: zone reached, drops taken, victory/defeat
-- [ ] Track best run (highest zone)
-- [ ] Display total Void Shards earned
-- [ ] Persist run history to user://void_oracle/run_history.json
+### P9.5 Run History Screen (IMPLEMENTED)
+- [x] Create run history display in main menu
+- [x] Show past runs: zone reached, drops taken, victory/defeat
+- [x] Track best run (highest zone)
+- [x] Display total Void Shards earned
+- [x] Persist run history to user://void_oracle/run_history.json
 
 ### Testing Framework (GUT)
 - [x] Downloaded GUT from GitHub (addons/gut/)
@@ -362,17 +361,11 @@ P9.1 Audio → P9.2 Particles → P9.3 Web Export
 The game is feature-complete. Remaining tasks are:
 
 ### High Priority
-1. **Run History / Stats Screen** - Display past runs in main menu
-   - Create UI to show: zone reached, drops taken, victory/defeat
-   - Track best run (highest zone reached)
-   - Display total Void Shards earned
-   - Persist to `user://void_oracle/run_history.json`
-
-2. **macOS Export** - Configure export template paths in export_presets.cfg
+1. **macOS Export** - Configure export template paths in export_presets.cfg
    - Set custom_template/debug to macOS debug template
    - Set custom_template/release to macOS release template
 
-3. **Testing Infrastructure** - Implement tests per testing_strategy_components.md
+2. **Testing Infrastructure** - Implement tests per testing_strategy_components.md
    - Unit tests for: Ball, BallSpawner, BasePeg, Board, EncounterManager, DraftSystem, SynergyChecker, RunState, MutationEngine
    - Integration tests for: Autoloads, EventBus, peg-physics interactions
    - Data validation tests for: peg_definitions.json, enemy JSONs, synergy_definitions.json
@@ -387,9 +380,13 @@ The game is feature-complete. Remaining tasks are:
 ## Notes
 
 - All spec requirements from M1-M8 have been implemented EXCEPT:
-  - VO-029 (Run History/Stats Screen) from M7 - NOT IMPLEMENTED
   - macOS export templates - NOT CONFIGURED (paths empty)
   - Testing per testing_strategy_components.md - ONLY test_sanity.gd EXISTS
+- VO-029 (Run History/Stats Screen) from M7 - IMPLEMENTED
+  - Run history accessible from main menu via "Run History" button
+  - Displays: zone reached, drops taken, victory/defeat, class
+  - Tracks best run (highest zone), total runs, total Void Shards
+  - Persists to `user://void_oracle/run_history.json`
 - The game can be played from start (main menu) through Zone 1-3, defeating bosses, and winning or dying
 - Ghost board system is operational - dead runs are saved and can appear as encounters
 - Meta-progression (Void Shards, Oracle Classes) is functional

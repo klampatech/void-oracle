@@ -3,6 +3,9 @@ extends Control
 ## Currently selected class (default: "none")
 var _selected_class: String = "none"
 
+## Run history UI instance
+var _run_history_ui: CanvasLayer = null
+
 ## Class definitions
 const CLASSES := {
 	"none": {
@@ -37,6 +40,15 @@ func _ready() -> void:
 	_update_void_shards_display()
 	# Default to wanderer
 	_select_class("none")
+
+	# Instantiate run history UI (hidden by default)
+	_instantiate_run_history_ui()
+
+
+func _instantiate_run_history_ui() -> void:
+	var run_history_scene := preload("res://scenes/ui/RunHistoryUI.tscn")
+	_run_history_ui = run_history_scene.instantiate()
+	add_child(_run_history_ui)
 
 
 func _update_void_shards_display() -> void:
@@ -83,3 +95,9 @@ func _on_start_pressed() -> void:
 
 	# Start the run via RunManager with selected class
 	RunManager.start_new_run(seed, _selected_class)
+
+
+func _on_stats_pressed() -> void:
+	# Show run history UI
+	if _run_history_ui:
+		_run_history_ui.show_history()
