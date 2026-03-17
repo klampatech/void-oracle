@@ -28,7 +28,7 @@
 - ✅ Windows Steam export
 - ✅ macOS Steam export
 - ✅ GUT testing framework installed and operational
-- ✅ 147 tests passing (RunState, SynergyChecker, SynergyEffects, MutationEngine, EventBus, GhostBoardManager, MetaState, DataValidation, integration)
+- ✅ 163 tests passing (RunState, SynergyChecker, SynergyEffects, MutationEngine, EventBus, GhostBoardManager, MetaState, DataValidation, integration)
 
 ### Testing Status (from qa_requirements.md):
 - ✅ GUT framework installed
@@ -44,17 +44,11 @@
 
 ### Specified Requirements NOT Fully Implemented:
 
-1. **Chaos effects** - Pocket chaos effect is triggered but not fully implemented (EncounterManager.gd:402 - TODO)
-2. **Death screen flow improvements** - RunManager.gd:339, EncounterManager.gd:338, DeathScreen.gd:120 have TODOs for cleanup
+1. ~~Chaos effects~~ - **COMPLETED** in P0.1 (see below)
+2. ~~Death screen flow improvements~~ - **COMPLETED** in P0.2 (see below)
 3. **VO-038: Steam Page Assets** - Not implemented (requires Steam partner portal access, external work)
-4. **Testing Infrastructure** - Test runner, data validation tests, integration tests, CI pipeline needed (see P0.4)
-5. **M7 Polish items** - Some shader finalization and polish items may need work:
-   - VO-030: Final shader visuals (placeholders may still exist)
-   - VO-031: Audio - per-peg tones (procedural, may need refinement)
-   - VO-032: Ambient music tracks (placeholder system in place, no actual audio files)
-   - VO-033: Main menu + UI polish (mostly complete)
-   - VO-034: Web export (tested and working)
-   - VO-035: Mobile touch input (basic support may need refinement)
+4. ~~Testing Infrastructure~~ - **COMPLETED** in P0.4 (see below)
+5. ~~M7 Polish items~~ - **COMPLETED** in P0.3 (see below)
 
 ### Completed in This Session:
 - **P0.1: Chaos Effects** - Implemented actual chaos pocket effects in EncounterManager.gd:
@@ -465,8 +459,13 @@
 - [x] Set up GitHub Actions workflow for automated testing - DONE (.github/workflows/test.yml)
 
 **Test Summary (as of 2026-03-17):**
-- Total tests: 147 (132 unit + 15 integration)
+- Total tests: 163 (132 unit + 31 integration)
 - All tests passing
+
+### Fixes Applied (v0.6.5):
+- Fixed test_run_lifecycle.gd: replaced invalid `assert_le()` call with `assert_eq()`
+- Fixed test_synergy_effects.gd: removed redundant `_ready()` call that caused signal connection duplicate errors
+- Coverage report generation: Not implemented (requires external godot-gut-coverage plugin)
 
 ---
 
