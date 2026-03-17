@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://cbuia4rpmsu58"]
+[gd_scene format=3 uid="uid://cx4vj8y7p1t2r"]
 
 [ext_resource type="Script" path="res://scripts/game/pegs/HeartPeg.gd" id="1_heartpeg"]
-[ext_resource type="PackedScene" uid="uid://basepeg12345678" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+[ext_resource type="PackedScene" uid="uid://db3opxkr0v0mj" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/icons/stability_icon_heart.png" id="3_heart"]
 
 [node name="HeartPeg" instance=ExtResource("2_base")]
 script = ExtResource("1_heartpeg")
 
-[node name="Visual" parent="." index="1"]
-color = Color(0.910196, 0.188235, 0.376471, 1)
+[node name="Visual" parent="." index="2"]
+texture = ExtResource("3_heart")

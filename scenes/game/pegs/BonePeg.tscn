@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://csciq2f137758"]
+[gd_scene format=3 uid="uid://dr18y373at82v"]
 
 [ext_resource type="Script" path="res://scripts/game/pegs/BonePeg.gd" id="1_bonepeg"]
-[ext_resource type="PackedScene" uid="uid://basepeg12345678" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+[ext_resource type="PackedScene" uid="uid://db3opxkr0v0mj" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+[ext_resource type="Texture2D" path="res://assets/textures/pegs/pachinko_peg_bone.png" id="3_bone"]
 
 [node name="BonePeg" instance=ExtResource("2_base")]
 script = ExtResource("1_bonepeg")
 
-[node name="Visual" parent="." index="1"]
-color = Color(0.909804, 0.878431, 0.815686, 1)
+[node name="Visual" parent="." index="2"]
+texture = ExtResource("3_bone")

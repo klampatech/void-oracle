@@ -1,10 +1,12 @@
-[gd_scene format=3 uid="uid://cpcd8tqrc0ki4"]
+[gd_scene format=3 uid="uid://be6xy7p1t2r4a"]
 
 [ext_resource type="Script" path="res://scripts/game/pegs/EmberPeg.gd" id="1_emberpeg"]
-[ext_resource type="PackedScene" uid="uid://basepeg12345678" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+[ext_resource type="PackedScene" uid="uid://db3opxkr0v0mj" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+[ext_resource type="Texture2D" path="res://assets/textures/pegs/pachinko_peg_stone.png" id="3_stone"]
 
 [node name="EmberPeg" instance=ExtResource("2_base")]
 script = ExtResource("1_emberpeg")
 
-[node name="Visual" parent="." index="1"]
-color = Color(0.910, 0.353, 0.125, 1)
+[node name="Visual" parent="." index="2"]
+modulate = Color(1, 0.4, 0.2, 1)
+texture = ExtResource("3_stone")

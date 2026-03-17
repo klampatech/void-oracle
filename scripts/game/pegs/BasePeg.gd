@@ -21,17 +21,11 @@ var hit_count: int = 0
 var corruption_level: float = 0.5  ## 0.0 = blessed, 0.5 = neutral, 1.0 = cursed
 var tags: Array[String] = []  ## Tags from peg definitions (e.g., ["foundation"], ["death", "growth"])
 
-## Placeholder colors from CLAUDE.md spec
-const PEG_COLORS = {
-	PegType.STONE: Color(0.533, 0.533, 0.533, 1.0),    # #888888
-	PegType.BONE: Color(0.91, 0.878, 0.816, 1.0),       # #E8E0D0
-	PegType.FUNGAL: Color(0.29, 0.478, 0.227, 1.0),     # #4A7A3A
-	PegType.EMBER: Color(0.91, 0.353, 0.125, 1.0),      # #E85A20
-	PegType.EYE: Color(0.565, 0.376, 0.91, 1.0),         # #9060E8
-	PegType.HEART: Color(0.91, 0.188, 0.376, 1.0),      # #E83060
-	PegType.ORACLE: Color(0.788, 0.659, 0.298, 1.0),    # #C9A84C
-	PegType.VOID_RIFT: Color(0.039, 0.039, 0.165, 1.0),  # #0A0A2A
-	PegType.THORN: Color(0.6, 0.2, 0.1, 1.0),            # #99331A (dark red/brown)
+## State colors (modulate tint) - kept for status-based coloring
+const STATE_COLORS := {
+	"blessed": Color(1.0, 1.0, 1.0),
+	"cursed": Color(0.8, 0.4, 1.0),
+	"corrupted": Color(0.4, 0.4, 0.4),
 }
 
 ## Loaded data
@@ -39,6 +33,9 @@ var _peg_data: Dictionary
 
 ## Shader material reference
 var _shader_material: ShaderMaterial
+
+@onready var _visual: TextureRect = $Visual
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer if has_node("AnimationPlayer") else null
 
 
 func _ready() -> void:
@@ -182,14 +179,9 @@ func _setup_shader() -> void:
 	_shader_material.set_shader_parameter("mutation_pulse", 0.0)
 	_shader_material.set_shader_parameter("void_factor", 0.0)
 
-	# Set base color based on peg type
-	var base_col: Color = PEG_COLORS.get(peg_type, Color.GRAY)
-	_shader_material.set_shader_parameter("base_color", base_col)
-
 	# Apply to visual node
-	var visual := get_node_or_null("Visual")
-	if visual and visual is ColorRect:
-		visual.material = _shader_material
+	if _visual:
+		_visual.material = _shader_material
 
 
 func set_corruption_level(level: float) -> void:

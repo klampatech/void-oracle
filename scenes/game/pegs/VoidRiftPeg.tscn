@@ -1,10 +1,11 @@
-[gd_scene format=3 uid="uid://ctakxhj1cdw8k"]
+[gd_scene format=3 uid="uid://bq7r5a8uuvwib"]
 
-[ext_resource type="Script" path="res://scripts/game/pegs/VoidRiftPeg.gd" id="1_voidriftpeg"]
-[ext_resource type="PackedScene" uid="uid://basepeg12345678" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+[ext_resource type="Script" path="res://scripts/game/pegs/VoidRiftPeg.gd" id="1_voidrift"]
+[ext_resource type="PackedScene" uid="uid://db3opxkr0v0mj" path="res://scenes/game/pegs/BasePeg.tscn" id="2_base"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/icons/void_essence_icon.png" id="3_void"]
 
 [node name="VoidRiftPeg" instance=ExtResource("2_base")]
-script = ExtResource("1_voidriftpeg")
+script = ExtResource("1_voidrift")
 
-[node name="Visual" parent="." index="1"]
-color = Color(0.0392157, 0.0392157, 0.164706, 1)
+[node name="Visual" parent="." index="2"]
+texture = ExtResource("3_void")

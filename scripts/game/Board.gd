@@ -13,7 +13,7 @@ enum PocketType { DAMAGE, HEAL, GOLD, VOID, CHAOS }
 @onready var _physics_world: Node2D = $PhysicsWorld
 @onready var _pockets_container: Node2D = $PhysicsWorld/PocketRow
 @onready var _peg_container: Node2D = $PhysicsWorld/PegContainer
-@onready var _background: ColorRect = $Background
+@onready var _background: TextureRect = $Background
 
 ## Preload pocket scene for instantiation
 var _pocket_scene: PackedScene
@@ -383,7 +383,7 @@ func add_crack(crack_data: Dictionary) -> void:
 	# Color based on phase
 	match phase:
 		1:
-			crack_visual.color = Color("#4A4A4A")  # Dark gray for Phase 1
+			crack_visual.color = Color("#2A2A3A")  # Dark void-blue for Phase 1
 		2:
 			crack_visual.color = Color("#6A0DAD")  # Purple for Phase 2 (void channel)
 		3:

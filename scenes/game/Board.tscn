@@ -11,10 +11,36 @@
 [ext_resource type="PackedScene" uid="uid://shopui123456" path="res://scenes/ui/ShopUI.tscn" id="9_shop"]
 [ext_resource type="Script" path="res://scripts/game/systems/ShopSystem.gd" id="10_shop_system"]
 [ext_resource type="Shader" path="res://shaders/boss_distortion.gdshader" id="11_distortion"]
+[ext_resource type="Texture2D" path="res://assets/textures/backgrounds/map_background.png" id="12_stars"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/pachinko_board_frame.png" id="13_frame"]
+[ext_resource type="Texture2D" path="res://assets/textures/backgrounds/pachinko_board_bg.png" id="14_boardbg"]
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_board")
 groups = ["board"]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Stars" type="TextureRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_stars")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MachineFrame" type="TextureRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_frame")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="EncounterManager" parent="." instance=ExtResource("4_encounter")]
 groups = ["encounter_manager"]
@@ -58,10 +84,12 @@ shape = { "res": { "type": "RectangleShape2D", "size": Vector2(600, 20) } }
 [node name="BallSpawner" parent="." instance=ExtResource("2_spawner")]
 position = Vector2(300, 50)
 
-[node name="Background" type="ColorRect" parent="."]
-offset_right = 600
-offset_bottom = 900
-color = Color(0.0392157, 0.0392157, 0.101961, 1)
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 600.0
+offset_bottom = 900.0
+texture = ExtResource("14_boardbg")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="EffectsLayer" type="CanvasLayer" parent="."]
 groups = ["effects_layer"]
