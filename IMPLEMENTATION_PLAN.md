@@ -26,11 +26,19 @@
 - ✅ Particle effects system
 - ✅ Web/HTML5 export
 - ✅ Windows Steam export
-- ✅ GUT testing framework
+- ✅ GUT testing framework (downloaded, configured, sanity test passes)
+
+### Testing Gap:
+The `specs/testing_strategy_components.md` document outlines extensive testing requirements:
+- Unit tests for: Ball, BallSpawner, BasePeg, Board, EncounterManager, DraftSystem
+- Integration tests for: all Autoloads (EventBus, RunState, SynergyChecker, SynergyEffects, MutationEngine)
+- Data validation tests for: peg_definitions.json, enemy JSONs, synergy_definitions.json
+- **Current state**: Only `test/unit/test_sanity.gd` exists
 
 ### Remaining Tasks:
 1. **Run History / Stats Screen** - Display past runs from user://void_oracle/run_history.json
 2. **macOS export preset** - Export templates not configured (debug/release paths empty)
+3. **Write tests** - Per testing_strategy_components.md; only test_sanity.gd exists
 
 ---
 
@@ -375,7 +383,10 @@ The game is feature-complete. Remaining tasks are:
 
 ## Notes
 
-- All spec requirements from M1-M8 have been implemented
+- All spec requirements from M1-M8 have been implemented EXCEPT:
+  - VO-029 (Run History/Stats Screen) from M7 - NOT IMPLEMENTED
+  - macOS export templates - NOT CONFIGURED (paths empty)
+  - Testing per testing_strategy_components.md - ONLY test_sanity.gd EXISTS
 - The game can be played from start (main menu) through Zone 1-3, defeating bosses, and winning or dying
 - Ghost board system is operational - dead runs are saved and can appear as encounters
 - Meta-progression (Void Shards, Oracle Classes) is functional
