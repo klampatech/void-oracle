@@ -28,12 +28,10 @@
 - ✅ Windows Steam export
 - ✅ GUT testing framework (downloaded, configured, sanity test passes)
 
-### Testing Gap:
-The `specs/testing_strategy_components.md` document outlines extensive testing requirements:
-- Unit tests for: Ball, BallSpawner, BasePeg, Board, EncounterManager, DraftSystem, SynergyChecker, RunState, MutationEngine
-- Integration tests for: all Autoloads (EventBus, RunState, SynergyChecker, SynergyEffects, MutationEngine)
-- Data validation tests for: peg_definitions.json, enemy JSONs, synergy_definitions.json
-- **Current state**: Only `test/unit/test_sanity.gd` exists
+### Specified Requirements NOT Implemented:
+1. **Run History / Stats Screen** (VO-029 from M7) - NOT IMPLEMENTED
+2. **macOS export** - Templates not configured (empty paths in export_presets.cfg)
+3. **Testing per testing_strategy_components.md** - ONLY test_sanity.gd EXISTS
 
 ### Remaining Tasks (Priority Order):
 1. **Run History / Stats Screen** (VO-029 from M6) - NOT IMPLEMENTED
@@ -373,6 +371,11 @@ The game is feature-complete. Remaining tasks are:
 2. **macOS Export** - Configure export template paths in export_presets.cfg
    - Set custom_template/debug to macOS debug template
    - Set custom_template/release to macOS release template
+
+3. **Testing Infrastructure** - Implement tests per testing_strategy_components.md
+   - Unit tests for: Ball, BallSpawner, BasePeg, Board, EncounterManager, DraftSystem, SynergyChecker, RunState, MutationEngine
+   - Integration tests for: Autoloads, EventBus, peg-physics interactions
+   - Data validation tests for: peg_definitions.json, enemy JSONs, synergy_definitions.json
 
 ### Lower Priority (Nice to Have)
 - Additional polish based on playtesting feedback
