@@ -9,8 +9,9 @@ const NODE_COLORS := {
 	"elite": Color("#9C27B0"),      # Purple
 	"event": Color("#2196F3"),      # Blue
 	"shop": Color("#FFC107"),       # Amber
-	"rest": Color("#00BCD4"),        # Cyan
-	"boss": Color("#FF5722"),       # Deep Orange
+	"rest": Color("#00BCD4"),       # Cyan
+	"boss": Color("#FF5722"),      # Deep Orange
+	"ghost": Color("#607D8B"),     # Blue Grey - Ghost board encounter
 }
 
 ## Node type display names
@@ -22,6 +23,7 @@ const NODE_NAMES := {
 	"shop": "Shop",
 	"rest": "Rest",
 	"boss": "Boss",
+	"ghost": "Ghost",
 }
 
 ## Node data

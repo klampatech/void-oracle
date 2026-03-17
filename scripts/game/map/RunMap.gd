@@ -40,17 +40,17 @@ func _ready() -> void:
 	add_child(_map_generator)
 
 
-## Initialize map with seed
-func initialize_map(seed: int) -> void:
+## Initialize map with seed and optional starting node
+func initialize_map(seed: int, starting_node: String = "zone1_start") -> void:
 	# Generate map data
 	_map_data = _map_generator.generate_map(seed)
 
 	# Build visual representation
-	_build_map_visuals()
+	_build_map_visuals(starting_node)
 
 
 ## Build the visual representation of the map
-func _build_map_visuals() -> void:
+func _build_map_visuals(starting_node: String = "zone1_start") -> void:
 	# Clear existing
 	_clear_map()
 
@@ -64,7 +64,7 @@ func _build_map_visuals() -> void:
 	_create_nodes(node_positions)
 
 	# Set initial position
-	_set_current_node("zone1_start")
+	_set_current_node(starting_node)
 
 
 ## Calculate positions for all nodes

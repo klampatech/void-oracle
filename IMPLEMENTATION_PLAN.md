@@ -59,7 +59,13 @@
   - Added button styles with dark backgrounds and gold border accents
   - Applied theme as default in project.godot (config/theme)
   - Theme colors: dark navy background (#0A0A1A), gold accents (#C9A84C), purple void (#9060E8)
-
+- [x] After click start, the next selectable node on the map is not the next connected node with the start node.
+  - Fixed: Map now correctly tracks player position after each encounter
+  - Added _current_map_node tracking in RunManager
+  - Pass starting_node to RunMap.initialize_map() so position is preserved
+  - Previously the map always reset to zone1_start after each encounter
+- [x] Ghost node type missing visual definitions in MapNode.gd
+  - Added ghost to NODE_COLORS (blue grey #607D8B) and NODE_NAMES ("Ghost")
 ---
 
 ## Priority 1: Single Encounter Loop (M3) — COMPLETED

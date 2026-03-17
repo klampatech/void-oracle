@@ -23,6 +23,9 @@ var _map_seed: int = 0
 ## Current zone (1, 2, or 3)
 var _current_zone: int = 1
 
+## Current node ID on the map (for tracking player position)
+var _current_map_node: String = "zone1_start"
+
 
 func _ready() -> void:
 	# Connect to EventBus
@@ -35,6 +38,7 @@ func _ready() -> void:
 func start_new_run(seed: int, class_id: String = "none") -> void:
 	_map_seed = seed
 	_current_zone = 1
+	_current_map_node = "zone1_start"  # Reset to start node for new runs
 	_run_map = null
 	_board = null
 	_encounter_manager = null
@@ -58,12 +62,12 @@ func _show_map() -> void:
 	if map_scene:
 		_run_map = map_scene.instantiate()
 		add_child(_run_map)
-		_run_map.initialize_map(_map_seed)
+		_run_map.initialize_map(_map_seed, _current_map_node)
 
 		# Connect node selection
 		_run_map.node_selected.connect(_on_map_node_selected)
 
-		print("RunManager: Showing map")
+		print("RunManager: Showing map at node: ", _current_map_node)
 	else:
 		push_error("Failed to load map scene")
 
@@ -74,6 +78,9 @@ func _on_map_node_selected(node_id: String, node_data: Dictionary) -> void:
 		return
 
 	print("RunManager: Node selected: ", node_id, " type: ", node_data.get("type", "unknown"))
+
+	# Track the current node (will be used when returning to map after encounter)
+	_current_map_node = node_id
 
 	# Start encounter based on node type
 	_start_encounter(node_data)
