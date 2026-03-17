@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bq7r5a8uuvwib"]
+[gd_scene load_steps=26 format=3 uid="uid://bq7r5a8uuvwib"]
 
 [ext_resource type="Script" path="res://scripts/game/Board.gd" id="1_board"]
 [ext_resource type="PackedScene" uid="uid://ballspawner123456" path="res://scenes/game/BallSpawner.tscn" id="2_spawner"]
@@ -27,6 +27,9 @@ size = Vector2(696, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_bottom"]
 size = Vector2(696, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_divider"]
+size = Vector2(10, 100)
+
 [node name="Board" type="Node2D"]
 script = ExtResource("1_board")
 groups = ["board"]
@@ -53,6 +56,31 @@ grow_vertical = 2
 texture = ExtResource("13_frame")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="Dispenser" type="ColorRect" parent="BackgroundLayer"]
+offset_left = 490.0
+offset_top = 260.0
+offset_right = 590.0
+offset_bottom = 320.0
+color = Color(0.15, 0.15, 0.2, 1)
+
+[node name="DispenserInner" type="ColorRect" parent="BackgroundLayer/Dispenser"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 50.0
+color = Color(0.05, 0.05, 0.1, 1)
+
+[node name="BoardBackground" type="TextureRect" parent="BackgroundLayer"]
+offset_left = 192.0
+offset_top = 260.0
+offset_right = 888.0
+offset_bottom = 1410.0
+texture = ExtResource("14_boardbg")
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
 
 [node name="EncounterManager" parent="." instance=ExtResource("4_encounter")]
 groups = ["encounter_manager"]
@@ -89,20 +117,49 @@ groups = ["physics_debug"]
 position = Vector2(348, 1140)
 shape = SubResource("RectangleShape2D_wall_bottom")
 
+[node name="Channels" type="Node2D" parent="PhysicsWorld"]
+
+[node name="Divider1" type="StaticBody2D" parent="PhysicsWorld/Channels"]
+position = Vector2(110, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsWorld/Channels/Divider1"]
+shape = SubResource("RectangleShape2D_divider")
+rotation = 0.25
+
+[node name="Divider2" type="StaticBody2D" parent="PhysicsWorld/Channels"]
+position = Vector2(249, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsWorld/Channels/Divider2"]
+shape = SubResource("RectangleShape2D_divider")
+rotation = -0.25
+
+[node name="Divider3" type="StaticBody2D" parent="PhysicsWorld/Channels"]
+position = Vector2(388, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsWorld/Channels/Divider3"]
+shape = SubResource("RectangleShape2D_divider")
+rotation = 0.25
+
+[node name="Divider4" type="StaticBody2D" parent="PhysicsWorld/Channels"]
+position = Vector2(527, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsWorld/Channels/Divider4"]
+shape = SubResource("RectangleShape2D_divider")
+rotation = -0.25
+
+[node name="Divider5" type="StaticBody2D" parent="PhysicsWorld/Channels"]
+position = Vector2(666, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhysicsWorld/Channels/Divider5"]
+shape = SubResource("RectangleShape2D_divider")
+rotation = 0.25
+
 [node name="PocketRow" type="Node2D" parent="PhysicsWorld"]
 
 [node name="PegContainer" type="Node2D" parent="PhysicsWorld"]
 
 [node name="BallSpawner" parent="." instance=ExtResource("2_spawner")]
 position = Vector2(348, 100)
-
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 696.0
-offset_bottom = 1150.0
-texture = ExtResource("14_boardbg")
-expand_mode = 1
-stretch_mode = 5
-mouse_filter = 2
 
 [node name="EffectsLayer" type="CanvasLayer" parent="."]
 groups = ["effects_layer"]

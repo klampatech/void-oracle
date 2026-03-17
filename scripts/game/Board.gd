@@ -13,7 +13,7 @@ enum PocketType { DAMAGE, HEAL, GOLD, VOID, CHAOS }
 @onready var _physics_world: Node2D = $PhysicsWorld
 @onready var _pockets_container: Node2D = $PhysicsWorld/PocketRow
 @onready var _peg_container: Node2D = $PhysicsWorld/PegContainer
-@onready var _background: TextureRect = $Background
+@onready var _background: TextureRect = $BackgroundLayer/BoardBackground
 
 ## Preload pocket scene for instantiation
 var _pocket_scene: PackedScene
@@ -63,45 +63,43 @@ func _ready() -> void:
 func _center_board() -> void:
 	var viewport_size := get_viewport_rect().size
 	# The board is centered relative to the 1080x1920 frame
-	# Frame internal starts roughly at x=192, y=192? No, 1080-696 = 384. 384/2 = 192px margins.
 	var board_x := (viewport_size.x - BOARD_WIDTH) / 2
 	var board_y := 260.0 # Vertical offset to align with frame interior
 	position = Vector2(board_x, board_y)
 
 
 func _create_pockets() -> void:
-	# Each pocket is 600/8 = 75px wide
-	var pocket_width := BOARD_WIDTH / 8
-	var pocket_height := 40.0
-	var pocket_y := BOARD_HEIGHT - pocket_height
+	# Match the 5 circles in the frame art
+	var num_pockets := 5
+	var pocket_width := BOARD_WIDTH / num_pockets
+	var pocket_height := 60.0 # Taller to catch balls better
+	var pocket_y := BOARD_HEIGHT - 120.0 # Position aligned with frame circles
 
-	# Load pocket scene (will be created in scene file)
-	# For now, create Area2D pockets programmatically
-
-	for i in range(8):
+	for i in range(num_pockets):
 		var pocket_type: PocketType = PocketType.values()[i % PocketType.size()]
-		var pocket_x := i * pocket_width
+		var pocket_center_x := (i + 0.5) * pocket_width
 
 		var area := Area2D.new()
 		area.name = "Pocket_%d" % i
-		area.position = Vector2(pocket_x + pocket_width / 2, pocket_y + pocket_height / 2)
+		area.position = Vector2(pocket_center_x, pocket_y)
 
-		# Create collision shape
+		# Create collision shape (Circular to match frame art)
 		var collision := CollisionShape2D.new()
-		var shape := RectangleShape2D.new()
-		shape.size = Vector2(pocket_width - 4, pocket_height - 4)  # Small gap between pockets
+		var shape := CircleShape2D.new()
+		shape.radius = 35.0 # Large enough to catch balls reliably
 		collision.shape = shape
 		area.add_child(collision)
 
 		# Connect signal
 		area.body_entered.connect(_on_pocket_body_entered.bind(area, pocket_type))
 
-		# Add visual (transparent/minimal for now)
+		# Add visual (transparent highlight for feedback)
 		var visual := ColorRect.new()
-		visual.size = Vector2(pocket_width - 4, pocket_height - 4)
-		visual.position = Vector2(-(pocket_width - 4) / 2, -(pocket_height - 4) / 2)
+		visual.size = Vector2(40, 40)
+		visual.position = Vector2(-20, -20)
 		visual.color = _get_pocket_color(pocket_type)
-		visual.color.a = 0.3 # Make pocket highlight more subtle to show frame behind it
+		visual.color.a = 0.2
+		# visual.visible = false # UNCOMMENT to hide developer highlights after alignment
 		area.add_child(visual)
 
 		_pockets_container.add_child(area)
