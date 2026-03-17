@@ -57,9 +57,10 @@
 ### P0.2 Fungal Growth Completion
 - [x] Implement actual peg instantiation in FungalPeg._spawn_sprout()
 - [x] Wire to Board.gd to handle placement
-- [ ] When starting the can and clicking the start button, you stay on the start screen and the logs show: 
-      MainMenu: Starting new run with seed: 1082982764
-      RunManager: Showing map
+
+### P0.3 MainMenu Scene Visibility Fix
+- [x] Fix: MainMenu didn't hide after starting run, so map was hidden behind menu
+- [x] Added `visible = false` in MainMenu._on_start_pressed() after starting run
 
 
 ---
