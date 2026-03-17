@@ -71,6 +71,8 @@ func _ready() -> void:
 	EventBus.ball_lost.connect(_on_ball_lost)
 	EventBus.ball_launched.connect(_on_ball_launched)
 	EventBus.enemy_defeated.connect(_on_enemy_defeated)
+	EventBus.synergy_damage_dealt.connect(_on_synergy_damage_dealt)
+	EventBus.synergy_stability_changed.connect(_on_synergy_stability_changed)
 
 	# Get draft system reference
 	_draft_system = get_tree().get_first_node_in_group("draft_system")
@@ -213,9 +215,16 @@ func _check_drop_complete() -> void:
 func _run_result_phase() -> void:
 	_set_phase(Phase.RESULT)
 
-	# Apply damage to enemy
+	# Apply damage to enemy (with Cursed Flame multiplier if active)
+	var damage_multiplier := 1.0
+	if SynergyEffects:
+		damage_multiplier = SynergyEffects.get_damage_multiplier()
+	var final_damage := int(_drop_results["damage"] * damage_multiplier)
+
 	if _current_enemy and _current_enemy.has_method("take_damage"):
-		_current_enemy.take_damage(_drop_results["damage"])
+		_current_enemy.take_damage(final_damage)
+		if damage_multiplier > 1.0:
+			print("[EncounterManager] Cursed Flame doubled damage: ", _drop_results["damage"], " -> ", final_damage)
 
 	# Apply healing to stability
 	if _drop_results["healing"] > 0:
@@ -262,6 +271,19 @@ func _run_enemy_turn() -> void:
 
 	# Return to BOARD phase
 	_set_phase(Phase.BOARD)
+
+
+## Called when synergy deals damage (e.g., Necrotic Bloom, Profane Eye)
+func _on_synergy_damage_dealt(damage: int, source: String) -> void:
+	if _current_enemy and _current_enemy.has_method("take_damage"):
+		_current_enemy.take_damage(damage)
+		print("[EncounterManager] Synergy ", source, " dealt ", damage, " damage")
+
+
+## Called when synergy provides stability (e.g., Bleeding Architecture, Necrotic Bloom regen)
+func _on_synergy_stability_changed(amount: int, source: String) -> void:
+	RunState.modify_stability(amount)
+	print("[EncounterManager] Synergy ", source, " changed stability by ", amount)
 
 
 ## Called when enemy is defeated
@@ -339,7 +361,14 @@ func _get_pocket_type(pocket: Node) -> String:
 
 
 ## Apply pocket effect to results
-func _apply_pocket_effect(pocket_type: String, _ball: Node) -> void:
+func _apply_pocket_effect(pocket_type: String, ball: Node) -> void:
+	var is_void_ball = ball.get("is_void_ball", false)
+	var extra_pocket = false
+
+	# Check for Void Choir extra pocket (Tier 2)
+	if is_void_ball and SynergyEffects and SynergyEffects.should_void_ball_extra_pocket():
+		extra_pocket = true
+
 	match pocket_type:
 		"damage":
 			_drop_results["damage"] += _pocket_values["damage"]
@@ -348,9 +377,20 @@ func _apply_pocket_effect(pocket_type: String, _ball: Node) -> void:
 		"gold":
 			_drop_results["gold"] += _pocket_values["gold"]
 		"void":
-			_drop_results["void_essence"] += _pocket_values["void_essence"]
+			var void_amount = _pocket_values["void_essence"]
+			# Void Choir Tier 2: Double void essence from void balls
+			if is_void_ball:
+				void_amount *= 2
+			_drop_results["void_essence"] += void_amount
 		"chaos":
 			_drop_results["chaos_count"] += 1
+
+	# Apply extra pocket effect for Void Choir Tier 2
+	if extra_pocket:
+		print("[EncounterManager] Void Choir extra pocket triggered")
+		# Extra pocket gives gold + void
+		_drop_results["gold"] += 3
+		_drop_results["void_essence"] += 1
 
 
 ## Trigger chaos effect

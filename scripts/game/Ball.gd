@@ -12,6 +12,9 @@ const TRAIL_LENGTH := 20
 ## Line2D for trail rendering
 var _trail_line: Line2D
 
+## Is this a Void Ball (from Void Choir synergy)
+var is_void_ball: bool = false
+
 
 func _ready() -> void:
 	# Join ball group for collision detection

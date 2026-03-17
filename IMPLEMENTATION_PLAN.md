@@ -41,7 +41,7 @@
 - ❌ Shop system
 - ❌ Ghost Board Encounter
 - ❌ Boss encounters
-- ❌ Synergy effects implementation
+- ✅ Synergy effects implementation (P7 - COMPLETED)
 - ❌ Meta-progression
 - ❌ Audio polish
 
@@ -239,24 +239,24 @@
 ## Priority 7: Synergy Effects (M6)
 
 ### P7.1 Necrotic Bloom
-- [ ] Rot pegs deal 3 damage on contact
-- [ ] At 6: All pegs regen 1 stability/drop
+- [x] Rot pegs deal 3 damage on contact (via SynergyEffects + EventBus.synergy_damage_dealt)
+- [x] At 6: All pegs regen 1 stability/drop (via SynergyEffects + EventBus.synergy_stability_changed)
 
 ### P7.2 Cursed Flame
-- [ ] Burning pegs corrupt adjacent on ignite
-- [ ] At 6: Ball speed +20%, double damage
+- [x] Burning pegs corrupt adjacent on ignite (already in EmberPeg.gd)
+- [x] At 6: Ball speed +20%, double damage (via SynergyEffects + BallSpawner + EncounterManager)
 
 ### P7.3 Void Choir
-- [ ] Every 5th ball becomes Void Ball
-- [ ] At 6: Void balls open extra pocket slot
+- [x] Every 5th ball becomes Void Ball (via SynergyEffects.check_and_convert_to_void_ball)
+- [x] At 6: Void balls open extra pocket slot (via EncounterManager._apply_pocket_effect)
 
 ### P7.4 Bleeding Architecture
-- [ ] Stone pegs heal 1 stability on contact
-- [ ] At 6: Board gains regen 2 passive
+- [x] Stone pegs heal 1 stability on contact (via SynergyEffects + EventBus.synergy_stability_changed)
+- [x] At 6: Board gains regen 2 passive (via SynergyEffects._board_regen + drop_ended)
 
 ### P7.5 The Profane Eye
-- [ ] Eye pegs reveal enemy next move
-- [ ] At 6: Bone pegs double damage vs revealed
+- [x] Eye pegs reveal enemy next move (via SynergyEffects + EventBus.enemy_revealed)
+- [x] At 6: Bone pegs double damage vs revealed (via SynergyEffects._enemy_revealed)
 
 ---
 

@@ -16,8 +16,14 @@ signal peg_spawned(peg: Node, position: Vector2)
 signal synergy_activated(synergy_id: String, peg_count: int)
 signal synergy_broken(synergy_id: String)
 signal synergy_scaled(synergy_id: String, new_count: int)
+signal synergy_damage_dealt(damage: int, source: String)  # for synergy damage effects
+signal enemy_revealed()  # profane eye revealed enemy intent
+signal enemy_intent_determined(intent_text: String)  # for profane eye tracking
+signal synergy_stability_changed(amount: int, source: String)  # for synergy regen effects
 
 # ── Drop Phase ───────────────────────────────────────────
+signal drop_phase_started()  # when drop phase begins
+signal drop_phase_ended()    # when drop phase ends
 signal drop_started(ball_count: int)
 signal ball_launched(ball: Node)                     # emitted when a ball is launched
 signal drop_ended(results: Dictionary)               # {damage, healing, gold, void_essence}

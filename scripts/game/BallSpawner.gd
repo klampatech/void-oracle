@@ -42,7 +42,13 @@ func _input(event: InputEvent) -> void:
 func _launch_ball(mouse_pos: Vector2) -> void:
 	# Calculate direction from spawn to mouse
 	var direction := (mouse_pos - global_position).normalized()
-	var velocity := direction * launch_velocity
+
+	# Apply Cursed Flame speed boost if active (Tier 2: +20%)
+	var speed_multiplier := 1.0
+	if SynergyEffects:
+		speed_multiplier = SynergyEffects.get_ball_speed_multiplier()
+
+	var velocity := direction * launch_velocity * speed_multiplier
 
 	# Instantiate ball
 	var ball: RigidBody2D = BALL_SCENE.instantiate()
@@ -50,6 +56,11 @@ func _launch_ball(mouse_pos: Vector2) -> void:
 
 	# Apply velocity
 	ball.linear_velocity = velocity
+
+	# Check if this should be a Void Ball (Void Choir Tier 1+)
+	if SynergyEffects and SynergyEffects.check_and_convert_to_void_ball():
+		ball.set("is_void_ball", true)
+		print("[BallSpawner] Spawned Void Ball")
 
 	# Add to scene tree
 	get_tree().root.add_child(ball)
