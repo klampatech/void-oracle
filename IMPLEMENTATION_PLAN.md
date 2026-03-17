@@ -57,6 +57,10 @@
 ### P0.2 Fungal Growth Completion
 - [x] Implement actual peg instantiation in FungalPeg._spawn_sprout()
 - [x] Wire to Board.gd to handle placement
+- [ ] When starting the can and clicking the start button, you stay on the start screen and the logs show: 
+      MainMenu: Starting new run with seed: 1082982764
+      RunManager: Showing map
+
 
 ---
 
@@ -205,23 +209,23 @@
 
 ---
 
-## Priority 6: Ghost Board System (M4)
+## Priority 6: Ghost Board System (M4) — COMPLETED
 
 ### P6.1 Ghost Board Loading
-- [ ] Load ghost board data via GhostBoardManager
-- [ ] Instantiate as enemy encounter board
-- [ ] Ghost pegs interact with player balls
+- [x] Load ghost board data via GhostBoardManager
+- [x] Instantiate as enemy encounter board
+- [x] Ghost pegs interact with player balls
 
 ### P6.2 Ghost Behavior by Type
-- [ ] Implement GhostBoardManager.assign_ghost_for_run(seed)
-- [ ] Mostly Blessed: Heals enemy
-- [ ] Mostly Cursed: Damages player board
-- [ ] High Mutation: Randomizes peg states
-- [ ] Void-heavy: Steals ball drops
+- [x] Implement GhostBoardManager.assign_ghost_for_run(seed)
+- [x] Mostly Blessed: Heals enemy
+- [x] Mostly Cursed: Damages player board
+- [x] High Mutation: Randomizes peg states
+- [x] Void-heavy: Steals ball drops
 
 ### P6.3 Ghost Trigger
-- [ ] Random moment in run (weighted to late Zone 2)
-- [ ] Display "A Shadow Stirs" event
+- [x] Added as map node type (ghost) with 5% weight in MapGenerator
+- [x] GhostEnemy loads ghost data and determines type
 
 ---
 

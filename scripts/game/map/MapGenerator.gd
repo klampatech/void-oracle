@@ -9,6 +9,7 @@ const NODE_TYPE_WEIGHTS := {
 	"event": 20,
 	"shop": 10,
 	"rest": 10,
+	"ghost": 5,  # Ghost board encounter (P6)
 }
 
 ## Number of zones

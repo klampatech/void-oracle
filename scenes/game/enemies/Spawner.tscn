@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://spawner123456"]
+
+[ext_resource type="Script" path="res://scripts/game/enemies/Spawner.gd" id="1_spawner"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_spawner")
+
+[node name="EnemyUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 80.0
+
+[node name="Panel" type="PanelContainer" parent="EnemyUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="VBox" type="VBoxContainer" parent="EnemyUI/Panel"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="EnemyUI/Panel/VBox"]
+layout_mode = 2
+text = "Spawner"
+horizontal_alignment = 1
+
+[node name="HPBar" type="ProgressBar" parent="EnemyUI/Panel/VBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+max_value = 90.0
+value = 90.0
+
+[node name="IntentLabel" type="Label" parent="EnemyUI/Panel/VBox"]
+layout_mode = 2
+text = "Will drop enemy ball"
+horizontal_alignment = 1

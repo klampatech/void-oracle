@@ -34,6 +34,10 @@ signal boss_phase_changed(phase: int)                  # emitted when boss chang
 # ── Board Effects ───────────────────────────────────────
 signal ball_entered_crack(ball: Node, effect_type: String)  # emitted when ball hits Architect crack
 
+# ── Ghost Encounters (P6) ────────────────────────────────
+signal ghost_mutation(peg_count: int)               # emitted when mutation ghost triggers
+signal void_ghost_active(is_active: bool)           # emitted when void ghost is active
+
 # ── Economy ───────────────────────────────────────────────
 signal gold_stolen(amount: int)                        # emitted when enemy steals gold
 signal gold_changed(new_value: int, delta: int)

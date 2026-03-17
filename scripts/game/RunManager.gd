@@ -118,11 +118,11 @@ func _start_encounter_by_type(encounter_type: String) -> void:
 			if corruptor_scene:
 				_encounter_manager.start_encounter(corruptor_scene)
 		"elite":
-			# TODO: Load elite enemy (Wrecker, Spawner, etc.)
-			var corruptor_scene := load("res://scenes/game/enemies/Corruptor.tscn") as PackedScene
-			if corruptor_scene:
-				_encounter_manager.start_encounter(corruptor_scene)
-				print("RunManager: Elite encounter (using Corruptor for now)")
+			# Load elite enemy (Wrecker, Spawner, etc.)
+			_load_elite_enemy()
+		"ghost":
+			# Load ghost board encounter
+			_load_ghost_encounter()
 		"boss":
 			# Load boss based on current zone
 			_load_boss_for_zone()
@@ -163,6 +163,94 @@ func _load_boss_for_zone() -> void:
 			boss_scene = load("res://scenes/game/enemies/Gardener.tscn") as PackedScene
 			if boss_scene:
 				_encounter_manager.start_encounter(boss_scene)
+
+
+## Load a random elite enemy
+func _load_elite_enemy() -> void:
+	if not _encounter_manager:
+		return
+
+	# Randomly select an elite enemy
+	var rng := RandomNumberGenerator.new()
+	rng.seed = _map_seed + Time.get_ticks_msec()
+
+	var elite_types := ["wrecker", "spawner", "leech"]
+	var selected: String = elite_types[rng.randi() % elite_types.size()]
+
+	var elite_scene: PackedScene
+
+	match selected:
+		"wrecker":
+			elite_scene = load("res://scenes/game/enemies/Wrecker.tscn") as PackedScene
+		"spawner":
+			elite_scene = load("res://scenes/game/enemies/Spawner.tscn") as PackedScene
+		"leech":
+			elite_scene = load("res://scenes/game/enemies/Leech.tscn") as PackedScene
+		_:
+			elite_scene = load("res://scenes/game/enemies/Corruptor.tscn") as PackedScene
+
+	if elite_scene:
+		_encounter_manager.start_encounter(elite_scene)
+		print("RunManager: Elite encounter - ", selected)
+	else:
+		push_error("Failed to load elite scene: ", selected)
+
+
+## Load ghost board encounter
+func _load_ghost_encounter() -> void:
+	if not _encounter_manager:
+		return
+
+	# Check if there are any saved ghosts
+	var ghost_count := GhostBoardManager.count_saved_ghosts()
+
+	if ghost_count == 0:
+		# No ghosts saved - fall back to Corruptor
+		print("RunManager: No ghost boards found, loading Corruptor instead")
+		var corruptor_scene := load("res://scenes/game/enemies/Corruptor.tscn") as PackedScene
+		if corruptor_scene:
+			_encounter_manager.start_encounter(corruptor_scene)
+		return
+
+	# Load ghost enemy scene
+	var ghost_scene := load("res://scenes/game/enemies/GhostEnemy.tscn") as PackedScene
+	if not ghost_scene:
+		push_error("Failed to load GhostEnemy scene")
+		return
+
+	# Get a ghost board for this run
+	GhostBoardManager.assign_ghost_for_run(_map_seed)
+	var ghost_data := GhostBoardManager.get_active_ghost()
+
+	if ghost_data.is_empty():
+		print("RunManager: No ghost data available, loading Corruptor instead")
+		var corruptor_scene := load("res://scenes/game/enemies/Corruptor.tscn") as PackedScene
+		if corruptor_scene:
+			_encounter_manager.start_encounter(corruptor_scene)
+		return
+
+	# Start encounter with ghost
+	_encounter_manager.start_encounter(ghost_scene)
+
+	# Get the ghost enemy instance and load ghost data
+	await get_tree().process_frame  # Wait for enemy to be ready
+	var ghost_enemy = _find_ghost_enemy()
+	if ghost_enemy and ghost_enemy.has_method("load_ghost"):
+		ghost_enemy.load_ghost(ghost_data)
+		print("RunManager: Ghost encounter loaded")
+
+
+## Find the ghost enemy in the scene tree
+func _find_ghost_enemy() -> Node:
+	if not _encounter_manager:
+		return null
+
+	# Look for ghost enemy in encounter manager's children
+	for child in _encounter_manager.get_children():
+		if child is GhostEnemy:
+			return child
+
+	return null
 
 
 ## Called when an enemy is defeated

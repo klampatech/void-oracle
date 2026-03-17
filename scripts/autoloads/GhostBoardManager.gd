@@ -44,7 +44,7 @@ func assign_ghost_for_run(run_seed: int) -> void:
 	# Deterministically pick which ghost appears this run
 	var rng = RandomNumberGenerator.new()
 	rng.seed = run_seed + 9999
-	var index = rng.randi_range(1, min(MAX_GHOSTS, _count_saved_ghosts()))
+	var index = rng.randi_range(1, min(MAX_GHOSTS, count_saved_ghosts()))
 	active_ghost = load_ghost(index)
 
 func _rotate_ghosts() -> void:
@@ -54,7 +54,7 @@ func _rotate_ghosts() -> void:
 		if FileAccess.file_exists(src):
 			DirAccess.rename_absolute(src, dst)
 
-func _count_saved_ghosts() -> int:
+func count_saved_ghosts() -> int:
 	var count = 0
 	for i in range(1, MAX_GHOSTS + 1):
 		if FileAccess.file_exists(SAVE_DIR + "ghost_%03d.json" % i):
