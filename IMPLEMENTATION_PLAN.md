@@ -309,9 +309,9 @@
 - [x] Generic hit particles - Created GenericHit.tscn
 
 ### P9.3 Web Export
-- [ ] Test HTML5 export
-- [ ] Fix compatibility renderer issues
-- [ ] Verify web input handling
+- [x] Test HTML5 export
+- [x] Fix compatibility renderer issues
+- [x] Verify web input handling
 
 ### Testing Framework (GUT)
 - [x] Downloaded GUT from GitHub (addons/gut/)
