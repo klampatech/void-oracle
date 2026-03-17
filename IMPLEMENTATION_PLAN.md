@@ -1,6 +1,6 @@
 # Implementation Plan — Void Oracle
 
-**Last Updated:** 2026-03-16
+**Last Updated:** 2026-03-17
 **Analysis:** Gap between `specs/*.md` and current `scripts/` + `scenes/` + `shaders/`
 
 ---
@@ -30,12 +30,17 @@
 
 ### Specified Requirements NOT Implemented:
 1. **macOS export** - Templates not configured (empty paths in export_presets.cfg)
-2. **Testing per testing_strategy_components.md** - ONLY test_sanity.gd EXISTS
+
+### Completed in This Session:
+- **Testing infrastructure** - Implemented unit tests for:
+  - RunState (17 tests): new_run, class bonuses, stability/gold modification, snapshot
+  - SynergyChecker (15 tests): synergy definitions, tag counting, activation thresholds
+  - SynergyEffects (12 tests): tier calculations, multipliers, void ball conversion
+  - MutationEngine (8 tests): mutation thresholds, state transitions
+- Total: 53 tests passing
 
 ### Remaining Tasks (Priority Order):
-1. **Run History / Stats Screen** (VO-029 from M6) - NOT IMPLEMENTED
-2. **macOS export preset** - Templates not configured
-3. **Write tests** - Per testing_strategy_components.md - NOT IMPLEMENTED
+1. **macOS export preset** - Templates not configured
 
 ---
 
