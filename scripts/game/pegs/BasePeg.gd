@@ -66,7 +66,7 @@ func _load_peg_data() -> void:
 	var peg_key := _get_peg_key()
 	if not peg_key.is_empty() and _peg_data.has(peg_key):
 		var data: Dictionary = _peg_data[peg_key]
-		var loaded_tags: Array = data.get("tags", [])
+		var loaded_tags = data.get("tags", [])
 		# Convert untyped Array to Array[String] properly
 		tags.clear()
 		for tag in loaded_tags:

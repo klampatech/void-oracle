@@ -50,9 +50,10 @@
 - [x] On click of a map node - Error: ShopUI HBoxContainer/VBoxContainer type mismatch
   - Fixed by changing type annotation in ShopUI.gd:15 from VBoxContainer to HBoxContainer
   - The scene had ServicesGrid as HBoxContainer but script expected VBoxContainer
-- [x] Array[String] type mismatch in BasePeg.gd (FIXED CORRECTLY NOW)
+- [x] Array[String] type mismatch in BasePeg.gd (FIXED)
   - Original attempt: `tags = loaded_tags as Array[String]` - doesn't work in Godot 4.x
   - Fixed by iterating and appending strings: iterate through loaded_tags and append each String tag to tags Array
+  - Also removed explicit `: Array` type annotation from loaded_tags variable to prevent type coercion issues
 - [x] MockEventBus.gd variadic parameter syntax error
   - Fixed by removing invalid `...` variadic syntax in _emit_wrapper function
 - [x] Verify the game has a thematic UI
