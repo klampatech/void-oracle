@@ -11,8 +11,8 @@ const BALL_SCENE := preload("res://scenes/game/Ball.tscn")
 ## Default ball count
 const DEFAULT_BALL_COUNT := 1
 
-## Spawn position (relative to board)
-var _spawn_position := Vector2(300, 50)
+## Spawn offset (relative to this node)
+var _spawn_offset := Vector2.ZERO
 
 ## Reference to EncounterManager for ball tracking
 var _encounter_manager: Node = null
@@ -52,7 +52,7 @@ func _launch_ball(mouse_pos: Vector2) -> void:
 
 	# Instantiate ball
 	var ball: RigidBody2D = BALL_SCENE.instantiate()
-	ball.global_position = _spawn_position
+	ball.global_position = global_position + _spawn_offset
 
 	# Apply velocity
 	ball.linear_velocity = velocity
@@ -73,13 +73,10 @@ func _launch_ball(mouse_pos: Vector2) -> void:
 
 
 func _draw() -> void:
-	# Draw aim line to mouse position
+	# Only draw aim line if we are not in a menu and it's the player's turn (simplified check)
 	var mouse_pos := get_global_mouse_position()
 	var direction := (mouse_pos - global_position).normalized()
-	var end_point := global_position + direction * 200
-
-	# Draw aim line
-	draw_line(Vector2.ZERO, end_point - global_position, Color.WHITE, 2.0)
-
-	# Draw spawn point indicator
-	draw_circle(_spawn_position - global_position, 8, Color.CYAN)
+	var end_point := direction * 150 # Shorter aim line
+ 
+ 	# Draw aim line (subtle purple/white)
+	draw_line(Vector2.ZERO, end_point, Color(0.7, 0.5, 1.0, 0.4), 1.0)

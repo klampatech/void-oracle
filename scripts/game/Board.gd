@@ -2,9 +2,9 @@
 extends Node2D
 class_name Board
 
-## Board dimensions: 600x900px centered in viewport
-const BOARD_WIDTH := 600
-const BOARD_HEIGHT := 900
+## Board dimensions: 696x1536px centered in viewport (matching machine frame)
+const BOARD_WIDTH := 696
+const BOARD_HEIGHT := 1150 # Adjusted height to fit within the lower mouth area
 const WALL_THICKNESS := 20
 
 ## Pocket types (ordered left to right across bottom)
@@ -62,8 +62,10 @@ func _ready() -> void:
 
 func _center_board() -> void:
 	var viewport_size := get_viewport_rect().size
+	# The board is centered relative to the 1080x1920 frame
+	# Frame internal starts roughly at x=192, y=192? No, 1080-696 = 384. 384/2 = 192px margins.
 	var board_x := (viewport_size.x - BOARD_WIDTH) / 2
-	var board_y := (viewport_size.y - BOARD_HEIGHT) / 2
+	var board_y := 260.0 # Vertical offset to align with frame interior
 	position = Vector2(board_x, board_y)
 
 
@@ -94,11 +96,12 @@ func _create_pockets() -> void:
 		# Connect signal
 		area.body_entered.connect(_on_pocket_body_entered.bind(area, pocket_type))
 
-		# Add visual (colored rectangle)
+		# Add visual (transparent/minimal for now)
 		var visual := ColorRect.new()
 		visual.size = Vector2(pocket_width - 4, pocket_height - 4)
 		visual.position = Vector2(-(pocket_width - 4) / 2, -(pocket_height - 4) / 2)
 		visual.color = _get_pocket_color(pocket_type)
+		visual.color.a = 0.3 # Make pocket highlight more subtle to show frame behind it
 		area.add_child(visual)
 
 		_pockets_container.add_child(area)

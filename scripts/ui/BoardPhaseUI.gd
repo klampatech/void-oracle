@@ -5,12 +5,12 @@ extends CanvasLayer
 ## Displays peg inventory, gold, void essence, stability, and ball count.
 ## "End Turn" button triggers the DROP phase.
 
-@onready var gold_label: Label = $MarginContainer/HBoxContainer/StatsContainer/GoldRow/GoldLabel
-@onready var void_label: Label = $MarginContainer/HBoxContainer/StatsContainer/VoidRow/VoidLabel
-@onready var stability_label: Label = $MarginContainer/HBoxContainer/StatsContainer/StabilityRow/StabilityLabel
-@onready var balls_label: Label = $MarginContainer/HBoxContainer/StatsContainer/BallsRow/BallsLabel
-@onready var pegs_label: Label = $MarginContainer/HBoxContainer/StatsContainer/PegsLabel
-@onready var end_turn_button: TextureButton = $MarginContainer/EndTurnButton
+@onready var gold_label: Label = $BottomLeftBox/GoldLabel
+@onready var void_label: Label = $BottomRightBox/VoidLabel
+@onready var stability_label: Label = $HiddenStats/StabilityRow/StabilityLabel
+@onready var balls_label: Label = $TopLeftBox/BallsRow/BallsLabel
+@onready var pegs_label: Label = $HiddenStats/PegsLabel
+@onready var end_turn_button: TextureButton = $EndTurnContainer/EndTurnButton
 
 var _encounter_manager: Node = null
 

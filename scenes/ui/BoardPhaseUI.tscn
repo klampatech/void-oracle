@@ -10,109 +10,123 @@
 [node name="BoardPhaseUI" type="CanvasLayer"]
 script = ExtResource("1_script")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TopLeftBox" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 340.0
+offset_top = 340.0
+offset_right = 460.0
+offset_bottom = 400.0
+
+[node name="BallsRow" type="HBoxContainer" parent="TopLeftBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="BallsLabel" type="Label" parent="TopLeftBox/BallsRow"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "1"
+horizontal_alignment = 1
+
+[node name="BottomLeftBox" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 220.0
+offset_top = -105.0
+offset_right = 430.0
+offset_bottom = -70.0
+grow_vertical = 0
+
+[node name="GoldLabel" type="Label" parent="BottomLeftBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.6, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "0048320"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomRightBox" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -430.0
+offset_top = -105.0
+offset_right = -220.0
+offset_bottom = -70.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VoidLabel" type="Label" parent="BottomRightBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.6, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "1,250"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndTurnContainer" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -180.0
-offset_right = 250.0
-offset_bottom = -20.0
+offset_left = -100.0
+offset_top = -115.0
+offset_right = 100.0
+offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 30
-
-[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="GoldRow" type="HBoxContainer" parent="MarginContainer/HBoxContainer/StatsContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="GoldIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/StatsContainer/GoldRow"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture = ExtResource("2_gold")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="GoldLabel" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer/GoldRow"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.84, 0, 1)
-theme_override_font_sizes/font_size = 18
-text = "Gold: 0"
-
-[node name="VoidRow" type="HBoxContainer" parent="MarginContainer/HBoxContainer/StatsContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="VoidIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/StatsContainer/VoidRow"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture = ExtResource("3_void")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="VoidLabel" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer/VoidRow"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.4, 0.9, 1)
-theme_override_font_sizes/font_size = 18
-text = "Void: 0"
-
-[node name="StabilityRow" type="HBoxContainer" parent="MarginContainer/HBoxContainer/StatsContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="StabilityIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/StatsContainer/StabilityRow"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture = ExtResource("4_stability")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="StabilityLabel" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer/StabilityRow"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.3, 0.8, 0.5, 1)
-theme_override_font_sizes/font_size = 18
-text = "Stability: 100/100 (100%)"
-
-[node name="BallsRow" type="HBoxContainer" parent="MarginContainer/HBoxContainer/StatsContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="BallIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/StatsContainer/BallsRow"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture = ExtResource("5_ball")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="BallsLabel" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer/BallsRow"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "Balls: 1"
-
-[node name="PegsLabel" type="Label" parent="MarginContainer/HBoxContainer/StatsContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "Pegs: 0"
-
-[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="EndTurnButton" type="TextureButton" parent="MarginContainer"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
+[node name="EndTurnButton" type="TextureButton" parent="EndTurnContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -18.0
+offset_right = 84.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("6_endturn")
-stretch_mode = 2
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HiddenStats" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StabilityRow" type="Control" parent="HiddenStats"]
+anchors_preset = 0
+[node name="StabilityLabel" type="Label" parent="HiddenStats/StabilityRow"]
+layout_mode = 0
+[node name="PegsLabel" type="Label" parent="HiddenStats"]
+layout_mode = 0
