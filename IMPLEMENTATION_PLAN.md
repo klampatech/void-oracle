@@ -28,8 +28,18 @@
 - ✅ Windows Steam export
 - ✅ GUT testing framework (downloaded, configured, sanity test passes)
 
-### Specified Requirements NOT Implemented:
-(None - all requirements implemented!)
+### Specified Requirements NOT Fully Implemented:
+
+1. **Chaos effects** - Pocket chaos effect is triggered but not fully implemented (EncounterManager.gd:402 - TODO)
+2. **Death screen flow improvements** - RunManager.gd:339, EncounterManager.gd:338, DeathScreen.gd:120 have TODOs for cleanup
+3. **VO-038: Steam Page Assets** - Not implemented (requires Steam partner portal access, external work)
+4. **M7 Polish items** - Some shader finalization and polish items may need work:
+   - VO-030: Final shader visuals (placeholders may still exist)
+   - VO-031: Audio - per-peg tones (procedural, may need refinement)
+   - VO-032: Ambient music tracks (placeholder system in place, no actual audio files)
+   - VO-033: Main menu + UI polish (mostly complete)
+   - VO-034: Web export (tested and working)
+   - VO-035: Mobile touch input (basic support may need refinement)
 
 ### Completed in This Session:
 - **Testing infrastructure** - Implemented unit tests for:
@@ -41,7 +51,27 @@
 - **macOS export** - Configured bundle identifier, version, and app category in export_presets.cfg
 
 ### Remaining Tasks (Priority Order):
-(None - all features complete!)
+
+1. **P0.1: Chaos Effects Implementation** (EncounterManager.gd)
+   - [ ] Implement chaos pocket effects: randomize ball trajectory, apply random buff/debuff
+   - Signal is emitted but effect is stub
+
+2. **P0.2: Death Screen Flow Cleanup**
+   - [ ] Connect death screen to actually return to main menu or restart
+   - [ ] Verify RunManager properly handles death transition
+
+3. **P0.3: Polish & Refinement**
+   - [ ] Verify all shaders work correctly with Compatibility renderer
+   - [ ] Test audio volume scaling with ball velocity
+   - [ ] Verify mobile touch input works on all screens
+
+4. **P0.4: Steam Page Assets** (External)
+   - [ ] Create header capsule (460×215)
+   - [ ] Create library capsules (600×900, 900×600)
+   - [ ] Create main capsule (1200×1600)
+   - [ ] Capture 5-10 screenshots
+   - [ ] Write store description (~300-500 words)
+   - [ ] Configure pricing ($14.99 USD)
 
 ---
 
@@ -424,10 +454,47 @@ The core game is feature-complete! Most tasks from M1-M8 are implemented.
 - ✅ Testing Infrastructure - 53 unit tests implemented
 - ✅ Windows/macOS Steam export - Working builds
 - ✅ Web export - Tested and working
+- ✅ VO-037: GodotSteam achievements code - IMPLEMENTED (requires plugin for full integration)
 
-### Remaining Work (Not Started)
-- VO-037: GodotSteam Integration (requires plugin download)
-- VO-038: Steam Page Assets
+### Remaining Work
+1. **Chaos Effects** - Implement actual chaos pocket effects (randomize ball, apply buff/debuff)
+2. **Death Screen Flow** - Connect death screen to main menu/restart properly
+3. **Steam Page Assets** - Create store assets (requires Steam partner portal access)
+4. **Polish** - Minor refinements to shaders, audio, mobile input
+
+---
+
+## UI Assets Generated
+
+### HUD (In-Game Overlay)
+- `stability_icon_heart.png` - 32x32px anatomical heart icon
+- `gold_icon.png` - 24x24px glowing alchemical coin
+- `void_essence_icon.png` - 24x24px tiny void rift in crystal
+- `ball_counter_icon.png` - 24x24px pearl/ball icon
+- `button_drop.png` - 120x60px stone tablet with carved drop arrow
+- `button_end_turn.png` - 120x60px stone tablet with end turn symbol
+- `stability_bar_background.png` - 400x30px dark carved stone slot
+- `stability_bar_fill.png` - 380x18px gold fill (shader-tintable)
+
+### Map Screen
+- `map_node_combat.png` - 48x48px crossed bones/weapons
+- `map_node_elite.png` - 48x48px glowing skull
+- `map_node_event.png` - 48x48px eye in triangle
+- `map_node_shop.png` - 48x48px alchemical scales
+- `map_node_rest.png` - 48x48px dormant peg with soft glow
+- `map_node_boss.png` - 64x64px ominous entity silhouette
+- `map_node_ghost.png` - 48x48px transparent ethereal version
+- `map_path_line.png` - Tileable thin ancient chain/rope
+- `map_background.png` - 1080x1920px dark constellation-like background
+
+### Draft Screen
+- `draft_card_background.png` - 200x280px stone tablet, 9-slice friendly
+- `draft_tier_common.png` - No decoration overlay
+- `draft_tier_uncommon.png` - Silver rune border overlay
+- `draft_tier_rare.png` - Gold rune border with soft glow
+- `draft_tier_legendary.png` - Full illuminated border overlay
+
+**Location:** `generated_imgs/`
 
 ### Lower Priority (Nice to Have)
 - Linux export (stretch goal)
