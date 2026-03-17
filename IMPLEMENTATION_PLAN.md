@@ -54,7 +54,11 @@
   - Fixed by properly casting the loaded tags array: `tags = loaded_tags as Array[String]`
 - [x] MockEventBus.gd variadic parameter syntax error
   - Fixed by removing invalid `...` variadic syntax in _emit_wrapper function
-- [ ] Verify the game has a thematic UI
+- [x] Verify the game has a thematic UI
+  - Created VoidOracleTheme.tres in resources/themes/
+  - Added button styles with dark backgrounds and gold border accents
+  - Applied theme as default in project.godot (config/theme)
+  - Theme colors: dark navy background (#0A0A1A), gold accents (#C9A84C), purple void (#9060E8)
 
 ---
 

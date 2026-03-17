@@ -19,6 +19,7 @@ config/description="A roguelike pachinko game. The board is the character."
 run/main_scene="res://scenes/menus/MainMenu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/bundle/identifier="com.voidoracle.game"
+config/theme="res://resources/themes/VoidOracleTheme.tres"
 
 [autoload]
 
