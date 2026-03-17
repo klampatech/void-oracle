@@ -333,13 +333,8 @@ func _on_run_ended(cause: String, board_state: Dictionary) -> void:
 	_current_state = Phase.DEFEAT
 	print("RunManager: Run ended - cause: ", cause)
 
-	# Clear scenes
-	_clear_current_scene()
-
-	# TODO: Show death screen
-	# For now, return to map to restart
-	await get_tree().create_timer(2.0).timeout
-	start_new_run(_map_seed)
+	# Don't clear scene here - DeathScreen handles display
+	# The death screen will signal when player wants to restart or return to menu
 
 
 ## Clear current scene

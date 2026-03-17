@@ -58,32 +58,34 @@
    - VO-035: Mobile touch input (basic support may need refinement)
 
 ### Completed in This Session:
-- **Testing infrastructure** - Implemented unit tests for:
-  - RunState (17 tests): new_run, class bonuses, stability/gold modification, snapshot
-  - SynergyChecker (15 tests): synergy definitions, tag counting, activation thresholds
-  - SynergyEffects (12 tests): tier calculations, multipliers, void ball conversion
-  - MutationEngine (8 tests): mutation thresholds, state transitions
-- Total: 53 tests passing
+- **P0.1: Chaos Effects** - Implemented actual chaos pocket effects in EncounterManager.gd:
+  - Added _pending_chaos_effects array to store effects between drops
+  - Implemented 6 chaos effect types: extra_gold, extra_damage, extra_balls, stability_boost, void_bonus, instability
+  - Effects are applied at the start of each drop via _apply_pending_chaos_effects()
+  - Random chaos effect selected and applied when ball enters chaos pocket
+- **P0.2: Death Screen Flow** - Fixed death screen flow:
+  - Removed auto-restart timer from RunManager._on_run_ended()
+  - Added MainMenuButton to DeathScreen.tscn
+  - Added main_menu_requested signal and _on_main_menu_pressed() handler
+  - Death screen now properly shows and allows player to choose restart or main menu
+- **Testing infrastructure** - Added data validation tests:
+  - test_data_validation.gd: 12 new tests for JSON validation
+  - peg_definitions.json validation (types, required fields, physics ranges)
+  - synergy_definitions.json validation
+  - enemy JSON file validation
+- Total: 65 tests passing (53 existing + 12 new)
 - **macOS export** - Configured bundle identifier, version, and app category in export_presets.cfg
 
 ### Remaining Tasks (Priority Order):
 
-1. **P0.1: Chaos Effects Implementation** (EncounterManager.gd)
-   - [ ] Implement chaos pocket effects: randomize ball trajectory, apply random buff/debuff
-   - Signal is emitted but effect is stub at line 402
-
-2. **P0.2: Death Screen Flow Cleanup**
-   - [ ] RunManager.gd:339 - Connect death screen to return to main menu or restart
-   - [ ] EncounterManager.gd:338 - Connect death screen UI properly
-
-3. **P0.3: Polish & Refinement**
+1. **P0.3: Polish & Refinement**
    - [ ] Verify all shaders work correctly with Compatibility renderer
    - [ ] Test audio volume scaling with ball velocity
    - [ ] Verify mobile touch input works on all screens
 
-4. **P0.4: Testing Infrastructure Expansion** (Critical - from qa_requirements.md)
-   - [ ] Create test runner script (test/runner.gd)
-   - [ ] Add data validation tests (test/unit/test_data_validation.gd)
+2. **P0.4: Testing Infrastructure Expansion** (partially complete)
+   - [x] Create test runner script (test/runner.gd) - Use `godot -s addons/gut/gut_cmdln.gd -gdir=res://test/unit`
+   - [x] Add data validation tests (test/unit/test_data_validation.gd) - 12 tests added
    - [ ] Add EventBus signal verification tests
    - [ ] Add GhostBoardManager tests
    - [ ] Add MetaState tests
@@ -91,7 +93,7 @@
    - [ ] Configure JUnit XML and coverage report generation
    - [ ] Set up GitHub Actions CI pipeline
 
-5. **P0.5: Steam Page Assets** (External)
+3. **P0.5: Steam Page Assets** (External)
    - [ ] Create header capsule (460×215)
    - [ ] Create library capsules (600×900, 900×600)
    - [ ] Create main capsule (1200×1600)

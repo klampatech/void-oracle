@@ -4,18 +4,24 @@ extends CanvasLayer
 ## Death screen that displays when the player dies.
 ## Shows ghost board summary and provides restart option.
 
+## Signals
+signal restart_requested
+signal main_menu_requested
+
 @onready var title_label: Label = $MarginContainer/VBoxContainer/TitleLabel
 @onready var stats_container: VBoxContainer = $MarginContainer/VBoxContainer/StatsContainer
 @onready var ghost_summary_label: Label = $MarginContainer/VBoxContainer/GhostSummaryLabel
 @onready var restart_button: Button = $MarginContainer/VBoxContainer/RestartButton
+@onready var main_menu_button: Button = $MarginContainer/VBoxContainer/MainMenuButton
 @onready var background: ColorRect = $Background
 
 var _ghost_data: Dictionary = {}
 
 
 func _ready() -> void:
-	# Connect restart button
+	# Connect buttons
 	restart_button.pressed.connect(_on_restart_pressed)
+	main_menu_button.pressed.connect(_on_main_menu_pressed)
 
 	# Hide by default
 	visible = false
@@ -114,9 +120,20 @@ func _on_restart_pressed() -> void:
 	# Hide death screen
 	visible = false
 
-	# Reset run state
-	RunState.new_run(Time.get_unix_time_from_system())
+	# Emit signal for restart
+	restart_requested.emit()
 
-	# TODO: Return to main menu or restart encounter
-	# For now, just reload the current scene
-	get_tree().reload_current_scene()
+	# Start a new run with a new seed
+	var new_seed := Time.get_unix_time_from_system()
+	RunManager.start_new_run(new_seed)
+
+
+func _on_main_menu_pressed() -> void:
+	# Hide death screen
+	visible = false
+
+	# Emit signal for main menu
+	main_menu_requested.emit()
+
+	# Load main menu scene
+	get_tree().change_scene_to_file("res://scenes/ui/MainMenu.tscn")

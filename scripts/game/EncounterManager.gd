@@ -48,6 +48,20 @@ var _draft_system: Node = null
 ## Draft UI reference
 var _draft_ui: Node = null
 
+## Pending chaos effects to apply on next drop
+## Each effect is a Dictionary: {type: String, value: int, description: String}
+var _pending_chaos_effects: Array[Dictionary] = []
+
+## Chaos effect types
+const CHAOS_EFFECTS: Array[String] = [
+	"extra_gold",
+	"extra_damage",
+	"extra_balls",
+	"stability_boost",
+	"void_bonus",
+	"instability",
+]
+
 ## Shop system reference
 var _shop_system: Node = null
 
@@ -145,6 +159,9 @@ func begin_drop_phase() -> void:
 	_balls_dropped = 0
 	_total_balls_to_drop = RunState.ball_count
 
+	# Apply pending chaos effects
+	_apply_pending_chaos_effects()
+
 	# Reset results
 	_drop_results = {
 		"damage": 0,
@@ -159,6 +176,43 @@ func begin_drop_phase() -> void:
 
 	# Enable ball spawning
 	_set_phase(Phase.DROP)
+
+
+## Apply pending chaos effects from previous drops
+func _apply_pending_chaos_effects() -> void:
+	if _pending_chaos_effects.is_empty():
+		return
+
+	print("[EncounterManager] Applying %d pending chaos effects" % _pending_chaos_effects.size())
+
+	for effect in _pending_chaos_effects:
+		match effect["type"]:
+			"extra_gold":
+				RunState.gold += effect["value"]
+				_drop_results["gold"] += effect["value"]
+				print("[EncounterManager] Chaos: +%d gold" % effect["value"])
+			"extra_damage":
+				_drop_results["damage"] += effect["value"]
+				print("[EncounterManager] Chaos: +%d damage" % effect["value"])
+			"extra_balls":
+				_total_balls_to_drop += effect["value"]
+				print("[EncounterManager] Chaos: +%d balls" % effect["value"])
+			"stability_boost":
+				RunState.stability = min(RunState.stability + effect["value"], RunState.max_stability)
+				_drop_results["healing"] += effect["value"]
+				print("[EncounterManager] Chaos: +%d stability" % effect["value"])
+			"void_bonus":
+				RunState.void_essence += effect["value"]
+				_drop_results["void_essence"] += effect["value"]
+				print("[EncounterManager] Chaos: +%d void essence" % effect["value"])
+			"instability":
+				RunState.stability = max(RunState.stability - effect["value"], 0.0)
+				print("[EncounterManager] Chaos: -%d stability" % effect["value"])
+				# Emit stability changed event
+				EventBus.player_stability_changed.emit(RunState.stability, RunState.max_stability)
+
+	# Clear pending effects after applying
+	_pending_chaos_effects.clear()
 
 
 ## Register a ball that's been launched (called from BallSpawner)
@@ -397,12 +451,68 @@ func _apply_pocket_effect(pocket_type: String, ball: Node) -> void:
 		_drop_results["void_essence"] += 1
 
 
-## Trigger chaos effect
+## Trigger chaos effect - applies random buff/debuff to the next drop
 func _trigger_chaos_effect(count: int) -> void:
-	# TODO: Implement chaos effects
-	# For now, just emit the signal
-	EventBus.chaos_drop_triggered.emit("chaos_" + str(count))
-	print("Chaos effect triggered: ", count)
+	for i in range(count):
+		# Pick a random chaos effect
+		var effect_type: String = CHAOS_EFFECTS.pick_random()
+		var effect: Dictionary = _create_chaos_effect(effect_type)
+		_pending_chaos_effects.append(effect)
+		print("[EncounterManager] Chaos effect applied: ", effect["description"])
+		EventBus.chaos_drop_triggered.emit(effect_type)
+
+
+## Create a specific chaos effect
+func _create_chaos_effect(effect_type: String) -> Dictionary:
+	match effect_type:
+		"extra_gold":
+			var value: int = randi_range(5, 15)
+			return {
+				"type": "extra_gold",
+				"value": value,
+				"description": "Extra Gold +%d" % value,
+			}
+		"extra_damage":
+			var value: int = randi_range(5, 10)
+			return {
+				"type": "extra_damage",
+				"value": value,
+				"description": "Damage Boost +%d" % value,
+			}
+		"extra_balls":
+			var value: int = randi_range(1, 2)
+			return {
+				"type": "extra_balls",
+				"value": value,
+				"description": "Extra Ball +%d" % value,
+			}
+		"stability_boost":
+			var value: int = randi_range(5, 10)
+			return {
+				"type": "stability_boost",
+				"value": value,
+				"description": "Stability +%d" % value,
+			}
+		"void_bonus":
+			var value: int = randi_range(1, 3)
+			return {
+				"type": "void_bonus",
+				"value": value,
+				"description": "Void Essence +%d" % value,
+			}
+		"instability":
+			var value: int = randi_range(5, 10)
+			return {
+				"type": "instability",
+				"value": value,
+				"description": "Stability -%d" % value,
+			}
+		_:
+			return {
+				"type": "unknown",
+				"value": 0,
+				"description": "Unknown effect",
+			}
 
 
 ## Set current phase
