@@ -50,24 +50,15 @@ func _ready() -> void:
 
 
 func _setup_visuals() -> void:
-	# Background circle
-	_background = ColorRect.new()
-	_background.color = NODE_COLORS.get("combat", Color.GRAY)
-	add_child(_background)
+	# Use existing scene nodes instead of creating duplicates
+	_background = $Background
+	_label = $Label
+	_selection_indicator = $SelectionIndicator
 
-	# Node label
-	_label = Label.new()
-	_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	_label.autowrap_mode = TextServer.AUTOWRAP_OFF
-	_label.text = "Node"
-	add_child(_label)
-
-	# Selection indicator (ring)
-	_selection_indicator = ColorRect.new()
-	_selection_indicator.color = Color.WHITE
-	_selection_indicator.visible = false
-	add_child(_selection_indicator)
+	# Ensure children pass mouse events through to this Control
+	_background.mouse_filter = Control.MOUSE_FILTER_PASS
+	_label.mouse_filter = Control.MOUSE_FILTER_PASS
+	_selection_indicator.mouse_filter = Control.MOUSE_FILTER_PASS
 
 	# Set size
 	custom_minimum_size = Vector2(60, 60)

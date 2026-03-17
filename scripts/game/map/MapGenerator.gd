@@ -241,7 +241,7 @@ func _add_start_node() -> void:
 	# Connect start to first zone 1 nodes
 	var zone1_nodes: Array = []
 	for node in _map_data["nodes"]:
-		if node["zone"] == 1:
+		if node["zone"] == 1 and node["id"] != "zone1_start":
 			zone1_nodes.append(node)
 
 	if not zone1_nodes.is_empty():

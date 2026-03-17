@@ -182,10 +182,14 @@ func _on_node_clicked(node_id: String) -> void:
 	node_selected.emit(node_id, node_data)
 
 
-## Check if a node is selectable
+## Check if a node is selectable (direct connection only)
 func _is_node_selectable(node_id: String) -> bool:
-	# Must be reachable from current position
-	return _map_generator.can_reach_node(_current_node_id, node_id)
+	# Must be a direct connection from current position (one hop)
+	var next_nodes: Array[Dictionary] = _map_generator.get_available_next_nodes(_current_node_id)
+	for node in next_nodes:
+		if node["id"] == node_id:
+			return true
+	return false
 
 
 ## Set current player position
