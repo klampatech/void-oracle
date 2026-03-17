@@ -1,74 +1,42 @@
 # Implementation Plan — Void Oracle
 
-**Last Updated:** 2026-03-16 (analysis refreshed)
+**Last Updated:** 2026-03-16
 **Analysis:** Gap between `specs/*.md` and current `scripts/` + `scenes/` + `shaders/`
 
 ---
 
 ## Gap Analysis Summary
 
-### Completed (M1-M2 Core Systems):
+### Completed Milestones (M1-M6):
 - ✅ Physics sandbox: Board, Ball, BallSpawner, all 8 peg types with physics materials
-- ✅ EventBus with all required signals (peg_hit, ball_entered_pocket, peg_state_changed, etc.)
-- ✅ RunState with all required state (stability, gold, ball_count, snapshot_board, etc.)
-- ✅ SynergyChecker, MutationEngine, AudioManager, GhostBoardManager wired up
+- ✅ EventBus with all required signals
+- ✅ RunState with all required state
+- ✅ SynergyChecker, MutationEngine, AudioManager, GhostBoardManager
 - ✅ CorruptionMapManager, Board scene with pockets
-- ✅ All 3 shaders: peg_state, corruption_spread, ball_trail
-- ✅ Peg State Shader with corruption_level, mutation_pulse, void_factor uniforms
-- ✅ Ball Trail Effect - fully wired in Ball.gd (Line2D with gradient)
-- ✅ All 8 peg types implemented (Stone, Bone, Fungal, Ember, Eye, Heart, Oracle, VoidRift)
-- ✅ Special peg behaviors: Oracle ball split, VoidRift ball consume, Ember chain corrupt, Fungal growth
-- ✅ PhysicsDebugOverlay.tscn exists
-- ✅ Data files: peg_definitions.json, synergy_definitions.json
+- ✅ All shaders: peg_state, corruption_spread, ball_trail, boss_distortion
+- ✅ All 8 peg types with special behaviors
+- ✅ Encounter system with DROP/RESULT/BOARD phases
+- ✅ All enemies: Corruptor, Wrecker, Spawner, Leech, Gardener, Architect, FinalOracle
+- ✅ Map generation, Draft System, Shop System
+- ✅ Ghost Board encounters
+- ✅ All 5 synergy effects implemented
+- ✅ Meta-progression (Void Shards)
+- ✅ Oracle Classes (4 classes)
+- ✅ Audio system with per-peg tones
+- ✅ Particle effects system
+- ✅ Web/HTML5 export
+- ✅ Windows Steam export
+- ✅ GUT testing framework
 
-### BUGS FOUND (Must Fix):
-- ✅ BasePeg.gd missing `get_hit_count()` and `get_peg_state()` methods - FIXED in this commit
-
-### 2026-03-16 Bug Fixes:
-- ✅ EncounterManager.gd:365 - Fixed `ball.get("is_void_ball", false)` - get() only takes 1 argument in GDScript
-- ✅ ShopUI.gd:93 - Added explicit type annotation for `offers` variable
-- ✅ ShopSystem.gd:187,231 - Added explicit type annotations for array variables (TIER_PROGRESSION, pegs)
-- ✅ Set up GUT testing framework - downloaded from GitHub, created test directory structure and .gutconfig.json
-
-### M3 - Single Encounter (COMPLETED):
-- ✅ EncounterManager - script exists to orchestrate DROP/RESULT/BOARD phases
-- ✅ Enemy system - Corruptor enemy with JSON data
-- ✅ Phase system - EncounterManager coordinates turn flow
-- ✅ Stability UI - StabilityBar component created and added to Board
-- ✅ Ghost save on death wiring - GhostBoardManager subscribes to EventBus.run_ended
-- ✅ Death screen UI stub - shows ghost summary with run stats
-- ✅ Board Phase UI - displays gold, void, stability, balls, pegs, "Drop Balls" button
-- ✅ Pocket result calculation (damage=10, healing=5, gold=5, void=1, chaos effects)
-- ✅ Enemy Corruptor implementation - corrupts pegs and deals 10 stability damage per turn
-- ✅ FungalPeg growth - FIXED in previous commit (now actually spawns new pegs)
-
-### NOT Yet Implemented (M4+):
-- ✅ Map generation (MapGenerator.gd, RunMap.gd, MapNode.gd)
-- ✅ Shop system (ShopSystem.gd, ShopUI.gd)
-- ✅ Ghost Board Encounter (GhostEnemy.gd, GhostBoardManager.gd)
-- ✅ Boss encounters (Gardener, Architect, FinalOracle)
-- ✅ Synergy effects implementation (P7 - COMPLETED)
-- ✅ Meta-progression (MetaState.gd)
-- ✅ Audio polish (AudioManager.gd)
+### NOT Yet Implemented:
+- [ ] macOS export preset (needs bundle identifier)
+- [ ] Run History / Stats Screen
 
 ---
 
 ## Priority 0: Bug Fixes (DO FIRST)
 
-### P0.1 BasePeg Method Fixes
-- [x] Add `get_hit_count()` method to `BasePeg.gd` that returns `hit_count`
-- [x] Add `get_peg_state_string()` method to `BasePeg.gd` that returns state as string
-- [x] Update MutationEngine to use the new methods
-
-### P0.2 Fungal Growth Completion
-- [x] Implement actual peg instantiation in FungalPeg._spawn_sprout()
-- [x] Wire to Board.gd to handle placement
-
-### P0.3 MainMenu Scene Visibility Fix
-- [x] Fix: MainMenu didn't hide after starting run, so map was hidden behind menu
-- [x] Added `visible = false` in MainMenu._on_start_pressed() after starting run
-- [x] When tapping a node on the map it did nothing - FIXED by setting mouse_filter = IGNORE on hidden MainMenu, and explicit mouse_filter = STOP on MapNode
-- [x] Tapping the squares on the map still don't seem to do anything - FIXED: Changed mouse_filter from 0 (IGNORE) to 1 (STOP) in MapNode.tscn
+All P0 items are COMPLETED.
 
 ---
 
@@ -288,7 +256,7 @@
 
 ---
 
-## Priority 9: Polish & Export (M7)
+## Priority 9: Polish & Export (M7) — MOSTLY COMPLETE
 
 ## Priority 10: Steam (M8) - In Progress
 
@@ -320,6 +288,13 @@
 - [ ] Add macOS export preset - needs bundle identifier configuration in editor
 - [x] Add ETC2 ASTC texture compression for macOS export support
 - [x] Add bundle identifier for macOS
+
+### P9.5 Run History Screen
+- [ ] Create run history display in main menu
+- [ ] Show past runs: zone reached, drops taken, victory/defeat
+- [ ] Track best run (highest zone)
+- [ ] Display total Void Shards earned
+- [ ] Persist run history to user://void_oracle/run_history.json
 
 ### Testing Framework (GUT)
 - [x] Downloaded GUT from GitHub (addons/gut/)
