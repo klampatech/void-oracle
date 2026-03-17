@@ -388,8 +388,7 @@ func trigger_defeat() -> void:
 	# Emit run ended
 	EventBus.run_ended.emit("stability_depleted", RunState.snapshot_board())
 
-	# Show death screen
-	# TODO: Show death screen UI
+	# Show death screen (handled by DeathScreen listening to run_ended signal)
 
 
 ## Get pocket type from pocket node
