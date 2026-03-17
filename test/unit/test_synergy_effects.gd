@@ -6,7 +6,8 @@ var _synergy_effects: Node = null
 func before_each() -> void:
 	_synergy_effects = load("res://scripts/autoloads/SynergyEffects.gd").new()
 	add_child(_synergy_effects)
-	_synergy_effects._ready()
+	# Don't call _ready() - it gets called automatically when added to scene tree
+	# Calling _ready() again would cause duplicate signal connections
 
 func after_each() -> void:
 	if _synergy_effects and is_instance_valid(_synergy_effects):

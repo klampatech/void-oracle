@@ -185,14 +185,15 @@ func test_peg_array_management() -> void:
 	assert_eq(_run_state.pegs.size(), initial_pegs, "Should be back to original count")
 
 
-# ── Test: Run end conditions ────────────────────────────────
+# Run end conditions
 func test_run_end_on_stability_zero() -> void:
 	_run_state.new_run(40404, "wanderer")
 
 	# Set stability to 0 (death condition)
 	_run_state.stability = 0.0
 
-	assert_le(_run_state.stability, 0, "Stability at or below 0 should trigger death")
+	# Stability at 0 should trigger death
+	assert_eq(_run_state.stability, 0.0, "Stability should be 0")
 
 
 # ── Test: Encounter tracking ─────────────────────────────────
