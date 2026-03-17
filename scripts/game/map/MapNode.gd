@@ -2,16 +2,15 @@
 extends Control
 class_name MapNode
 
-## Node types and their visual properties
-const NODE_COLORS := {
-	"start": Color("#4CAF50"),     # Green
-	"combat": Color("#F44336"),     # Red
-	"elite": Color("#9C27B0"),      # Purple
-	"event": Color("#2196F3"),      # Blue
-	"shop": Color("#FFC107"),       # Amber
-	"rest": Color("#00BCD4"),       # Cyan
-	"boss": Color("#FF5722"),      # Deep Orange
-	"ghost": Color("#607D8B"),     # Blue Grey - Ghost board encounter
+## Node type textures
+const NODE_TEXTURES := {
+	"combat": preload("res://assets/textures/ui/map/map_node_combat.png"),
+	"elite": preload("res://assets/textures/ui/map/map_node_elite.png"),
+	"event": preload("res://assets/textures/ui/map/map_node_event.png"),
+	"shop": preload("res://assets/textures/ui/map/map_node_shop.png"),
+	"rest": preload("res://assets/textures/ui/map/map_node_rest.png"),
+	"boss": preload("res://assets/textures/ui/map/map_node_boss.png"),
+	"ghost": preload("res://assets/textures/ui/map/map_node_ghost.png"),
 }
 
 ## Node type display names
@@ -42,9 +41,12 @@ var is_visited: bool = false
 signal node_clicked(node_id: String)
 
 ## Visual components
-var _background: ColorRect
+var _background: TextureRect
 var _label: Label
 var _selection_indicator: ColorRect
+
+## Fallback color for start node (no texture)
+const START_COLOR := Color("#4CAF50")
 
 
 func _ready() -> void:
@@ -75,9 +77,14 @@ func _update_visuals() -> void:
 	if not _background or not _label:
 		return
 
-	# Update background color based on node type
+	# Update background texture based on node type
 	var node_type: String = node_data.get("type", "combat")
-	_background.color = NODE_COLORS.get(node_type, Color.GRAY)
+	if NODE_TEXTURES.has(node_type):
+		_background.texture = NODE_TEXTURES[node_type]
+	else:
+		# Start node has no dedicated texture — use modulate tint
+		_background.texture = NODE_TEXTURES.get("combat")
+		_background.modulate = START_COLOR
 
 	# Update label
 	_label.text = NODE_NAMES.get(node_type, node_type)

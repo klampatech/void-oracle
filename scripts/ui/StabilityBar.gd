@@ -3,8 +3,8 @@ extends Control
 class_name StabilityBar
 
 ## Progress bar for stability
-@onready var _progress_bar: ProgressBar = $Panel/ProgressBar
-@onready var _label: Label = $Panel/Label
+@onready var _progress_bar: ProgressBar = $HBox/BarContainer/ProgressBar
+@onready var _label: Label = $HBox/BarContainer/Label
 
 ## Colors for the bar (gold → red as it depletes)
 const COLOR_FULL := Color("#FFD700")     # Gold

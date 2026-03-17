@@ -23,6 +23,15 @@ var _peg_scenes: Dictionary = {
 	"void_rift": preload("res://scenes/game/pegs/VoidRiftPeg.tscn"),
 }
 
+## Preloaded card textures
+var _card_bg_texture: Texture2D = preload("res://assets/textures/ui/draft/draft_card_background.png")
+var _tier_textures: Dictionary = {
+	"common": preload("res://assets/textures/ui/draft/draft_tier_common.png"),
+	"uncommon": preload("res://assets/textures/ui/draft/draft_tier_uncommon.png"),
+	"rare": preload("res://assets/textures/ui/draft/draft_tier_rare.png"),
+	"legendary": preload("res://assets/textures/ui/draft/draft_tier_legendary.png"),
+}
+
 ## Peg definitions
 var _peg_data: Dictionary = {}
 
@@ -70,69 +79,97 @@ func show_draft(offerings: Array[String]) -> void:
 
 ## Create a single peg card
 func _create_card(peg_type: String) -> Control:
-	var card := PanelContainer.new()
-	card.custom_minimum_size = Vector2(150, 200)
+	var card := Control.new()
+	card.custom_minimum_size = Vector2(150, 220)
+
+	# Card background texture
+	var card_bg := TextureRect.new()
+	card_bg.texture = _card_bg_texture
+	card_bg.expand_mode = 1  # Ignore size
+	card_bg.stretch_mode = 5  # Keep aspect covered
+	card_bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	card_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	card.add_child(card_bg)
+
+	# Tier frame overlay
+	var tier: String = _get_tier_for_peg(peg_type)
+	var tier_overlay := TextureRect.new()
+	if _tier_textures.has(tier):
+		tier_overlay.texture = _tier_textures[tier]
+	tier_overlay.expand_mode = 1
+	tier_overlay.stretch_mode = 5
+	tier_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	tier_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	card.add_child(tier_overlay)
+
+	# Content margin
+	var margin := MarginContainer.new()
+	margin.set_anchors_preset(Control.PRESET_FULL_RECT)
+	margin.add_theme_constant_override("margin_left", 15)
+	margin.add_theme_constant_override("margin_right", 15)
+	margin.add_theme_constant_override("margin_top", 20)
+	margin.add_theme_constant_override("margin_bottom", 20)
+	margin.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	card.add_child(margin)
 
 	# Create vbox for card content
 	var vbox := VBoxContainer.new()
-	card.add_child(vbox)
+	vbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	margin.add_child(vbox)
 
 	# Peg name
 	var name_label := Label.new()
 	name_label.text = _peg_data.get(peg_type, {}).get("display_name", peg_type)
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_label.add_theme_color_override("font_color", Color(1, 0.9, 0.7))
 	vbox.add_child(name_label)
 
 	# Tier label
 	var tier_label := Label.new()
-	var tier: String = _get_tier_for_peg(peg_type)
-	tier_label.text = tier
+	tier_label.text = tier.to_upper()
 	tier_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	tier_label.add_theme_font_size_override("font_size", 12)
+	tier_label.add_theme_color_override("font_color", _get_tier_color(tier))
 	vbox.add_child(tier_label)
+
+	# Spacer
+	var spacer := Control.new()
+	spacer.custom_minimum_size = Vector2(0, 10)
+	vbox.add_child(spacer)
 
 	# Description
 	var desc_label := Label.new()
 	desc_label.text = _peg_data.get(peg_type, {}).get("description", "")
 	desc_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	desc_label.autowrap_mode = TextServer.AUTOWRAP_WORD
-	desc_label.custom_minimum_size = Vector2(130, 60)
+	desc_label.custom_minimum_size = Vector2(120, 60)
+	desc_label.add_theme_color_override("font_color", Color(0.8, 0.8, 0.8))
 	vbox.add_child(desc_label)
 
 	# Click handler
 	card.gui_input.connect(_on_card_clicked.bind(peg_type))
-
-	# Style by tier
-	_add_card_style(card, tier)
+	card.mouse_filter = Control.MOUSE_FILTER_STOP
 
 	return card
+
+
+func _get_tier_color(tier: String) -> Color:
+	match tier:
+		"common":
+			return Color(0.7, 0.7, 0.7)
+		"uncommon":
+			return Color(0.4, 0.8, 0.4)
+		"rare":
+			return Color(0.6, 0.4, 0.9)
+		"legendary":
+			return Color(1, 0.84, 0.3)
+		_:
+			return Color(0.7, 0.7, 0.7)
 
 
 func _get_tier_for_peg(peg_type: String) -> String:
 	var peg_info: Dictionary = _peg_data.get(peg_type, {})
 	return peg_info.get("tier", "common")
-
-
-func _add_card_style(card: PanelContainer, tier: String) -> void:
-	var color: Color
-	match tier:
-		"common":
-			color = Color("#888888")
-		"uncommon":
-			color = Color("#4A7A3A")
-		"rare":
-			color = Color("#9060E8")
-		"legendary":
-			color = Color("#C9A84C")
-		_:
-			color = Color("#888888")
-
-	var style := StyleBoxFlat.new()
-	style.bg_color = color.darkened(0.3)
-	style.border_color = color
-	style.set_border_width_all(2)
-	style.set_corner_radius_all(8)
-	card.add_theme_stylebox_override("panel", style)
 
 
 func _on_card_clicked(event: InputEvent, peg_type: String) -> void:

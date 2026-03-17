@@ -128,8 +128,10 @@ func _draw_connections(positions: Dictionary) -> void:
 			var line := Line2D.new()
 			line.add_point(positions[from_id])
 			line.add_point(positions[to_id])
-			line.width = 3.0
-			line.default_color = Color(1, 1, 1, 0.3)
+			line.width = 4.0
+			line.default_color = Color(1, 1, 1, 0.6)
+			line.texture = preload("res://assets/textures/ui/map/map_path_line.png")
+			line.texture_mode = Line2D.LINE_TEXTURE_TILE
 
 			# Add to scene tree
 			add_child(line)

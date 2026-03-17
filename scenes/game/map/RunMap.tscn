@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://runmap123"]
+[gd_scene load_steps=3 format=3 uid="uid://runmap123"]
 
 [ext_resource type="Script" path="res://scripts/game/map/RunMap.gd" id="1_runmap"]
+[ext_resource type="Texture2D" path="res://assets/textures/backgrounds/map_background.png" id="2_mapbg"]
 
 [node name="RunMap" type="Control"]
 layout_mode = 3
@@ -11,12 +12,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_runmap")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.0392157, 0.0392157, 0.101961, 1)
+texture = ExtResource("2_mapbg")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
