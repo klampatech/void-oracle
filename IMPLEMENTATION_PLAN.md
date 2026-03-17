@@ -1,7 +1,7 @@
 # Implementation Plan — Void Oracle
 
 **Last Updated:** 2026-03-17
-**Analysis:** Gap between `specs/*.md` and current `scripts/` + `scenes/` + `shaders/`
+**Analysis:** Gap between `specs/*.md` and current `scripts/` + `scenes/` + `shaders/` + `test/`
 
 ---
 
@@ -26,7 +26,16 @@
 - ✅ Particle effects system
 - ✅ Web/HTML5 export
 - ✅ Windows Steam export
-- ✅ GUT testing framework (downloaded, configured, sanity test passes)
+- ✅ macOS Steam export
+- ✅ GUT testing framework installed and operational
+
+### Testing Status (from qa_requirements.md):
+- ✅ GUT framework installed
+- ✅ Basic unit tests: RunState (17 tests), SynergyChecker (15 tests), SynergyEffects (12 tests), MutationEngine (8 tests)
+- ❌ Missing: Data validation tests, EventBus signal tests, GhostBoardManager tests, MetaState tests, integration tests, E2E tests
+- ❌ Missing: Test runner script (test/runner.gd)
+- ❌ Missing: JUnit XML and coverage report generation
+- ❌ Missing: GitHub Actions CI pipeline
 
 ### Specified Requirements NOT Fully Implemented:
 
@@ -65,7 +74,17 @@
    - [ ] Test audio volume scaling with ball velocity
    - [ ] Verify mobile touch input works on all screens
 
-4. **P0.4: Steam Page Assets** (External)
+4. **P0.4: Testing Infrastructure Expansion** (Critical - from qa_requirements.md)
+   - [ ] Create test runner script (test/runner.gd)
+   - [ ] Add data validation tests (test/unit/test_data_validation.gd)
+   - [ ] Add EventBus signal verification tests
+   - [ ] Add GhostBoardManager tests
+   - [ ] Add MetaState tests
+   - [ ] Add integration tests for autoload signal flows
+   - [ ] Configure JUnit XML and coverage report generation
+   - [ ] Set up GitHub Actions CI pipeline
+
+5. **P0.5: Steam Page Assets** (External)
    - [ ] Create header capsule (460×215)
    - [ ] Create library capsules (600×900, 900×600)
    - [ ] Create main capsule (1200×1600)
@@ -401,6 +420,38 @@
 - [x] Verified tests run successfully (test_sanity.gd passes)
 - [x] GUT testing framework fully operational
 
+### P10.1: Testing Infrastructure Expansion (from qa_requirements.md)
+- [ ] Create test runner script (test/runner.gd) for CLI execution
+- [ ] Implement test/unit/test_data_validation.gd:
+  - [ ] Validate all peg types have entries in peg_definitions.json
+  - [ ] Validate all synergy IDs have entries in synergy_definitions.json
+  - [ ] Validate all enemies have JSON files in data/enemies/
+  - [ ] Validate peg physics values within valid ranges
+  - [ ] Test edge cases: missing files, invalid JSON, unknown types
+- [ ] Implement test/unit/test_ghost_board_manager.gd:
+  - [ ] Test save_ghost writes valid JSON
+  - [ ] Test load_ghost returns stored data
+  - [ ] Test count_saved_ghosts
+  - [ ] Test assign_ghost_for_run
+- [ ] Implement test/unit/test_meta_state.gd:
+  - [ ] Test save_game/load_game persistence
+  - [ ] Test version migration
+  - [ ] Test handle old save version gracefully
+- [ ] Implement test/unit/test_event_bus.gd:
+  - [ ] Verify all signals emit with correct parameters
+  - [ ] Test signal connection/disconnection
+- [ ] Implement test/integration/test_autoload_signal_flow.gd:
+  - [ ] Test peg_hit → MutationEngine → peg_state_changed → SynergyChecker flow
+  - [ ] Test synergy activation triggers correct effects
+- [ ] Implement test/integration/test_ghost_save_load.gd:
+  - [ ] Test complete ghost save/load cycle
+  - [ ] Test corrupt ghost file handling
+- [ ] Implement test/integration/test_run_lifecycle.gd:
+  - [ ] Test new run → first drop → enemy defeat → draft → map navigation
+- [ ] Configure JUnit XML export (test/results/junit.xml)
+- [ ] Configure coverage report generation (test/results/coverage/)
+- [ ] Set up GitHub Actions workflow for automated testing
+
 ---
 
 ## Data Files Status
@@ -456,11 +507,12 @@ The core game is feature-complete! Most tasks from M1-M8 are implemented.
 - ✅ Web export - Tested and working
 - ✅ VO-037: GodotSteam achievements code - IMPLEMENTED (requires plugin for full integration)
 
-### Remaining Work
+### Remaining Work (Priority Order)
 1. **Chaos Effects** - Implement actual chaos pocket effects (randomize ball, apply buff/debuff)
 2. **Death Screen Flow** - Connect death screen to main menu/restart properly
-3. **Steam Page Assets** - Create store assets (requires Steam partner portal access)
-4. **Polish** - Minor refinements to shaders, audio, mobile input
+3. **Testing Infrastructure Expansion** - Add test runner, data validation tests, integration tests, CI pipeline
+4. **Steam Page Assets** - Create store assets (requires Steam partner portal access)
+5. **Polish** - Minor refinements to shaders, audio, mobile input
 
 ---
 
