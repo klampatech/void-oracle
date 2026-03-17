@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1xsaeu5f7emz"]
+
+[ext_resource type="Script" path="res://scripts/autoloads/ParticleEffects.gd" id="1"]
+
+[node name="CursedCrack" type="CPUParticles2D"]
+emitting = false
+amount = 6
+lifetime = 0.5
+explosiveness = 0.9
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = null
+color = Color(0.549, 0.118, 0.118, 1)
+hue_var_min = 0.0
+hue_var_max = 0.0
+saturation = 0.0
+draw_order = 1

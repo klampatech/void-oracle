@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://draftui123456" path="res://scenes/ui/DraftUI.tscn" id="8_draft"]
 [ext_resource type="PackedScene" uid="uid://shopui123456" path="res://scenes/ui/ShopUI.tscn" id="9_shop"]
 [ext_resource type="Script" path="res://scripts/game/systems/ShopSystem.gd" id="10_shop_system"]
+[ext_resource type="Shader" path="res://shaders/boss_distortion.gdshader" id="11_distortion"]
 
 [node name="Board" type="Node2D"]
 script = ExtResource("1_board")
@@ -63,6 +64,22 @@ offset_bottom = 900
 color = Color(0.0392157, 0.0392157, 0.101961, 1)
 
 [node name="EffectsLayer" type="CanvasLayer" parent="."]
+groups = ["effects_layer"]
+
+[node name="BossDistortion" type="ColorRect" parent="EffectsLayer"]
+groups = ["boss_distortion"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 600.0
+offset_bottom = 900.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+shader = ExtResource("11_distortion")
+shader_parameter/distortion_amount = 0.0
+shader_parameter/time_scale = 1.0
+shader_parameter/frequency = 10.0
+
 
 [node name="BoardUI" type="CanvasLayer" parent="."]
 

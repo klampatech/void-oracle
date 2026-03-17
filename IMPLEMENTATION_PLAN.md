@@ -293,9 +293,13 @@
 - [x] Ambient music placeholder (zone-based music system in place)
 
 ### P9.2 Particle Effects
-- [ ] Blessed sparkle CPUParticles2D
-- [ ] Rot spore GPUParticles2D
-- [ ] Screen distortion for bosses
+- [x] Blessed sparkle CPUParticles2D - Created BlessedSparkle.tscn
+- [x] Rot spore GPUParticles2D - Created RotSpore.tscn
+- [x] Screen distortion for bosses - Created boss_distortion.gdshader + BossDistortion node in Board
+- [x] ParticleEffects AutoLoad - Created to spawn particles on peg hits
+- [x] Cursed Crack particles - Created CursedCrack.tscn
+- [x] Void Wisp particles - Created VoidWisp.tscn
+- [x] Generic hit particles - Created GenericHit.tscn
 
 ### P9.3 Web Export
 - [ ] Test HTML5 export
