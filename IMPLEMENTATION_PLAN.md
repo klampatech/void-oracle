@@ -29,8 +29,8 @@
 - ✅ GUT testing framework
 
 ### Remaining Tasks:
-1. **Run History / Stats Screen** - display past runs from user://void_oracle/run_history.json
-2. **macOS export preset** - export templates not configured (debug/release paths empty)
+1. **Run History / Stats Screen** - Display past runs from user://void_oracle/run_history.json
+2. **macOS export preset** - Export templates not configured (debug/release paths empty)
 
 ---
 
