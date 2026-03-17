@@ -28,11 +28,17 @@
 - ✅ Windows Steam export
 - ✅ macOS Steam export
 - ✅ GUT testing framework installed and operational
+- ✅ 53 unit tests passing (RunState, SynergyChecker, SynergyEffects, MutationEngine)
 
 ### Testing Status (from qa_requirements.md):
 - ✅ GUT framework installed
 - ✅ Basic unit tests: RunState (17 tests), SynergyChecker (15 tests), SynergyEffects (12 tests), MutationEngine (8 tests)
-- ❌ Missing: Data validation tests, EventBus signal tests, GhostBoardManager tests, MetaState tests, integration tests, E2E tests
+- ✅ MockEventBus for test isolation
+- ❌ Missing: Data validation tests (test_data_validation.gd)
+- ❌ Missing: GhostBoardManager tests
+- ❌ Missing: MetaState tests
+- ❌ Missing: EventBus signal tests
+- ❌ Missing: Integration tests (autoload signal flow, ghost save/load, run lifecycle)
 - ❌ Missing: Test runner script (test/runner.gd)
 - ❌ Missing: JUnit XML and coverage report generation
 - ❌ Missing: GitHub Actions CI pipeline
@@ -42,7 +48,8 @@
 1. **Chaos effects** - Pocket chaos effect is triggered but not fully implemented (EncounterManager.gd:402 - TODO)
 2. **Death screen flow improvements** - RunManager.gd:339, EncounterManager.gd:338, DeathScreen.gd:120 have TODOs for cleanup
 3. **VO-038: Steam Page Assets** - Not implemented (requires Steam partner portal access, external work)
-4. **M7 Polish items** - Some shader finalization and polish items may need work:
+4. **Testing Infrastructure** - Test runner, data validation tests, integration tests, CI pipeline needed (see P0.4)
+5. **M7 Polish items** - Some shader finalization and polish items may need work:
    - VO-030: Final shader visuals (placeholders may still exist)
    - VO-031: Audio - per-peg tones (procedural, may need refinement)
    - VO-032: Ambient music tracks (placeholder system in place, no actual audio files)
@@ -422,6 +429,10 @@
 
 ### P10.1: Testing Infrastructure Expansion (from qa_requirements.md)
 - [ ] Create test runner script (test/runner.gd) for CLI execution
+- [x] Unit tests: RunState (17 tests) - DONE
+- [x] Unit tests: SynergyChecker (15 tests) - DONE
+- [x] Unit tests: SynergyEffects (12 tests) - DONE
+- [x] Unit tests: MutationEngine (8 tests) - DONE
 - [ ] Implement test/unit/test_data_validation.gd:
   - [ ] Validate all peg types have entries in peg_definitions.json
   - [ ] Validate all synergy IDs have entries in synergy_definitions.json
