@@ -29,8 +29,8 @@
 - ✅ GUT testing framework
 
 ### Remaining Tasks:
-1. **macOS export preset** - needs bundle identifier and export template configuration
-2. **Run History / Stats Screen** - display past runs from user://void_oracle/run_history.json
+1. **Run History / Stats Screen** - display past runs from user://void_oracle/run_history.json
+2. **macOS export preset** - export templates not configured (debug/release paths empty)
 
 ---
 
@@ -289,7 +289,7 @@ All P0 items are COMPLETED.
 
 ### P9.4 Steam Export (M8)
 - [x] Add Windows export preset - working exe at export/windows/void_oracle.exe
-- [ ] Add macOS export preset - needs export template and configuration
+- [x] Add macOS export preset (preset exists, but templates not configured)
 - [x] Add ETC2 ASTC texture compression for macOS export support
 - [x] Add bundle identifier for macOS
 
@@ -362,7 +362,9 @@ The game is feature-complete. Remaining tasks are:
    - Display total Void Shards earned
    - Persist to `user://void_oracle/run_history.json`
 
-2. **macOS Export** - Configure export template for macOS builds
+2. **macOS Export** - Configure export template paths in export_presets.cfg
+   - Set custom_template/debug to macOS debug template
+   - Set custom_template/release to macOS release template
 
 ### Lower Priority (Nice to Have)
 - Additional polish based on playtesting feedback
