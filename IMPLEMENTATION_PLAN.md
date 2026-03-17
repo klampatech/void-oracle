@@ -462,6 +462,11 @@
 - Total tests: 163 (132 unit + 31 integration)
 - All tests passing
 
+### Fixes Applied (v0.6.9):
+- Board pocket redesign: Changed from 8 rectangular pockets to 5 circular pockets
+- Added channel dividers (StaticBody2D) for ball physics routing
+- Added board background texture to match frame art
+
 ### Fixes Applied (v0.6.5):
 - Fixed test_run_lifecycle.gd: replaced invalid `assert_le()` call with `assert_eq()`
 - Fixed test_synergy_effects.gd: removed redundant `_ready()` call that caused signal connection duplicate errors
