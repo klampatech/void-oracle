@@ -28,7 +28,7 @@
 - ✅ Windows Steam export
 - ✅ macOS Steam export
 - ✅ GUT testing framework installed and operational
-- ✅ 139 tests passing (RunState, SynergyChecker, SynergyEffects, MutationEngine, EventBus, GhostBoardManager, MetaState, integration)
+- ✅ 147 tests passing (RunState, SynergyChecker, SynergyEffects, MutationEngine, EventBus, GhostBoardManager, MetaState, DataValidation, integration)
 
 ### Testing Status (from qa_requirements.md):
 - ✅ GUT framework installed
@@ -429,40 +429,44 @@
 - [x] GUT testing framework fully operational
 
 ### P10.1: Testing Infrastructure Expansion (from qa_requirements.md)
-- [ ] Create test runner script (test/runner.gd) for CLI execution
+- [x] Create test runner script (test/runner.gd) for CLI execution
 - [x] Unit tests: RunState (17 tests) - DONE
 - [x] Unit tests: SynergyChecker (15 tests) - DONE
 - [x] Unit tests: SynergyEffects (12 tests) - DONE
 - [x] Unit tests: MutationEngine (8 tests) - DONE
-- [ ] Implement test/unit/test_data_validation.gd:
-  - [ ] Validate all peg types have entries in peg_definitions.json
-  - [ ] Validate all synergy IDs have entries in synergy_definitions.json
-  - [ ] Validate all enemies have JSON files in data/enemies/
-  - [ ] Validate peg physics values within valid ranges
-  - [ ] Test edge cases: missing files, invalid JSON, unknown types
-- [ ] Implement test/unit/test_ghost_board_manager.gd:
-  - [ ] Test save_ghost writes valid JSON
-  - [ ] Test load_ghost returns stored data
-  - [ ] Test count_saved_ghosts
-  - [ ] Test assign_ghost_for_run
-- [ ] Implement test/unit/test_meta_state.gd:
-  - [ ] Test save_game/load_game persistence
-  - [ ] Test version migration
-  - [ ] Test handle old save version gracefully
-- [ ] Implement test/unit/test_event_bus.gd:
-  - [ ] Verify all signals emit with correct parameters
-  - [ ] Test signal connection/disconnection
-- [ ] Implement test/integration/test_autoload_signal_flow.gd:
-  - [ ] Test peg_hit → MutationEngine → peg_state_changed → SynergyChecker flow
-  - [ ] Test synergy activation triggers correct effects
-- [ ] Implement test/integration/test_ghost_save_load.gd:
-  - [ ] Test complete ghost save/load cycle
-  - [ ] Test corrupt ghost file handling
-- [ ] Implement test/integration/test_run_lifecycle.gd:
-  - [ ] Test new run → first drop → enemy defeat → draft → map navigation
-- [ ] Configure JUnit XML export (test/results/junit.xml)
-- [ ] Configure coverage report generation (test/results/coverage/)
-- [ ] Set up GitHub Actions workflow for automated testing
+- [x] Implement test/unit/test_data_validation.gd:
+  - [x] Validate all peg types have entries in peg_definitions.json
+  - [x] Validate all synergy IDs have entries in synergy_definitions.json
+  - [x] Validate all enemies have JSON files in data/enemies/
+  - [x] Validate peg physics values within valid ranges
+  - [x] Test edge cases: missing files, invalid JSON, unknown types
+- [x] Implement test/unit/test_ghost_board_manager.gd:
+  - [x] Test save_ghost writes valid JSON
+  - [x] Test load_ghost returns stored data
+  - [x] Test count_saved_ghosts
+  - [x] Test assign_ghost_for_run
+- [x] Implement test/unit/test_meta_state.gd:
+  - [x] Test save_game/load_game persistence
+  - [x] Test version migration
+  - [x] Test handle old save version gracefully
+- [x] Implement test/unit/test_event_bus.gd:
+  - [x] Verify all signals emit with correct parameters
+  - [x] Test signal connection/disconnection
+- [x] Implement test/integration/test_autoload_signal_flow.gd:
+  - [x] Test peg_hit → MutationEngine → peg_state_changed → SynergyChecker flow
+  - [x] Test synergy activation triggers correct effects
+- [x] Implement test/integration/test_ghost_save_load.gd:
+  - [x] Test complete ghost save/load cycle
+  - [x] Test corrupt ghost file handling
+- [x] Implement test/integration/test_run_lifecycle.gd:
+  - [x] Test new run → first drop → enemy defeat → draft → map navigation
+- [x] Configure JUnit XML export (test/results/junit.xml) - DONE in .gutconfig.json
+- [ ] Configure coverage report generation (test/results/coverage/) - Not implemented
+- [x] Set up GitHub Actions workflow for automated testing - DONE (.github/workflows/test.yml)
+
+**Test Summary (as of 2026-03-17):**
+- Total tests: 147 (132 unit + 15 integration)
+- All tests passing
 
 ---
 
