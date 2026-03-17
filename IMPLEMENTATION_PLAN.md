@@ -63,11 +63,11 @@
 
 1. **P0.1: Chaos Effects Implementation** (EncounterManager.gd)
    - [ ] Implement chaos pocket effects: randomize ball trajectory, apply random buff/debuff
-   - Signal is emitted but effect is stub
+   - Signal is emitted but effect is stub at line 402
 
 2. **P0.2: Death Screen Flow Cleanup**
-   - [ ] Connect death screen to actually return to main menu or restart
-   - [ ] Verify RunManager properly handles death transition
+   - [ ] RunManager.gd:339 - Connect death screen to return to main menu or restart
+   - [ ] EncounterManager.gd:338 - Connect death screen UI properly
 
 3. **P0.3: Polish & Refinement**
    - [ ] Verify all shaders work correctly with Compatibility renderer
