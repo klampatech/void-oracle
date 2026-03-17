@@ -1,0 +1,81 @@
+name: Void Oracle Tests
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Run GUT Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: volta-cli/action@v4
+        with:
+          godot-version: "4.3"
+
+      - name: Run GUT Tests
+        run: |
+          godot --headless -s addons/gut/gut_cmdln.gd \
+            -gdir=res://test/unit \
+            -gexit
+
+      - name: Run Integration Tests
+        run: |
+          godot --headless -s addons/gut/gut_cmdln.gd \
+            -gdir=res://test/integration \
+            -gexit
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            user://test_results/junit.xml
+          retention-days: 30
+
+  lint:
+    name: Code Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: volta-cli/action@v4
+        with:
+          godot-version: "4.3"
+
+      - name: Check Script Syntax
+        run: |
+          godot --headless --check-only
+
+  export-test:
+    name: Test Export
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: volta-cli/action@v4
+        with:
+          godot-version: "4.3"
+
+      - name: Test Web Export
+        run: |
+          godot --headless --export-release "Web" export/test_build/index.html
+
+      - name: Upload Web Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: export/test_build/
+          retention-days: 7

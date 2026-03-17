@@ -28,20 +28,19 @@
 - ✅ Windows Steam export
 - ✅ macOS Steam export
 - ✅ GUT testing framework installed and operational
-- ✅ 53 unit tests passing (RunState, SynergyChecker, SynergyEffects, MutationEngine)
+- ✅ 139 tests passing (RunState, SynergyChecker, SynergyEffects, MutationEngine, EventBus, GhostBoardManager, MetaState, integration)
 
 ### Testing Status (from qa_requirements.md):
 - ✅ GUT framework installed
 - ✅ Basic unit tests: RunState (17 tests), SynergyChecker (15 tests), SynergyEffects (12 tests), MutationEngine (8 tests)
 - ✅ MockEventBus for test isolation
-- ❌ Missing: Data validation tests (test_data_validation.gd)
-- ❌ Missing: GhostBoardManager tests
-- ❌ Missing: MetaState tests
-- ❌ Missing: EventBus signal tests
-- ❌ Missing: Integration tests (autoload signal flow, ghost save/load, run lifecycle)
-- ❌ Missing: Test runner script (test/runner.gd)
-- ❌ Missing: JUnit XML and coverage report generation
-- ❌ Missing: GitHub Actions CI pipeline
+- ✅ Data validation tests (test_data_validation.gd) - 11 tests
+- ✅ EventBus signal tests (test_event_bus.gd) - 38 tests
+- ✅ GhostBoardManager tests (test_ghost_board_manager.gd) - 15 tests
+- ✅ MetaState tests (test_meta_state.gd) - 14 tests
+- ✅ Integration tests (test_autoload_signal_flow.gd) - 7 tests
+- ✅ JUnit XML report generation configured in .gutconfig.json
+- ✅ GitHub Actions CI pipeline (.github/workflows/test.yml)
 
 ### Specified Requirements NOT Fully Implemented:
 
@@ -83,15 +82,15 @@
    - [ ] Test audio volume scaling with ball velocity
    - [ ] Verify mobile touch input works on all screens
 
-2. **P0.4: Testing Infrastructure Expansion** (partially complete)
+2. **P0.4: Testing Infrastructure Expansion** (COMPLETE)
    - [x] Create test runner script (test/runner.gd) - Use `godot -s addons/gut/gut_cmdln.gd -gdir=res://test/unit`
-   - [x] Add data validation tests (test/unit/test_data_validation.gd) - 12 tests added
-   - [ ] Add EventBus signal verification tests
-   - [ ] Add GhostBoardManager tests
-   - [ ] Add MetaState tests
-   - [ ] Add integration tests for autoload signal flows
-   - [ ] Configure JUnit XML and coverage report generation
-   - [ ] Set up GitHub Actions CI pipeline
+   - [x] Add data validation tests (test/unit/test_data_validation.gd) - 11 tests
+   - [x] Add EventBus signal verification tests (test/unit/test_event_bus.gd) - 38 tests
+   - [x] Add GhostBoardManager tests (test/unit/test_ghost_board_manager.gd) - 15 tests
+   - [x] Add MetaState tests (test/unit/test_meta_state.gd) - 14 tests
+   - [x] Add integration tests (test/integration/test_autoload_signal_flow.gd) - 7 tests
+   - [x] Configure JUnit XML in .gutconfig.json
+   - [x] Set up GitHub Actions CI pipeline (.github/workflows/test.yml)
 
 3. **P0.5: Steam Page Assets** (External)
    - [ ] Create header capsule (460×215)
