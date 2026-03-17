@@ -16,8 +16,7 @@ var _mock_pegs_with_tags: Array = [
 func before_each() -> void:
 	_synergy_checker = load("res://scripts/autoloads/SynergyChecker.gd").new()
 	add_child(_synergy_checker)
-	# Call _ready to set up signal connections
-	_synergy_checker._ready()
+	# Note: _ready() is called automatically when added as child
 
 func after_each() -> void:
 	if _synergy_checker and is_instance_valid(_synergy_checker):
