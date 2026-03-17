@@ -68,7 +68,7 @@
 - [x] Fix: MainMenu didn't hide after starting run, so map was hidden behind menu
 - [x] Added `visible = false` in MainMenu._on_start_pressed() after starting run
 - [x] When tapping a node on the map it did nothing - FIXED by setting mouse_filter = IGNORE on hidden MainMenu, and explicit mouse_filter = STOP on MapNode
-- [ ] Tapping the squares on the map still don't seem to do anything (not sure if they are supposed to route somewhere.).
+- [x] Tapping the squares on the map still don't seem to do anything - FIXED: Changed mouse_filter from 0 (IGNORE) to 1 (STOP) in MapNode.tscn
 
 ---
 
