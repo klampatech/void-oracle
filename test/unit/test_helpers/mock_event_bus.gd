@@ -59,11 +59,11 @@ func was_signal_emitted(signal_name: String) -> bool:
 func get_signal_emit_count(signal_name: String) -> int:
 	return _signal_history.get(signal_name, []).size()
 
-func _emit_wrapper(signal_name: String, ...) -> void:
+func _emit_wrapper(signal_name: String) -> void:
 	if not _signal_history.has(signal_name):
 		_signal_history[signal_name] = []
 	_signal_history[signal_name].append({
-		"args": args,
+		"args": [],
 		"time": Time.get_ticks_msec()
 	})
 	# Call the actual emit would require using call_deferred or direct call

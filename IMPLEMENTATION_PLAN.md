@@ -47,7 +47,14 @@
 
 ## Priority 0: Bug Fixes (DO FIRST)
 
-All P0 items are COMPLETED.
+- [x] On click of a map node - Error: ShopUI HBoxContainer/VBoxContainer type mismatch
+  - Fixed by changing type annotation in ShopUI.gd:15 from VBoxContainer to HBoxContainer
+  - The scene had ServicesGrid as HBoxContainer but script expected VBoxContainer
+- [x] Array[String] type mismatch in BasePeg.gd
+  - Fixed by properly casting the loaded tags array: `tags = loaded_tags as Array[String]`
+- [x] MockEventBus.gd variadic parameter syntax error
+  - Fixed by removing invalid `...` variadic syntax in _emit_wrapper function
+- [ ] Verify the game has a thematic UI
 
 ---
 

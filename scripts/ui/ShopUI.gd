@@ -12,7 +12,7 @@ var _shop_system: Node = null
 @onready var _peg_container: HBoxContainer = $VBoxContainer/PegSection/PegContainer
 
 ## Services container
-@onready var _services_container: VBoxContainer = $VBoxContainer/ServicesSection/ServicesGrid
+@onready var _services_container: HBoxContainer = $VBoxContainer/ServicesSection/ServicesGrid
 
 ## Gold display
 @onready var _gold_label: Label = $VBoxContainer/GoldDisplay/GoldLabel
