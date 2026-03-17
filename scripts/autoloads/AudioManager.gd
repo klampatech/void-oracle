@@ -269,7 +269,7 @@ func _on_zone_completed(zone: int) -> void:
 	_current_zone = zone + 1
 	_play_zone_music(_current_zone)
 
-func _on_encounter_started(node_type: String) -> void:
+func _on_encounter_started(node_type: String, _data: Dictionary) -> void:
 	if node_type == "boss":
 		_is_boss_encounter = true
 		_start_boss_music()

@@ -50,8 +50,9 @@
 - [x] On click of a map node - Error: ShopUI HBoxContainer/VBoxContainer type mismatch
   - Fixed by changing type annotation in ShopUI.gd:15 from VBoxContainer to HBoxContainer
   - The scene had ServicesGrid as HBoxContainer but script expected VBoxContainer
-- [x] Array[String] type mismatch in BasePeg.gd
-  - Fixed by properly casting the loaded tags array: `tags = loaded_tags as Array[String]`
+- [x] Array[String] type mismatch in BasePeg.gd (FIXED CORRECTLY NOW)
+  - Original attempt: `tags = loaded_tags as Array[String]` - doesn't work in Godot 4.x
+  - Fixed by iterating and appending strings: iterate through loaded_tags and append each String tag to tags Array
 - [x] MockEventBus.gd variadic parameter syntax error
   - Fixed by removing invalid `...` variadic syntax in _emit_wrapper function
 - [x] Verify the game has a thematic UI
@@ -66,6 +67,15 @@
   - Previously the map always reset to zone1_start after each encounter
 - [x] Ghost node type missing visual definitions in MapNode.gd
   - Added ghost to NODE_COLORS (blue grey #607D8B) and NODE_NAMES ("Ghost")
+- [x] AudioManager signal argument mismatch (FIXED)
+  - EncounterStarted signal emits 2 args (encounter_type, data) but handler only accepted 1
+  - Fixed _on_encounter_started to accept (_node_type: String, _data: Dictionary)
+- [x] SynergyEffects.gd invalid method call (FIXED)
+  - Used peg.get("tags", []) which doesn't work in Godot 4.x on Node objects
+  - Fixed to use peg.get_peg_tags() with has_method() guard
+- [x] SteamManager.gd invalid method call (FIXED)
+  - Used peg.has("peg_type") and peg.get("peg_type") which don't work
+  - Fixed to use peg.has_method("get_peg_type_string") and peg.get_peg_type_string()
 ---
 
 ## Priority 1: Single Encounter Loop (M3) — COMPLETED

@@ -67,7 +67,11 @@ func _load_peg_data() -> void:
 	if not peg_key.is_empty() and _peg_data.has(peg_key):
 		var data: Dictionary = _peg_data[peg_key]
 		var loaded_tags: Array = data.get("tags", [])
-		tags = loaded_tags as Array[String]
+		# Convert untyped Array to Array[String] properly
+		tags.clear()
+		for tag in loaded_tags:
+			if tag is String:
+				tags.append(tag as String)
 
 
 func _apply_physics_material() -> void:

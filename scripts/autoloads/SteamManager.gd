@@ -301,8 +301,8 @@ func _on_peg_state_changed(peg: Node, old_state: String, new_state: String) -> v
 		unlock_achievement(ACHIEVEMENT_MUTANT)
 
 	# Track peg types for Collector achievement
-	if peg.has("peg_type"):
-		var peg_type: String = peg.get("peg_type")
+	if peg.has_method("get_peg_type_string"):
+		var peg_type: String = peg.get_peg_type_string()
 		if peg_type not in _owned_peg_types:
 			_owned_peg_types.append(peg_type)
 			_check_collector_achievement()

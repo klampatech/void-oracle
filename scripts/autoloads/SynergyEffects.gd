@@ -140,8 +140,8 @@ func _on_peg_hit(peg, ball) -> void:
 	if not (peg and is_instance_valid(peg)):
 		return
 
-	var peg_tags = peg.get("tags", [])
-	var peg_state = peg.get_peg_state_string()
+	var peg_tags = peg.get_peg_tags() if peg.has_method("get_peg_tags") else []
+	var peg_state = peg.get_peg_state_string() if peg.has_method("get_peg_state_string") else "dormant"
 
 	# NECROTIC BLOOM: Rot pegs deal 3 damage on contact
 	if _active_synergies.has("necrotic_bloom"):
