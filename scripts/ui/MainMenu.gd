@@ -10,8 +10,9 @@ func _on_start_pressed() -> void:
 	var seed := randi()
 	print("MainMenu: Starting new run with seed: ", seed)
 
-	# Hide the menu so the map (added by RunManager) becomes visible
+	# Hide the menu and set mouse_filter to IGNORE so it doesn't block input to the map
 	visible = false
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	# Start the run via RunManager
 	RunManager.start_new_run(seed)

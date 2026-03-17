@@ -61,7 +61,7 @@
 ### P0.3 MainMenu Scene Visibility Fix
 - [x] Fix: MainMenu didn't hide after starting run, so map was hidden behind menu
 - [x] Added `visible = false` in MainMenu._on_start_pressed() after starting run
-
+- [x] When tapping a node on the map it did nothing - FIXED by setting mouse_filter = IGNORE on hidden MainMenu, and explicit mouse_filter = STOP on MapNode
 
 ---
 
