@@ -18,6 +18,7 @@ config/name="Void Oracle"
 config/description="A roguelike pachinko game. The board is the character."
 run/main_scene="res://scenes/menus/MainMenu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+config/bundle/identifier="com.voidoracle.game"
 
 [autoload]
 
@@ -47,3 +48,4 @@ common/physics_ticks_per_second=120
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

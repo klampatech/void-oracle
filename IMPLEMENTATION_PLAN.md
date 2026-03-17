@@ -290,6 +290,8 @@
 
 ## Priority 9: Polish & Export (M7)
 
+## Priority 10: Steam (M8) - In Progress
+
 ### P9.1 Audio System
 - [x] Per-peg tone playback (AudioManager) - Uses procedural sine wave samples
 - [x] Velocity-based volume scaling (harder hits = louder)
@@ -312,6 +314,12 @@
 - [x] Test HTML5 export
 - [x] Fix compatibility renderer issues
 - [x] Verify web input handling
+
+### P9.4 Steam Export (M8)
+- [x] Add Windows export preset - working exe at export/windows/void_oracle.exe
+- [ ] Add macOS export preset - needs bundle identifier configuration in editor
+- [x] Add ETC2 ASTC texture compression for macOS export support
+- [x] Add bundle identifier for macOS
 
 ### Testing Framework (GUT)
 - [x] Downloaded GUT from GitHub (addons/gut/)
