@@ -24,6 +24,12 @@
 ### BUGS FOUND (Must Fix):
 - ✅ BasePeg.gd missing `get_hit_count()` and `get_peg_state()` methods - FIXED in this commit
 
+### 2026-03-16 Bug Fixes:
+- ✅ EncounterManager.gd:365 - Fixed `ball.get("is_void_ball", false)` - get() only takes 1 argument in GDScript
+- ✅ ShopUI.gd:93 - Added explicit type annotation for `offers` variable
+- ✅ ShopSystem.gd:187,231 - Added explicit type annotations for array variables (TIER_PROGRESSION, pegs)
+- ✅ Set up GUT testing framework - downloaded from GitHub, created test directory structure and .gutconfig.json
+
 ### M3 - Single Encounter (COMPLETED):
 - ✅ EncounterManager - script exists to orchestrate DROP/RESULT/BOARD phases
 - ✅ Enemy system - Corruptor enemy with JSON data
@@ -37,13 +43,13 @@
 - ✅ FungalPeg growth - FIXED in previous commit (now actually spawns new pegs)
 
 ### NOT Yet Implemented (M4+):
-- ❌ Map generation
-- ❌ Shop system
-- ❌ Ghost Board Encounter
-- ❌ Boss encounters
+- ✅ Map generation (MapGenerator.gd, RunMap.gd, MapNode.gd)
+- ✅ Shop system (ShopSystem.gd, ShopUI.gd)
+- ✅ Ghost Board Encounter (GhostEnemy.gd, GhostBoardManager.gd)
+- ✅ Boss encounters (Gardener, Architect, FinalOracle)
 - ✅ Synergy effects implementation (P7 - COMPLETED)
-- ❌ Meta-progression
-- ❌ Audio polish
+- ✅ Meta-progression (MetaState.gd)
+- ✅ Audio polish (AudioManager.gd)
 
 ---
 
@@ -62,6 +68,7 @@
 - [x] Fix: MainMenu didn't hide after starting run, so map was hidden behind menu
 - [x] Added `visible = false` in MainMenu._on_start_pressed() after starting run
 - [x] When tapping a node on the map it did nothing - FIXED by setting mouse_filter = IGNORE on hidden MainMenu, and explicit mouse_filter = STOP on MapNode
+- [ ] Tapping the squares on the map still don't seem to do anything (not sure if they are supposed to route somewhere.).
 
 ---
 
@@ -305,6 +312,12 @@
 - [ ] Test HTML5 export
 - [ ] Fix compatibility renderer issues
 - [ ] Verify web input handling
+
+### Testing Framework (GUT)
+- [x] Downloaded GUT from GitHub (addons/gut/)
+- [x] Created test directory structure (test/unit/, test/integration/)
+- [x] Created .gutconfig.json
+- [x] Verified tests run successfully (test_sanity.gd passes)
 
 ---
 

@@ -362,7 +362,11 @@ func _get_pocket_type(pocket: Node) -> String:
 
 ## Apply pocket effect to results
 func _apply_pocket_effect(pocket_type: String, ball: Node) -> void:
-	var is_void_ball = ball.get("is_void_ball", false)
+	var is_void_ball: bool = false
+	if ball.has_method("get_is_void_ball"):
+		is_void_ball = ball.get_is_void_ball()
+	elif ball.get("is_void_ball") != null:
+		is_void_ball = ball.get("is_void_ball")
 	var extra_pocket = false
 
 	# Check for Void Choir extra pocket (Tier 2)

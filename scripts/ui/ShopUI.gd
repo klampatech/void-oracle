@@ -90,7 +90,7 @@ func _show_peg_offers() -> void:
 	if not _shop_system:
 		return
 
-	var offers := _shop_system.get_peg_offers()
+	var offers: Array[String] = _shop_system.get_peg_offers()
 	for peg_type in offers:
 		var card := _create_peg_card(peg_type)
 		_peg_container.add_child(card)

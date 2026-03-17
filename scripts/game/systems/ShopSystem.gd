@@ -33,7 +33,7 @@ var _shop_active: bool = false
 var _selected_service: ServiceType = ServiceType.BLESS
 
 ## Peg tier progression
-const TIER_PROGRESSION := ["dormant", "blessed", "sacred", "divine"]
+const TIER_PROGRESSION: Array[String] = ["dormant", "blessed", "sacred", "divine"]
 
 
 func _ready() -> void:
@@ -223,7 +223,7 @@ func _transmute_peg(peg: Node) -> bool:
 	peg.queue_free()
 
 	# Get next tier peg of same type (simplified - just upgrade to next in list)
-	var pegs := ["stone", "bone", "fungal", "ember", "eye", "heart", "oracle", "void_rift"]
+	var pegs: Array[String] = ["stone", "bone", "fungal", "ember", "eye", "heart", "oracle", "void_rift"]
 	var current_idx := pegs.find(peg_type)
 	if current_idx < 0 or current_idx >= pegs.size() - 1:
 		return false
